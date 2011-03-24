@@ -7,12 +7,12 @@
 #define _QUOTEME(x) #x
 #define STRING(x) _QUOTEME(x)
 
-NSString * const TI_APPLICATION_DEPLOYTYPE = @"production";
+NSString * const TI_APPLICATION_DEPLOYTYPE = @"test";
 NSString * const TI_APPLICATION_ID = @"se.purplescout.knut.GTD";
 NSString * const TI_APPLICATION_PUBLISHER = @"Knut Funkel";
 NSString * const TI_APPLICATION_URL = @"www.purplescout.se";
 NSString * const TI_APPLICATION_NAME = @"GTD";
-NSString * const TI_APPLICATION_VERSION = @"1.0";
+NSString * const TI_APPLICATION_VERSION = @"0.0.1";
 NSString * const TI_APPLICATION_DESCRIPTION = @"No description provided";
 NSString * const TI_APPLICATION_COPYRIGHT = @"2011 by Knut Funkel";
 NSString * const TI_APPLICATION_GUID = @"bf4ca09e-2ba4-4b44-bf80-b46203693015";

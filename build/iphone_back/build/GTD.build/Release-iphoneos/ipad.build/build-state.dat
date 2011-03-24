@@ -1,0 +1,72 @@
+Tipad
+v7
+r0
+t322660651.467276
+cCheck dependencies
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/Entitlements.plist
+c000000004CB3DFCF00000000000001A7
+t1286856655
+s423
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/ResourceRules.plist
+c000000004CB3DFCF00000000000001E5
+t1286856655
+s485
+
+N/Users/knutfunkel/Documents/GTD/build/iphone/build/GTD.build/Release-iphoneos/ipad.build/ipad.xcent
+t2
+s0
+
+N/Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app
+t2
+s0
+
+N/Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app/Info.plist
+t2
+s0
+
+N/Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app/PkgInfo
+t2
+s0
+
+N/Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app/ResourceRules.plist
+t2
+s0
+
+N/Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app/embedded.mobileprovision
+t2
+s0
+
+N/Users/knutfunkel/Library/MobileDevice/Provisioning Profiles/5DD978C8-957A-4BEC-B807-85B9A8BE1C06.mobileprovision
+c000000004D7F53D90000000000003065
+t1300190169
+s12389
+
+Nipad-Info.plist
+c000000004D7F50EF00000000000002B1
+t1300189423
+s689
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies322660651#322660651#0(0"0(0#1#0"8674540320#0"0#
+
+CCodeSign /Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app
+r0
+
+CCpResource build/Release-iphoneos/ipad.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/ResourceRules.plist
+r0
+
+CProcessInfoPlistFile /Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app/Info.plist ipad-Info.plist
+r0
+
+CProcessProductPackaging "/Users/knutfunkel/Library/MobileDevice/Provisioning Profiles/5DD978C8-957A-4BEC-B807-85B9A8BE1C06.mobileprovision" /Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app/embedded.mobileprovision
+r0
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/Entitlements.plist /Users/knutfunkel/Documents/GTD/build/iphone/build/GTD.build/Release-iphoneos/ipad.build/ipad.xcent
+r0
+
+CTouch /Users/knutfunkel/Documents/GTD/build/iphone/build/Release-iphoneos/ipad.app
+r0
+

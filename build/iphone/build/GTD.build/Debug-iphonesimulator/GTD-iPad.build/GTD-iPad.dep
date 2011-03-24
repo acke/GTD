@@ -254,7 +254,7 @@ ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffff
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /Users/knutfunkel/Documents/GTD/build/iphone/build/GTD.build/Debug-iphonesimulator/GTD-iPad.build/Objects-normal/i386/TiMapPinAnnotationView.o
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /Users/knutfunkel/Documents/GTD/build/iphone/build/GTD.build/Debug-iphonesimulator/GTD-iPad.build/Objects-normal/i386/TiFile.o
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /Users/knutfunkel/Documents/GTD/build/iphone/build/GTD.build/Debug-iphonesimulator/GTD-iPad.build/Objects-normal/i386/TiUITableViewAction.o
-ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app.dSYM
+ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 102 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app.dSYM
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 442 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 5867948 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app/GTD
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /var/folders/MU/MUxpkD33EF8N2p7YOE+peU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GTD_Prefix-aohzrpwasqpuiteeryagaewvavjj/GTD_Prefix.pch.gch
@@ -265,4 +265,4 @@ ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffff
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 0 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app/module.xcconfig
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 114262 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app/Default.png
 ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 8 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app/PkgInfo
-ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 1032 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app/Info.plist
+ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffff 1048 /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphonesimulator/GTD.app/Info.plist
