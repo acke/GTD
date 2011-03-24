@@ -4,6 +4,9 @@ Titanium.UI.setBackgroundColor('#000');
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
+Ti.include(
+  'myRealApp.js'
+);
 
 //
 // create base UI tab and root window
@@ -121,8 +124,6 @@ confirmbtn.addEventListener('click', function()
 });
 
 
-
-
 win2.add(label2);
 win2.add(tfuser);
 win2.add(tfpass);
@@ -134,7 +135,6 @@ win2.add(confirmbtn);
 //
 tabGroup.addTab(tab1);  
 tabGroup.addTab(tab2);  
-
 
 // open tab group
 tabGroup.open();
