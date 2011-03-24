@@ -65,7 +65,6 @@ confirmbtn.addEventListener('click', function()
 		if (Titanium.Platform.name == 'android') {
 			f.write(this.responseData);
 		}else {
-			Ti.API.info('responseData: '+this.responseText);
 			Ti.API.info('responseData: '+f.read());
 			label3.setText(f.read());
 		}
@@ -81,11 +80,11 @@ confirmbtn.addEventListener('click', function()
 
 	// open the client
 	if (Titanium.Platform.name == 'android') {
-		//android's WebView doesn't support embedded PDF content
+		//android's WebViewdoesn't support embedded PDF content
 		c.open('GET', 'pn://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/knut.funkel&password=nktu.ufknle&action');
 	} else {
 		Ti.API.info('Open called');
-		c.open('POST','https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password=nktu.ufknle&action=inboxentries');
+		c.open('POST','https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=inboxentries');
 		c.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'inboxentries.xml');
 	}
 

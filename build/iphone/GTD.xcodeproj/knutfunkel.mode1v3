@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -338,8 +340,6 @@
 							<string>423pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -516,6 +516,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7CEE89BB13186C59007098B5</string>
 		<string>/Users/knutfunkel/Documents/GTD/build/iphone/GTD.xcodeproj</string>
 	</array>
@@ -719,13 +720,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7C8E32D5133B69430021CF5E</string>
+				<string>7CCCDCD2133BB79F00E1AE37</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7C8E32D6133B69430021CF5E</string>
-				<string>7C8E32D7133B69430021CF5E</string>
-				<string>7C8E32D8133B69430021CF5E</string>
-				<string>7C8E32D9133B69430021CF5E</string>
-				<string>7C8E32DA133B69430021CF5E</string>
+				<string>7CCCDCD3133BB79F00E1AE37</string>
+				<string>7CCCDCD4133BB79F00E1AE37</string>
+				<string>7CCCDCD5133BB79F00E1AE37</string>
+				<string>7CCCDCD6133BB79F00E1AE37</string>
+				<string>7CCCDCD7133BB79F00E1AE37</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
