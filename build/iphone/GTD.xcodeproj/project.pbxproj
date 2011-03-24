@@ -1358,8 +1358,6 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GTD_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTD_Prefix.pch; sourceTree = "<group>"; };
-		7CE02B5F132F886F007C790E /* ipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CE02B61132F886F007C790E /* ipad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ipad-Info.plist"; sourceTree = "<group>"; };
 		B421C4101113AA9300DBCB42 /* TiUIScrollableViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIScrollableViewProxy.h; sourceTree = "<group>"; };
 		B421C4111113AA9300DBCB42 /* TiUIScrollableViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiUIScrollableViewProxy.m; sourceTree = "<group>"; };
 		B421C4141113AAA900DBCB42 /* TiUIScrollableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIScrollableView.h; sourceTree = "<group>"; };
@@ -1501,13 +1499,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CE02B5D132F886F007C790E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DABB37A112E8CB280026A6EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1546,7 +1537,6 @@
 				1D6058910D05DD3D006BFB54 /* GTD.app */,
 				24D8E4B1119B9D8A00F8CAA6 /* GTD.app */,
 				DABB37BC12E8CB280026A6EA /* GTD.app */,
-				7CE02B5F132F886F007C790E /* ipad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2640,7 +2630,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				7CE02B61132F886F007C790E /* ipad-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -2793,7 +2782,6 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				24CA8D03111169070084E2DE /* Post-Compile */,
-				7CEE89EC13186D0B007098B5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2821,23 +2809,6 @@
 			name = "GTD-iPad";
 			productName = GTD;
 			productReference = 24D8E4B1119B9D8A00F8CAA6 /* GTD.app */;
-			productType = "com.apple.product-type.application";
-		};
-		7CE02B5E132F886F007C790E /* ipad */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CE02B64132F8870007C790E /* Build configuration list for PBXNativeTarget "ipad" */;
-			buildPhases = (
-				7CE02B5B132F886F007C790E /* Resources */,
-				7CE02B5C132F886F007C790E /* Sources */,
-				7CE02B5D132F886F007C790E /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ipad;
-			productName = ipad;
-			productReference = 7CE02B5F132F886F007C790E /* ipad.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DABB369A12E8CB280026A6EA /* GTD-universal */ = {
@@ -2881,7 +2852,6 @@
 				1D6058900D05DD3D006BFB54 /* GTD */,
 				24D8E3B5119B9D8A00F8CAA6 /* GTD-iPad */,
 				DABB369A12E8CB280026A6EA /* GTD-universal */,
-				7CE02B5E132F886F007C790E /* ipad */,
 			);
 		};
 /* End PBXProject section */
@@ -2903,13 +2873,6 @@
 				24D8E3B7119B9D8A00F8CAA6 /* Default.png in Resources */,
 				2464F96411AB996C001C035A /* module.xcconfig in Resources */,
 				24F29E3712209E6F0099351D /* stylesheet.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CE02B5B132F886F007C790E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2981,19 +2944,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-		};
-		7CEE89EC13186D0B007098B5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
 		};
 		DABB369F12E8CB280026A6EA /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3552,13 +3502,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CE02B5C132F886F007C790E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DABB36A012E8CB280026A6EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3868,8 +3811,6 @@
 			baseConfigurationReference = 241EAEC5118E2BA90081A5BE /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GTD_Prefix.pch;
@@ -3882,8 +3823,6 @@
 					"\"$(SRCROOT)/../../../tijs/TiCore/TiCore/build/Release-iphonesimulator\"",
 				);
 				PRODUCT_NAME = GTD;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3953,55 +3892,6 @@
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv6 armv7 i386";
-			};
-			name = Release;
-		};
-		7CE02B62132F8870007C790E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "ipad-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = ipad;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		7CE02B63132F8870007C790E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "ipad-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = ipad;
-				SDKROOT = iphoneos;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -4162,15 +4052,6 @@
 			buildConfigurations = (
 				24D8E4AF119B9D8A00F8CAA6 /* Debug */,
 				24D8E4B0119B9D8A00F8CAA6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CE02B64132F8870007C790E /* Build configuration list for PBXNativeTarget "ipad" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CE02B62132F8870007C790E /* Debug */,
-				7CE02B63132F8870007C790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
