@@ -36,6 +36,7 @@ var tfpass = Titanium.UI.createTextField({
 	top:150,
 	left:10,
 	width:300,
+	passwordMask:true,
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
