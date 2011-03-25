@@ -31,6 +31,7 @@ var tfuser = Titanium.UI.createTextField({
 
 
 var tfpass = Titanium.UI.createTextField({
+	value:Titanium.App.Properties.getString("pass"),
 	color:'#336699',
 	height:35,
 	top:150,
@@ -52,8 +53,7 @@ var confirmbtn = Titanium.UI.createButton({
 confirmbtn.addEventListener('click', function()
 {
 	Titanium.App.Properties.setString("user",tfuser.value);
-    
-	//Ti.API.info('user',tfuser.value);
+	Titanium.App.Properties.setString("pass",tfpass.value);
 
 	function listapi(){
 		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=inboxentries';
@@ -67,10 +67,11 @@ confirmbtn.addEventListener('click', function()
 		var t = postHTTPClient (poststring, fileName);
 	}
 	
+	listapi();
+	
 	Titanium.App.Properties.setString("retval",c.responseText);
 
 });
-
 
 win2.add(label2);
 win2.add(tfuser);

@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>.app.js.swp</key>
-		<data>
-		23GYUxQRcSe2SlTuKW9VaESeolk=
-		</data>
 		<key>Default-Landscape.png</key>
 		<data>
 		jh4DMN0wxMbqDPTqVzqHkiGWJk0=
@@ -23,6 +19,14 @@
 		<key>Default@2x.png</key>
 		<data>
 		gtSrOHWPnDa/LSB6mAw3DUhYkzk=
+		</data>
+		<key>GTD2.png</key>
+		<data>
+		rr5qox5I8eZhuRgnTcSobJZVBWc=
+		</data>
+		<key>GTD2.xcf</key>
+		<data>
+		pogWnZuNtEHMbTg3LZkGE4FoWXs=
 		</data>
 		<key>KS_nav_ui.png</key>
 		<data>

@@ -21,7 +21,7 @@ var label3 = Titanium.UI.createLabel({
 });
 
 function listapi(){
-	var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/knut.funkel&password=nktu.ufknle&action=api_help';
+	var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=api_help';
 	var fileName = 'inboxentries.xml';
 	
 	Ti.include(
