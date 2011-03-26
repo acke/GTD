@@ -15,7 +15,9 @@
 			Ti.API.info('responseData: '+f.read());
 		}
 		Titanium.App.Properties.setString("retval",f.read());
+		
 		label3.setText(f.read());
+		loginStatus.setText("Status: \n" + f.read());
 	};
 	c.ondatastream = function(e)
 	{

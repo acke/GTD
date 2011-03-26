@@ -45,8 +45,8 @@ var tfpass = Titanium.UI.createTextField({
 var loginStatus = Titanium.UI.createLabel({
 	color:'#999',
 	text:'Status: ',
-	font:{fontSize:10,fontFamily:'Helvetica Neue'},
-	height:35,
+	font:{fontSize:15,fontFamily:'Helvetica Neue'},
+	height:100,
 	top: 250,
 	textAlign:'left',
 	width:'auto'
@@ -77,9 +77,6 @@ confirmbtn.addEventListener('click', function()
 	}
 	
 	verify_credentials();
-	
-	var retval = Titanium.App.Properties.getString("retval");
-	loginStatus.setText("Status:" + retval);
 
 });
 

@@ -29,7 +29,7 @@ function listapi(){
 	var t = postHTTPClient (poststring, fileName);
 }
 
-listapi();
+//listapi();
 
 win3.add(label3);
 
