@@ -42,12 +42,13 @@ var tfpass = Titanium.UI.createTextField({
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 
-var label3 = Titanium.UI.createLabel({
+var loginStatus = Titanium.UI.createLabel({
 	color:'#999',
 	text:'Status: ',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	font:{fontSize:10,fontFamily:'Helvetica Neue'},
 	height:35,
 	top: 250,
+	textAlign:'left',
 	width:'auto'
 });
 
@@ -65,25 +66,20 @@ confirmbtn.addEventListener('click', function()
 	Titanium.App.Properties.setString("user",tfuser.value);
 	Titanium.App.Properties.setString("pass",tfpass.value);
 
-	function listInbox(){
-		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=inboxentries';
+	function verify_credentials(){
+		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=verify_credentials';
 		
-		var fileName = 'inboxentries.xml';
+		var fileName = 'verify_credentials.xml';
 	
 		Ti.include('httppost.js');
 	
 		var t = postHTTPClient (poststring, fileName);
 	}
 	
-	listInbox();
+	verify_credentials();
 	
-	Titanium.App.Properties.setString("retval",c.responseText);
-	
-	var sRetval = Titanium.App.Properties.getString("retval");
-	
-	if (sRetval.search("200")){
-		label3.value = "Status: OK";
-	}
+	var retval = Titanium.App.Properties.getString("retval");
+	loginStatus.setText("Status:" + retval);
 
 });
 
@@ -93,4 +89,4 @@ win2.add(label2);
 win2.add(tfuser);
 win2.add(tfpass);
 win2.add(confirmbtn);
-win2.add(label3);
+win2.add(loginStatus);

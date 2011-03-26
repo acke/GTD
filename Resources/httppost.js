@@ -8,12 +8,13 @@
 
 		var filename = Titanium.Platform.name == 'android' ? 'test.png' : 'test.pdf';
 		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, fileName);
+		
 		if (Titanium.Platform.name == 'android') {
 			f.write(this.responseData);
 		}else {
 			Ti.API.info('responseData: '+f.read());
 		}
-		Titanium.App.Properties.setString("retval",c.responseText);
+		Titanium.App.Properties.setString("retval",f.read());
 		label3.setText(f.read());
 	};
 	c.ondatastream = function(e)

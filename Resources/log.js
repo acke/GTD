@@ -24,9 +24,7 @@ function listapi(){
 	var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=api_help';
 	var fileName = 'inboxentries.xml';
 	
-	Ti.include(
-  		'httppost.js'
-	);
+	Ti.include('httppost.js');
 	
 	var t = postHTTPClient (poststring, fileName);
 }
