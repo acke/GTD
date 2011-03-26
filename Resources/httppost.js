@@ -28,7 +28,7 @@
 	// open the client
 	if (Titanium.Platform.name == 'android') {
 		//android's WebView doesn't support embedded PDF content
-		c.open('GET', poststring);
+		c.open('POST', poststring);
 	} else {
 		c.open('POST', poststring);
 		c.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
