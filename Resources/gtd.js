@@ -13,7 +13,7 @@ var tab1 = Titanium.UI.createTab({
     window:win1
 });
 
-Ti.include('login.js');
+Ti.include('Views/login.js');
 
 Ti.include('log.js');
 

@@ -2782,6 +2782,7 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				24CA8D03111169070084E2DE /* Post-Compile */,
+				7C88BE74133F40670009348E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2944,6 +2945,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
+		};
+		7C88BE74133F40670009348E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm /Users/knutfunkel/Documents/GTD/adhoc/Payload/GTD.app\ncp -r /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphoneos/GTD.app /Users/knutfunkel/Documents/GTD/adhoc/Payload/\ncd /Users/knutfunkel/Documents/GTD/adhoc/\nzip -R GTD.ipa Payload/";
 		};
 		DABB369F12E8CB280026A6EA /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;

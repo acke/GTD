@@ -1,7 +1,9 @@
 // create table view data object
 var data = [
-	{title:'Inbox', hasChild:true, test:'inbox.js'},
-	{title:'API', hasChild:true, test:'api.js'}
+	{title:'Inbox', hasChild:true, test:'Views/inbox.js'},
+	{title:'Tasks', hasChild:true, test:'Views/tasks.js'},
+	{title:'Checklists', hasChild:true, test:'Views/checklists.js'},
+	{title:'API', hasChild:true, test:'Views/api.js'}
 ];
 
 // add iphone specific tests
