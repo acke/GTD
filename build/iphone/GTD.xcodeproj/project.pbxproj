@@ -2957,7 +2957,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm /Users/knutfunkel/Documents/GTD/adhoc/Payload/GTD.app\ncp -r /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphoneos/GTD.app /Users/knutfunkel/Documents/GTD/adhoc/Payload/\ncd /Users/knutfunkel/Documents/GTD/adhoc/\nzip -R GTD.ipa Payload/";
+			shellScript = "rm /Users/knutfunkel/Documents/GTD/adhoc/Payload/GTD.app\ncp -r /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphoneos/GTD.app /Users/knutfunkel/Documents/GTD/adhoc/Payload/\ncd /Users/knutfunkel/Documents/GTD/adhoc/\nzip -r GTD.ipa Payload/";
 		};
 		DABB369F12E8CB280026A6EA /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;

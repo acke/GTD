@@ -267,6 +267,8 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>7C8F9053133F44930046D921</string>
+								<string>7C8F9054133F44930046D921</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -517,8 +519,8 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/knutfunkel/Documents/GTD/build/iphone/GTD.xcodeproj</string>
 		<string>7CEE89BB13186C59007098B5</string>
+		<string>/Users/knutfunkel/Documents/GTD/build/iphone/GTD.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 128 1055 650 0 0 1280 778 </string>
@@ -613,7 +615,7 @@
 			<key>WindowToolGUID</key>
 			<string>7CEE89BB13186C59007098B5</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

@@ -12,7 +12,7 @@ var view = Ti.UI.createView({
 	backgroundColor:'#fff',
 	borderRadius:10,
 	width:300,
-	height:300,
+	height:'auto',
 	top:10
 });
 
@@ -23,7 +23,8 @@ var label3 = Titanium.UI.createLabel({
 	text:'Log info:',
 	font:{fontSize:10,fontFamily:'Helvetica Neue'},
 	textAlign:'left',
-	width:'auto'
+	width:'auto',
+	height:'auto'
 });
 
 function listapi(){
