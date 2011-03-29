@@ -2,6 +2,8 @@
 // create base UI tab and root window
 //
 
+gtd.ui = {};
+
 //Skapar ny tråd, denna kan inte nå variabler i resten av applicationen.
 var win1 = Titanium.UI.createWindow({
     url:'navigator.js',
