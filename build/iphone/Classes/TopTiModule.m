@@ -16,17 +16,17 @@
 
 -(id)version
 {
-	return @"1.6.0";
+	return @"1.6.1";
 }
 
 -(id)buildDate
 {
-	return @"02/23/11 12:34";
+	return @"03/15/11 11:45";
 }
 
 -(id)buildHash
 {
-	return @"9882e81";
+	return @"2fdc0c5";
 }
 
 -(id)userAgent

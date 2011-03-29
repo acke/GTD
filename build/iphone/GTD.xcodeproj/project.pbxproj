@@ -854,7 +854,7 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* GTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* GTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GTD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2412F464115C296300454E5B /* TiMediaVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiMediaVideoPlayer.h; sourceTree = "<group>"; };
 		2412F465115C296300454E5B /* TiMediaVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiMediaVideoPlayer.m; sourceTree = "<group>"; };
@@ -1260,7 +1260,7 @@
 		24D0700411D0253D00F615D8 /* TiUIiOSProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIiOSProxy.h; sourceTree = "<group>"; };
 		24D0700511D0253D00F615D8 /* TiUIiOSProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiUIiOSProxy.m; sourceTree = "<group>"; };
 		24D5C75811E6364F00F097E2 /* libtiverify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiverify.a; path = lib/libtiverify.a; sourceTree = SOURCE_ROOT; };
-		24D8E4B1119B9D8A00F8CAA6 /* GTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24D8E4B1119B9D8A00F8CAA6 /* GTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GTD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DD042A116A6C58006FD6E1 /* TiToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiToolbar.h; sourceTree = "<group>"; };
 		24DD042B116A6C58006FD6E1 /* TiToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiToolbar.m; sourceTree = "<group>"; };
 		24DD0455116A6F02006FD6E1 /* TiTabGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiTabGroup.h; sourceTree = "<group>"; };
@@ -1357,7 +1357,7 @@
 		24FBE5AD11293DD1005C8D48 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAXException.h; path = Classes/CAXException.h; sourceTree = SOURCE_ROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* GTD_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTD_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* GTD_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTD_Prefix.pch"; sourceTree = "<group>"; };
 		B421C4101113AA9300DBCB42 /* TiUIScrollableViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIScrollableViewProxy.h; sourceTree = "<group>"; };
 		B421C4111113AA9300DBCB42 /* TiUIScrollableViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiUIScrollableViewProxy.m; sourceTree = "<group>"; };
 		B421C4141113AAA900DBCB42 /* TiUIScrollableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIScrollableView.h; sourceTree = "<group>"; };
@@ -1436,7 +1436,7 @@
 		DABA10BE12E676A1007DD791 /* FBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginDialog.m; sourceTree = "<group>"; };
 		DABA10BF12E676A1007DD791 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
 		DABA10C012E676A1007DD791 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRequest.m; sourceTree = "<group>"; };
-		DABB37BC12E8CB280026A6EA /* GTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DABB37BC12E8CB280026A6EA /* GTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GTD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1619,6 +1619,7 @@
 				24CA8A0A111161DC0084E2DE /* Utils */,
 				24CA8A0B111161E10084E2DE /* API */,
 			);
+			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -2782,13 +2783,12 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				24CA8D03111169070084E2DE /* Post-Compile */,
-				7C88BE74133F40670009348E /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GTD;
+			name = "GTD";
 			productName = GTD;
 			productReference = 1D6058910D05DD3D006BFB54 /* GTD.app */;
 			productType = "com.apple.product-type.application";
@@ -2902,8 +2902,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"/Library/Application Support/Titanium/mobilesdk/osx/1.6.0/iphone/builder.py\" xcode\nexit $?";
-		};
+			shellScript = "\"/Library/Application Support/Titanium/mobilesdk/osx/1.6.1/iphone/builder.py\" xcode\nexit $?";
+                };
 		24CA8D03111169070084E2DE /* Post-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2917,7 +2917,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-		};
+                };
 		24D8E3B9119B9D8A00F8CAA6 /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2930,8 +2930,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"/Library/Application Support/Titanium/mobilesdk/osx/1.6.0/iphone/builder.py\" xcode\nexit $?";
-		};
+			shellScript = "\"/Library/Application Support/Titanium/mobilesdk/osx/1.6.1/iphone/builder.py\" xcode\nexit $?";
+                };
 		24D8E4AD119B9D8A00F8CAA6 /* Post-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2945,20 +2945,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-		};
-		7C88BE74133F40670009348E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "rm /Users/knutfunkel/Documents/GTD/adhoc/Payload/GTD.app\ncp -r /Users/knutfunkel/Documents/GTD/build/iphone/build/Debug-iphoneos/GTD.app /Users/knutfunkel/Documents/GTD/adhoc/Payload/\ncd /Users/knutfunkel/Documents/GTD/adhoc/\nzip -r GTD.ipa Payload/";
-		};
+                };
 		DABB369F12E8CB280026A6EA /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2971,8 +2958,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"/Library/Application Support/Titanium/mobilesdk/osx/1.6.0/iphone/builder.py\" xcode\nexit $?";
-		};
+			shellScript = "\"/Library/Application Support/Titanium/mobilesdk/osx/1.6.1/iphone/builder.py\" xcode\nexit $?";
+                };
 		DABB37B812E8CB280026A6EA /* Post-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2986,7 +2973,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-		};
+                };
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3792,7 +3779,7 @@
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GTD_Prefix.pch;
+				GCC_PREFIX_HEADER = "GTD_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3815,7 +3802,7 @@
 					"-weak_framework",
 					iAd,
 				);
-				PRODUCT_NAME = GTD;
+				PRODUCT_NAME = "GTD";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3827,7 +3814,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GTD_Prefix.pch;
+				GCC_PREFIX_HEADER = "GTD_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3836,7 +3823,16 @@
 					"\"$(SRCROOT)/../../../../tmp/staticlib/build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../../tijs/TiCore/TiCore/build/Release-iphonesimulator\"",
 				);
-				PRODUCT_NAME = GTD;
+				"OTHER_LDFLAGS[sdk=iphoneos4*]" = (
+					"$(inherited)",
+					"-weak_framework",
+					iAd,
+					"-weak_framework",
+					CoreMedia,
+					"-weak_framework",
+					CoreVideo,
+				);
+				PRODUCT_NAME = "GTD";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3847,12 +3843,12 @@
 			baseConfigurationReference = 241EAEC5118E2BA90081A5BE /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GTD_Prefix.pch;
+				GCC_PREFIX_HEADER = "GTD_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -3875,7 +3871,7 @@
 					"-weak_framework",
 					CoreVideo,
 				);
-				PRODUCT_NAME = GTD;
+				PRODUCT_NAME = "GTD";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -3886,10 +3882,10 @@
 			baseConfigurationReference = 241EAEC5118E2BA90081A5BE /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GTD_Prefix.pch;
+				GCC_PREFIX_HEADER = "GTD_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -3902,7 +3898,16 @@
 					"-DIPAD",
 					"-DTI_POST_1_2",
 				);
-				PRODUCT_NAME = GTD;
+				"OTHER_LDFLAGS[sdk=iphoneos4*]" = (
+					"$(inherited)",
+					"-weak_framework",
+					iAd,
+					"-weak_framework",
+					CoreMedia,
+					"-weak_framework",
+					CoreVideo,
+				);
+				PRODUCT_NAME = "GTD";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -3970,7 +3975,7 @@
 					"${SDKROOT}/usr/include/libxml2",
 					headers,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
@@ -3992,7 +3997,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GTD_Prefix.pch;
+				GCC_PREFIX_HEADER = "GTD_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -4015,7 +4020,7 @@
 					"-weak_framework",
 					CoreMedia,
 				);
-				PRODUCT_NAME = GTD;
+				PRODUCT_NAME = "GTD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -4029,7 +4034,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GTD_Prefix.pch;
+				GCC_PREFIX_HEADER = "GTD_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -4042,7 +4047,16 @@
 					"-DIPAD",
 					"-DTI_POST_1_2",
 				);
-				PRODUCT_NAME = GTD;
+				"OTHER_LDFLAGS[sdk=iphoneos4*]" = (
+					"$(inherited)",
+					"-weak_framework",
+					iAd,
+					"-weak_framework",
+					CoreVideo,
+					"-weak_framework",
+					CoreMedia,
+				);
+				PRODUCT_NAME = "GTD";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv6 armv7 i386";

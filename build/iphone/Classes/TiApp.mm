@@ -259,7 +259,7 @@ void MyUncaughtExceptionHandler(NSException *exception)
 
 - (void)boot
 {
-	NSLog(@"[INFO] %@/%@ (%s.9882e81)",TI_APPLICATION_NAME,TI_APPLICATION_VERSION,TI_VERSION_STR);
+	NSLog(@"[INFO] %@/%@ (%s.2fdc0c5)",TI_APPLICATION_NAME,TI_APPLICATION_VERSION,TI_VERSION_STR);
 	
 	sessionId = [[TiUtils createUUID] retain];
 

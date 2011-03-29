@@ -5,36 +5,36 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 03/29/11 09:01
+Starting build at 03/29/11 12:04
 
 Build details:
 
-   timestamp=02/23/11 12:34
-   version=1.6.0
-   githash=9882e81
+   timestamp=03/15/11 11:45
+   version=1.6.1
+   githash=2fdc0c5
 
 
 Script arguments:
-   /Library/Application Support/Titanium/mobilesdk/osx/1.6.0/iphone/builder.py
+   /Library/Application Support/Titanium/mobilesdk/osx/1.6.1/iphone/builder.py
    simulator
-   "4.2"
-   "/Users/knutfunkel/Documents/GTD"
-   se.purplescout.knut.GTD
+   "4.3"
+   "/Users/knutfunkel/GTD"
+   se.psab.gtd
    "GTD"
    iphone
 
-Building from: /Library/Application Support/Titanium/mobilesdk/osx/1.6.0/iphone
+Building from: /Library/Application Support/Titanium/mobilesdk/osx/1.6.1/iphone
 Platform: Darwin Kernel Version 10.7.0: Sat Jan 29 15:17:16 PST 2011; root:xnu-1504.9.37~1/RELEASE_I386
 
 Xcode path is: /Developer
 
 
-githash=9882e81, existing_git_hash=9882e81
-writing contents of /Users/knutfunkel/Documents/GTD/build/iphone/project.xcconfig:
+githash=2fdc0c5, existing_git_hash=2fdc0c5
+writing contents of /Users/knutfunkel/GTD/build/iphone/project.xcconfig:
 
-TI_VERSION=1.6.0
+TI_VERSION=1.6.1
 TI_SDK_DIR=/Library/Application Support/Titanium/mobilesdk/osx/$(TI_VERSION)/iphone
-TI_APPID=se.purplescout.knut.GTD
+TI_APPID=se.psab.gtd
 OTHER_LDFLAGS[sdk=iphoneos4*]=$(inherited) -weak_framework iAd
 OTHER_LDFLAGS[sdk=iphonesimulator4*]=$(inherited) -weak_framework iAd
 #include "module"
