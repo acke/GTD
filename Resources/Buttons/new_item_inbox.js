@@ -2,18 +2,12 @@
 
 	gtd.ui.Buttons = {}; // nytt sub namespace
 
-	gtd.ui.Buttons.createTableView = function() {
-		var newInboxItem = Titanium.UI.createButton({
-			title:'Add new item',
-			height:40,
-			width:145,
-			top:160,
-			right:10
-		});
+	gtd.ui.Buttons.createButton = function() {
+		var newInboxItem = Titanium.UI.createButton({title:'New item'});
 		
 		newInboxItem.addEventListener('click', function()
 		{
-			//TODO add logic to open "inbox entry editor"
+			Ti.include('Editors/inbox_entry_editor.js');
 		});
 		
 		return newInboxItem;

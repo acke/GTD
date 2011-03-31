@@ -3,11 +3,9 @@ Titanium.UI.setBackgroundColor('#000');
 
 var gtd = {};
 
-// create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+Ti.include('navigator.js');
 
-Ti.include('gtd.js');
+var tabs = gtd.ui.createApplicationTabGroup();
 
-// open tab group
-tabGroup.open();
+tabs.open();
 

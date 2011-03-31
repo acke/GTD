@@ -1,9 +1,17 @@
 // create table view data object
 (function(){
 		
-	gtd.ui.navigator = {};
+	gtd.ui = {};
 	
-	gtd.ui.navigator.createTableView = function() {
+	Ti.include('Views/login.js');
+	
+	Ti.include('log.js');
+	
+	Ti.include('Buttons/new_item_inbox.js');
+		
+	var newItemButton = gtd.ui.Buttons.createButton();
+	
+	gtd.ui.createTableView = function() {
 		var myTable = Ti.UI.createTableView();
 		
 		myTable.addEventListener('click', function(_e) {
@@ -25,7 +33,6 @@
 		
 					});
 				}
-		
 		
 				if (e.index == 3)
 				{
@@ -55,33 +62,36 @@
 		return myTable;
 	};
 	
-	gtd.ui.navigator.createMyWindow = function(){
+	gtd.ui.createMyWindow = function(){
 		var win = Ti.UI.createWindow({
 			height:30,
 			width:250,
 			bottom:110,
 			borderRadius:10
 		});
-		win.add(gtd.ui.navigator.createTableView());
+		win.add(gtd.ui.createTableView());
+		win.rightNavButton = newItemButton;
 		
 		return win;
 	};
-	gtd.ui.navigator.createSecondWindow = function(_myData){
+	gtd.ui.createSecondWindow = function(_myData){
 		var win = Ti.UI.createWindow({
 			backgroundColor:'#FFFFFF',
 			title: _myData.title
 		});
 		return win;
 	};
-	gtd.ui.navigator.createApplicationTabGroup = function(){
+	gtd.ui.createApplicationTabGroup = function(){
 		var tabGroup = Ti.UI.createTabGroup();
-		var navigator = gtd.ui.navigator.createMyWindow();
+		var navigator = gtd.ui.createMyWindow();
 		gtd.navigatorTab = Ti.UI.createTab({
 			title: 'MeldonGTD',
 			window: navigator
 		});
 		
 		tabGroup.addTab(gtd.navigatorTab);
+		tabGroup.addTab(tab2); 
+		tabGroup.addTab(tab3); 
 		
 		return tabGroup;
 	};
@@ -111,14 +121,6 @@
 //		borderRadius:10
 //	});
 	
-//	Ti.include( 
-//		'Buttons/new_item_inbox.js'
-//	);
-//	
-//	var newItemButton = gtd.ui.Buttons.createButton();
-//	
-//	win.add(newItemButton);
-	
 	
 //	var label = Titanium.UI.createLabel({
 //		color:'#fff',
@@ -130,26 +132,26 @@
 //	win.add(view);
 //	win.add(label);
 	
-//	Titanium.App.addEventListener('event_one', function(e)
-//	{
-//		label.text = 'navigator.js: event one, array length = ' + e.data.length;
-//		win.open();
-//		setTimeout(function()
-//		{
-//			win.close({opacity:0,duration:500});
-//		},1000);
-//	});
-//	
-//	Titanium.App.addEventListener('event_two', function(e)
-//	{
-//		label.text = 'navigator.js: event two, name = ' + e.name;
-//		win.open();
-//		setTimeout(function()
-//		{
-//			win.close({opacity:0,duration:500});
-//		},1000);
-//	
-//	});
+	Titanium.App.addEventListener('event_one', function(e)
+	{
+		label.text = 'navigator.js: event one, array length = ' + e.data.length;
+		win.open();
+		setTimeout(function()
+		{
+			win.close({opacity:0,duration:500});
+		},1000);
+	});
+	
+	Titanium.App.addEventListener('event_two', function(e)
+	{
+		label.text = 'navigator.js: event two, name = ' + e.name;
+		win.open();
+		setTimeout(function()
+		{
+			win.close({opacity:0,duration:500});
+		},1000);
+	
+	});
 
 })();
 
