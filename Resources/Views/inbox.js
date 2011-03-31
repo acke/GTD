@@ -1,4 +1,4 @@
-
+(function (){
 // create table view data object
 var data = [];
 var user = Titanium.App.Properties.getString("user");
@@ -60,6 +60,7 @@ xhr.onload = function()
 	}
 };
 xhr.send();
+})();
 
 
 

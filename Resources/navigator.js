@@ -8,39 +8,14 @@
 	Ti.include('log.js');
 	
 	Ti.include('Buttons/new_item_inbox.js');
-		
-	var newItemButton = gtd.ui.Buttons.createButton();
 	
 	gtd.ui.createTableView = function() {
 		var myTable = Ti.UI.createTableView();
 		
 		myTable.addEventListener('click', function(_e) {
-			
-			if (e.rowData.myData)
-			{
-				var win = null;
-				if (Ti.Platform.name == "android") {
-					win = Titanium.UI.createWindow({
-						url:e.rowData.myData,
-						title:e.rowData.title
-					});
-				} else {
-					win = Titanium.UI.createWindow({
-						url:e.rowData.myData,
-						title:e.rowData.title,
-						backgroundColor:'#fff',
-						barColor:'#111'
-		
-					});
-				}
-		
-				if (e.index == 3)
-				{
-					win.hideTabBar();
-				}
-				Titanium.UI.currentTab.open(win,{animated:true});
-			}
-			
+			var tab = gtd.navigatorTab; // Open window on this tab , found defined below
+			tab.open(gtd.ui.createSecondWindow(_e.rowData)); // Relay the row object
+
 			return myTable;
 			
 		});
@@ -70,14 +45,16 @@
 			borderRadius:10
 		});
 		win.add(gtd.ui.createTableView());
-		win.rightNavButton = newItemButton;
+		win.rightNavButton = gtd.ui.Buttons.createButton();
 		
 		return win;
 	};
 	gtd.ui.createSecondWindow = function(_myData){
 		var win = Ti.UI.createWindow({
-			backgroundColor:'#FFFFFF',
-			title: _myData.title
+			url:_myData.myData,
+			title: _myData.title,
+			backgroundColor:'#fff',
+			barColor:'#111'
 		});
 		return win;
 	};
@@ -85,7 +62,7 @@
 		var tabGroup = Ti.UI.createTabGroup();
 		var navigator = gtd.ui.createMyWindow();
 		gtd.navigatorTab = Ti.UI.createTab({
-			title: 'MeldonGTD',
+			title: 'MeldonGTD Client',
 			window: navigator
 		});
 		
@@ -96,13 +73,7 @@
 		return tabGroup;
 	};
 	
-	// add table view to the window
-//	Titanium.UI.currentWindow.add(tableview);
 	
-//	Titanium.UI.currentWindow.addEventListener('focus', function()
-//	{
-//		Ti.API.info('FOCUS RECEIVED IN navigator');
-//	});
 	//
 	//  ADD EVENT LISTENERS FOR CUSTOM EVENTS
 	//
