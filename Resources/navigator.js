@@ -9,6 +9,21 @@
 	
 	Ti.include('Buttons/new_item_inbox.js');
 	
+	Ti.include('Webrequests/sendHTTP.js');
+	
+	gtd.ui.sendNewItem = function (value){
+		var user = Titanium.App.Properties.getString("user");
+		var pass = Titanium.App.Properties.getString("pass");
+		
+		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=add_inbox_entry&mimetype=text/plain&state=unhandled&content='+value;
+
+		var fileName = 'newitem.xml';
+		
+		Ti.API.info(poststring);
+		
+		var t = gtd.net.postHTTP (poststring, fileName);
+	};
+	
 	gtd.ui.createTableView = function() {
 		var myTable = Ti.UI.createTableView();
 		
@@ -72,36 +87,6 @@
 		
 		return tabGroup;
 	};
-	
-	
-	//
-	//  ADD EVENT LISTENERS FOR CUSTOM EVENTS
-	//
-//	var win = Titanium.UI.createWindow({
-//		height:30,
-//		width:250,
-//		bottom:110,
-//		borderRadius:10
-//	});
-	
-//	var view = Titanium.UI.createView({
-//		backgroundColor:'#000',
-//		opacity:0.7,
-//		height:30,
-//		width:250,
-//		borderRadius:10
-//	});
-	
-	
-//	var label = Titanium.UI.createLabel({
-//		color:'#fff',
-//		font:{fontSize:13},
-//		textAlign:'center',
-//		width:'auto',
-//		height:'auto'
-//	});
-//	win.add(view);
-//	win.add(label);
 	
 	Titanium.App.addEventListener('event_one', function(e)
 	{

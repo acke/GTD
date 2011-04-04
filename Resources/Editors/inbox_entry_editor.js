@@ -1,5 +1,8 @@
 (function (){
+	gtd.ui.Buttons.newentry = {};
+		
 	var w = Ti.UI.createWindow({title:'Inbox'});
+	
 	var view = Ti.UI.createView({
 		backgroundColor:'#fff',
 		borderRadius:10,
@@ -49,6 +52,8 @@
 	w.setRightNavButton(commit);
 	commit.addEventListener('click',function()
 	{
+		gtd.ui.sendNewItem(tfItem.value);
 		w.close();
 	});
+
 })();
