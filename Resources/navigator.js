@@ -9,19 +9,21 @@
 	
 	Ti.include('Buttons/new_item_inbox.js');
 	
-	Ti.include('Webrequests/sendHTTP.js');
+	Ti.include('net/sendHTTP.js');
 	
 	gtd.ui.sendNewItem = function (value){
 		var user = Titanium.App.Properties.getString("user");
 		var pass = Titanium.App.Properties.getString("pass");
 		
-		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=add_inbox_entry&mimetype=text/plain&state=unhandled&content='+value;
+		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=add_inbox_entry';
 
 		var fileName = 'newitem.xml';
 		
 		Ti.API.info(poststring);
 		
-		var t = gtd.net.postHTTP (poststring, fileName);
+		var client = gtd.net.postHTTP (poststring, fileName);
+		// send the data
+		client.send('mimetype=text/plain&state=unhandled&content='+value);
 	};
 	
 	gtd.ui.createTableView = function() {
@@ -40,6 +42,7 @@
 			var data = [
 		    		{title:'Inbox', hasChild:true, myData:'Views/inbox.js'},
 		    		{title:'Tasks', hasChild:true, myData:'Views/tasks.js'},
+		    		{title:'Projects', hasChild:true, myData:'Views/projects.js'},
 		    		{title:'Checklists', hasChild:true, myData:'Views/checklists.js'},
 		    		{title:'API', hasChild:true, myData:'Views/api.js'}
 		    	];
@@ -71,6 +74,8 @@
 			backgroundColor:'#fff',
 			barColor:'#111'
 		});
+		win.rightNavButton = gtd.ui.Buttons.createButton();
+		
 		return win;
 	};
 	gtd.ui.createApplicationTabGroup = function(){

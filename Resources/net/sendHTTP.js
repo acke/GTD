@@ -38,8 +38,7 @@
 			c.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 		}
 	
-		// send the data
-		c.send();		
+		return c;		
 		
 	 };
 	 
