@@ -5,11 +5,13 @@
 	
 	Ti.include('Views/login.js');
 	
-	Ti.include('log.js');
+	Ti.include('utils/log.js');
 	
 	Ti.include('Buttons/new_item_inbox.js');
 	
 	Ti.include('net/sendHTTP.js');
+	
+	var logtab = gtd.utils.createTab();
 	
 	gtd.ui.sendNewItem = function (value){
 		var user = Titanium.App.Properties.getString("user");
@@ -59,8 +61,8 @@
 		var win = Ti.UI.createWindow({
 			height:30,
 			width:250,
-			bottom:110,
-			borderRadius:10
+			bottom:110
+//			borderRadius:10
 		});
 		win.add(gtd.ui.createTableView());
 		win.rightNavButton = gtd.ui.Buttons.createButton();
@@ -78,6 +80,7 @@
 		
 		return win;
 	};
+	
 	gtd.ui.createApplicationTabGroup = function(){
 		var tabGroup = Ti.UI.createTabGroup();
 		var navigator = gtd.ui.createMyWindow();
@@ -88,7 +91,7 @@
 		
 		tabGroup.addTab(gtd.navigatorTab);
 		tabGroup.addTab(tab2); 
-		tabGroup.addTab(tab3); 
+		tabGroup.addTab(logtab); 
 		
 		return tabGroup;
 	};
