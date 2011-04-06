@@ -5,7 +5,7 @@ var gtd = {};
 
 Ti.include('navigator.js');
 
-var tabs = gtd.ui.createApplicationTabGroup();
+var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
 tabs.open();
 

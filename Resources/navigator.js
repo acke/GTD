@@ -2,6 +2,7 @@
 (function(){
 		
 	gtd.ui = {};
+	gtd.ui.navigator = {};
 	
 	Ti.include('Views/login.js');
 	
@@ -13,7 +14,7 @@
 	
 	var logtab = gtd.utils.createTab();
 	
-	gtd.ui.sendNewItem = function (value){
+	gtd.ui.navigator.sendNewItem = function (value){
 		var user = Titanium.App.Properties.getString("user");
 		var pass = Titanium.App.Properties.getString("pass");
 		
@@ -21,19 +22,17 @@
 
 		var fileName = 'newitem.xml';
 		
-		Ti.API.info(poststring);
-		
 		var client = gtd.net.postHTTP (poststring, fileName);
 		// send the data
 		client.send('mimetype=text/plain&state=unhandled&content='+value);
 	};
 	
-	gtd.ui.createTableView = function() {
+	gtd.ui.navigator.createTableView = function() {
 		var myTable = Ti.UI.createTableView();
 		
 		myTable.addEventListener('click', function(_e) {
-			var tab = gtd.navigatorTab; // Open window on this tab , found defined below
-			tab.open(gtd.ui.createSecondWindow(_e.rowData)); // Relay the row object
+			var tab = gtd.ui.navigatorTab; // Open window on this tab , found defined below
+			tab.open(gtd.ui.navigator.createSecondWindow(_e.rowData)); // Relay the row object
 
 			return myTable;
 			
@@ -57,19 +56,18 @@
 		return myTable;
 	};
 	
-	gtd.ui.createMyWindow = function(){
+	gtd.ui.navigator.createMyWindow = function(){
 		var win = Ti.UI.createWindow({
 			height:30,
 			width:250,
 			bottom:110
-//			borderRadius:10
 		});
-		win.add(gtd.ui.createTableView());
+		win.add(gtd.ui.navigator.createTableView());
 		win.rightNavButton = gtd.ui.Buttons.createButton();
 		
 		return win;
 	};
-	gtd.ui.createSecondWindow = function(_myData){
+	gtd.ui.navigator.createSecondWindow = function(_myData){
 		var win = Ti.UI.createWindow({
 			url:_myData.myData,
 			title: _myData.title,
@@ -81,15 +79,16 @@
 		return win;
 	};
 	
-	gtd.ui.createApplicationTabGroup = function(){
+	gtd.ui.navigator.createApplicationTabGroup = function(){
 		var tabGroup = Ti.UI.createTabGroup();
-		var navigator = gtd.ui.createMyWindow();
-		gtd.navigatorTab = Ti.UI.createTab({
+		var navigator = gtd.ui.navigator.createMyWindow();
+		
+		gtd.ui.navigatorTab = Ti.UI.createTab({
 			title: 'MeldonGTD Client',
 			window: navigator
 		});
 		
-		tabGroup.addTab(gtd.navigatorTab);
+		tabGroup.addTab(gtd.ui.navigatorTab);
 		tabGroup.addTab(tab2); 
 		tabGroup.addTab(logtab); 
 		
