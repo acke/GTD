@@ -1,5 +1,5 @@
  
- function postHTTPClient (poststring, fileName){
+ function postHTTPClient (poststring, fileName, statusLabel){
  	c = Titanium.Network.createHTTPClient();
 	c.setTimeout(10000);
 	c.onload = function()
@@ -16,8 +16,8 @@
 		}
 		Titanium.App.Properties.setString("retval",f.read());
 		
-		label3.setText(f.read());
-		loginStatus.setText("Status: \n" + f.read());
+		statusLabel.setText(f.read());
+		
 	};
 	c.ondatastream = function(e)
 	{

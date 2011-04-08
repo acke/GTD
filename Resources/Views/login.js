@@ -66,17 +66,9 @@ confirmbtn.addEventListener('click', function()
 	Titanium.App.Properties.setString("user",tfuser.value);
 	Titanium.App.Properties.setString("pass",tfpass.value);
 
-	function verify_credentials(){
-		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=verify_credentials';
-		
-		var fileName = 'verify_credentials.xml';
+	Ti.include('utils/verifyCredentials.js');
 	
-		Ti.include('httppost.js');
-	
-		var t = postHTTPClient (poststring, fileName);
-	}
-	
-	verify_credentials();
+	gtd.utils.verify_credentials(loginStatus);
 
 });
 
