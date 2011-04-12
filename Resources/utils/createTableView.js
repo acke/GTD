@@ -1,6 +1,6 @@
  (function (){
 	 
-	 createNewTableView = function (tableData){
+	 createNewTableView = function (tableData, doctitle){
 		 var tableview = Titanium.UI.createTableView({data:tableData});
 			Titanium.UI.currentWindow.add(tableview);
 			tableview.addEventListener('click',function(e)

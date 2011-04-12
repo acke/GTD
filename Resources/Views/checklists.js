@@ -15,7 +15,6 @@ var t = postHTTPClient (poststring, fileName);
 
 //This is where the checklist view is populated
 
-
 var xhr = Ti.Network.createHTTPClient();
 
 xhr.open("POST",'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=checklists');
@@ -24,18 +23,23 @@ xhr.onload = function()
 	try
 	{
 		var doc = this.responseXML.documentElement;
+		
 		var items = doc.getElementsByTagName("checklist");
+		Ti.API.info("items: "+items.length);
 		
 		var x = 0;
-		var doctitle = doc.evaluate("//result/checklist/name/text()").item(0).nodeValue;
+		var doctitle;
+		Ti.API.info("node name: "+doctitle);
+		
 		for (var c=0;c<items.length;c++)
 		{
-			var item = items.item(c);
-			var content = item.getElementsByTagName("checklist").item(0).text;				
+			var item = items.item(c);				
+			var content = item.getAttribute("name");				
 			var title = content;
+			doctitle = content;
 			var row = Ti.UI.createTableViewRow({height:50});
 			var label = Ti.UI.createLabel({
-				text:title,
+				text:content,
 				left:72,
 				top:5,
 				bottom:5,
@@ -45,11 +49,14 @@ xhr.onload = function()
 			var img;
 
 			data[x++] = row;
-			row.url = item.getElementsByTagName("checklist").item(0).text;
+			row.url = item.getAttribute("name");
+			
 		}
 		
 		Ti.include('../utils/createTableView.js');
-		createNewTableView(data);
+		createNewTableView(data, doctitle);
+		
+		
 	}
 	catch(E)
 	{
