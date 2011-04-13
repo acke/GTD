@@ -12,7 +12,9 @@
 	
 	Ti.include('net/sendHTTP.js');
 	
-	var logtab = gtd.utils.createTab();
+	var loglabel = null;
+	
+	var logtab = gtd.utils.logview.createTab();
 	
 	gtd.ui.navigator.sendNewItem = function (value){
 		var user = Titanium.App.Properties.getString("user");
@@ -91,13 +93,13 @@
 		Titanium.include("utils/verifyCredentials.js");
 		
 		if (gtd.utils.verify_credentials() !== "Login OK"){
-			tabGroup.addTab(tab2);
+			tabGroup.addTab(loginTab);
 			tabGroup.addTab(gtd.ui.navigatorTab);
 		}else{
 			tabGroup.addTab(gtd.ui.navigatorTab);
-			tabGroup.addTab(tab2);
+			tabGroup.addTab(loginTab);
 		}
-		 
+		
 		tabGroup.addTab(logtab); 
 		
 		return tabGroup;

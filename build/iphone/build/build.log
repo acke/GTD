@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 04/08/11 14:15
+Starting build at 04/13/11 21:18
 
 Build details:
 
@@ -19,7 +19,7 @@ Script arguments:
    simulator
    "4.3"
    "/Users/knutfunkel/Documents/GTD"
-   se.purplescout.knut.GTD
+   se.psab.gtd
    "GTD"
    iphone
 
@@ -34,7 +34,7 @@ writing contents of /Users/knutfunkel/Documents/GTD/build/iphone/project.xcconfi
 
 TI_VERSION=1.6.1
 TI_SDK_DIR=/Library/Application Support/Titanium/mobilesdk/osx/$(TI_VERSION)/iphone
-TI_APPID=se.purplescout.knut.GTD
+TI_APPID=se.psab.gtd
 OTHER_LDFLAGS[sdk=iphoneos4*]=$(inherited) -weak_framework iAd
 OTHER_LDFLAGS[sdk=iphonesimulator4*]=$(inherited) -weak_framework iAd
 #include "module"

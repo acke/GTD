@@ -6,7 +6,7 @@ var win2 = Titanium.UI.createWindow({
     backgroundColor:'#fff'
 });
 
-var tab2 = Titanium.UI.createTab({  
+var loginTab = Titanium.UI.createTab({  
     icon:'KS_nav_ui.png',
     title:'Configuration',
     window:win2

@@ -21,11 +21,15 @@ scrollView.add(view);
 
 var label3 = Titanium.UI.createLabel({
 	color:'#999',
-	text:'Log info:',
+	text:'API:',
 	font:{fontSize:10,fontFamily:'Helvetica Neue'},
 	textAlign:'left',
 	width:'auto',
 	height:'auto'
+});
+
+Ti.API.addEventListener ('updateLogLabel', function(_e){
+	label3.text = _e.text;
 });
 
 function listapi(){
@@ -40,9 +44,9 @@ function listapi(){
 	var t = postHTTPClient (poststring, fileName);
 }
 
-view.add(label3);
-
 listapi();
+
+view.add(label3);
 
 win.add(scrollView);
 

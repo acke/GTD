@@ -25,7 +25,6 @@ xhr.onload = function()
 		var doc = this.responseXML.documentElement;
 		
 		var items = doc.getElementsByTagName("checklist");
-		Ti.API.info("items: "+items.length);
 		
 		var x = 0;
 		var doctitle;

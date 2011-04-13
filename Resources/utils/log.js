@@ -5,8 +5,9 @@
 (function() {
 
 	gtd.utils = {};
+	gtd.utils.logview = {};
 	
-	gtd.utils.createWindow = function (){
+	gtd.utils.logview.createWindow = function (loglabel){
 		var win3 = Titanium.UI.createWindow({  
 		    title:'Log info',
 		    backgroundColor:'#fff'
@@ -15,7 +16,7 @@
 		return win3;
 	};
 	
-	gtd.utils.createLabel = function (){
+	gtd.utils.logview.createLabel = function (){
 		var loglabel = Titanium.UI.createLabel({
 			color:'#999',
 			text:'Log info:',
@@ -23,12 +24,17 @@
 			textAlign:'left',
 			width:'auto'
 		});
+		
+		Ti.API.addEventListener ('updateLogLabel', function(_e){
+			loglabel.text = _e.text;
+		});
+		
 		return loglabel;
 	};
 
-	gtd.utils.createTab = function (){
-		var win3 = gtd.utils.createWindow();
-		var loglabel = gtd.utils.createLabel();
+	gtd.utils.logview.createTab = function (){
+		var win3 = gtd.utils.logview.createWindow();
+		var loglabel = gtd.utils.logview.createLabel();
 		var tab3 = Titanium.UI.createTab({  
 	
 		    icon:'KS_nav_views.png',
@@ -38,10 +44,6 @@
 		win3.add(loglabel);
 		return tab3;
 	};
-	
-	gtd.utils.getLabel = function (){
-		return loglabel;
-	};
-	
+
 
 })();

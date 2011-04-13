@@ -1,12 +1,11 @@
  
- function postHTTPClient (poststring, fileName, statusLabel){
+ function postHTTPClient (poststring, fileName){
  	c = Titanium.Network.createHTTPClient();
 	c.setTimeout(10000);
-	c.onload = function()
+	c.onload = function(filename)
 	{
 		Ti.API.info('IN ONLOAD ');
 
-		var filename = Titanium.Platform.name == 'android' ? 'test.png' : 'test.pdf';
 		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, fileName);
 		
 		if (Titanium.Platform.name == 'android') {
@@ -14,9 +13,16 @@
 		}else {
 			Ti.API.info('responseData: '+f.read());
 		}
-		Titanium.App.Properties.setString("retval",f.read());
+		var retString = f.read();
+		Titanium.App.Properties.setString("retval",retString);
 		
-		statusLabel.setText(gtd.utils.verify_credentials());
+		//statusLabel.setText(gtd.utils.verify_credentials());
+		Ti.API.info(filename);
+		Ti.API.fireEvent('updateLogLabel', {text:retString});
+		if (filename == 'api.xml'){
+			Ti.API.fireEvent('udateAPILabel', {text:retString});
+		}
+		
 		
 	};
 	c.ondatastream = function(e)
