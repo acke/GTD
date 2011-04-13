@@ -88,8 +88,16 @@
 			window: navigator
 		});
 		
-		tabGroup.addTab(gtd.ui.navigatorTab);
-		tabGroup.addTab(tab2); 
+		Titanium.include("utils/verifyCredentials.js");
+		
+		if (gtd.utils.verify_credentials() !== "Login OK"){
+			tabGroup.addTab(tab2);
+			tabGroup.addTab(gtd.ui.navigatorTab);
+		}else{
+			tabGroup.addTab(gtd.ui.navigatorTab);
+			tabGroup.addTab(tab2);
+		}
+		 
 		tabGroup.addTab(logtab); 
 		
 		return tabGroup;

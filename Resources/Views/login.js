@@ -63,12 +63,14 @@ var confirmbtn = Titanium.UI.createButton({
 
 confirmbtn.addEventListener('click', function()
 {
+	Titanium.API.info("verify creds");
+	
 	Titanium.App.Properties.setString("user",tfuser.value);
 	Titanium.App.Properties.setString("pass",tfpass.value);
-
+	
 	Ti.include('utils/verifyCredentials.js');
 	
-	gtd.utils.verify_credentials(loginStatus);
+	gtd.utils.verify_credentialsToLabel(loginStatus);
 
 });
 

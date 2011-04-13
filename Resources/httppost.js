@@ -16,7 +16,7 @@
 		}
 		Titanium.App.Properties.setString("retval",f.read());
 		
-		statusLabel.setText(f.read());
+		statusLabel.setText(gtd.utils.verify_credentials());
 		
 	};
 	c.ondatastream = function(e)
@@ -36,7 +36,7 @@
 		c.open('POST', poststring);
 		c.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 	}
-
+	
 	// send the data
 	c.send();
 	
