@@ -7,12 +7,15 @@
 	
 	gtd.utils.verify_credentials = function (){
 		var verified = null;
-		var result = null;
+		var result = -1;
 		var veriedCreds = "Login Not OK";
 		
-		verified = Titanium.App.Properties.getString("retval");
 		
-		result = verified.indexOf("result status=\"200\"");
+		verified = Titanium.App.Properties.getString("retval");
+	
+		if (verified){	
+			result = verified.indexOf("result status=\"200\"");
+		}
 		
 		if (result !== -1) {
 			veriedCreds = "Login OK";
