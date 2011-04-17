@@ -15,11 +15,23 @@ Ti.include('navigator.js',
 
 //Database testning
 
-gtd.model.checklist.addNewChecklist([{
-	checklist_id:1
+var checklist = [{
+	checklist_id: 1
 	},{
-	name: "TestDB"
+	name: 'TestDB'
+	}];
+	
+gtd.model.checklist.addNewChecklist(checklist);
+
+Titanium.API.info(gtd.model.checklist.getChecklist(0));
+
+gtd.model.checklist.addNewChecklist([{
+	checklist_id: 2
+	},{
+	name: 'TestDB2'
 	}]);
+
+Titanium.API.info(gtd.model.checklist.getChecklist(0));
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
