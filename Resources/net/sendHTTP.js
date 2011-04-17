@@ -1,5 +1,6 @@
  (function (){
 	 gtd.net = {};
+//	 gtd.net.sendhttp = {};
 	 
 	 gtd.net.postHTTP = function (poststring, fileName){
 	 	c = Titanium.Network.createHTTPClient();

@@ -10,43 +10,7 @@
 	var xhr = createHTTPClient();
 	
 	xhr.open("POST",'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=inboxentries');
-	xhr.onload = function()
-	{
-		try
-		{
-			var doc = this.responseXML.documentElement;
-			var items = doc.getElementsByTagName("inbox_entry");
-			
-			var x = 0;
-			var doctitle = doc.evaluate("//result/inbox_entry/content/text()").item(0).nodeValue;
-			for (var c=0;c<items.length;c++)
-			{
-				var item = items.item(c);
-				var content = item.getElementsByTagName("content").item(0).text;				
-				var title = content;
-				var row = Ti.UI.createTableViewRow({height:50});
-				var label = Ti.UI.createLabel({
-					text:title,
-					left:72,
-					top:5,
-					bottom:5,
-					right:5				
-				});
-				row.add(label);
-				var img;
 	
-				data[x++] = row;
-				row.url = item.getElementsByTagName("content").item(0).text;
-			}
-			
-			Ti.include('../utils/createTableView.js');
-			createNewTableView(data);
-		}
-		catch(E)
-		{
-			alert(E);
-		}
-	};
 	xhr.send();
 })();
 

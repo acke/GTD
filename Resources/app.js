@@ -8,7 +8,9 @@ Ti.include('navigator.js',
 	'model/project.js',
 	'model/checklist.js',
 	'Views/login.js',
-	'utils/log.js'
+	'utils/log.js',
+	'net/httpClient.js',
+	'net/sendHTTP.js'
 );
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
