@@ -1,8 +1,8 @@
 (function (){
 	gtd.utils = {};
 	
-	gtd.utils.verify_credentialsToLabel = function (loginStatus){
-		postCredentials (loginStatus);
+	gtd.utils.verify_credentialsToLabel = function (user, pass){
+		postCredentials (user, pass);
 	};
 	
 	gtd.utils.verify_credentials = function (){
@@ -25,8 +25,8 @@
 	};
 	
 	//Function only for use in by package public functions.
-	postCredentials = function (loginStatus){
-		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+tfuser.value+'&password='+tfpass.value+'&action=verify_credentials';
+	postCredentials = function (user, pass){
+		var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=verify_credentials';
 		
 		var fileName = 'verify_credentials.xml';
 		
@@ -34,7 +34,7 @@
 	
 		Ti.include('httppost.js');
 	
-		postHTTPClient (poststring, fileName, loginStatus);
+		postHTTPClient (poststring, fileName);
 		
 	};
 })();

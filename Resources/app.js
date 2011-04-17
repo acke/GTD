@@ -3,7 +3,13 @@ Titanium.UI.setBackgroundColor('#000');
 
 var gtd = {};
 
-Ti.include('navigator.js');
+Ti.include('navigator.js',
+	'database/checklist.js',
+	'model/project.js',
+	'model/checklist.js',
+	'Views/login.js',
+	'utils/log.js'
+);
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
