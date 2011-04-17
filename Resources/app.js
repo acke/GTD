@@ -4,7 +4,7 @@ Titanium.UI.setBackgroundColor('#000');
 var gtd = {};
 
 Ti.include('navigator.js',
-	'database/checklist.js',
+	'database/checklistDB.js',
 	'model/project.js',
 	'model/checklist.js',
 	'Views/login.js',

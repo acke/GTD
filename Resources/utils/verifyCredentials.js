@@ -32,7 +32,7 @@
 		
 		Titanium.API.info("calling post creds");
 	
-		Ti.include('httppost.js');
+		Ti.include('../net/httppost.js');
 	
 		postHTTPClient (poststring, fileName);
 		

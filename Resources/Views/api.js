@@ -39,7 +39,7 @@ function listapi(){
 	var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=api_help';
 	var fileName = 'api.xml';
 	
-	Ti.include('../httppost.js');
+	Ti.include('../net/httppost.js');
 	
 	var t = postHTTPClient (poststring, fileName);
 }

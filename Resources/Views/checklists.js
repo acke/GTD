@@ -9,7 +9,7 @@ var pass = Titanium.App.Properties.getString("pass");
 var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=checklists';
 var fileName = 'checklists.xml';
 
-Ti.include('../httppost.js');
+Ti.include('../net/httppost.js');
 
 var t = postHTTPClient (poststring, fileName);
 
