@@ -13,6 +13,14 @@ Ti.include('navigator.js',
 	'net/sendHTTP.js'
 );
 
+//Database testning
+
+gtd.model.checklist.addNewChecklist([{
+	checklist_id:1
+	},{
+	name: "TestDB"
+	}]);
+
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
 tabs.open();
