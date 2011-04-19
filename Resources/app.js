@@ -15,23 +15,21 @@ Ti.include('navigator.js',
 
 //Database testning
 
-var checklist = [{
-	checklist_id: 1
-	},{
-	name: 'TestDB'
-	}];
+//var data = [{
+//	checklist_id: 1,
+//	name: 'TestDBStringValue'
+//	}];
 	
-gtd.model.checklist.addNewChecklist(checklist);
+ 
+gtd.model.checklist.addNewChecklist(1, 'TestDB');
 
-Titanium.API.info(gtd.model.checklist.getChecklist(0));
+Titanium.API.addEventListener('databaseUpdated', function(){
+	Titanium.API.info("event databaseUpdated caught");
+});
 
-gtd.model.checklist.addNewChecklist([{
-	checklist_id: 2
-	},{
-	name: 'TestDB2'
-	}]);
+var checklist = gtd.model.checklist.getChecklist(1);
 
-Titanium.API.info(gtd.model.checklist.getChecklist(0));
+Titanium.API.info("get checklist [1] from model: "+checklist.name);
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 

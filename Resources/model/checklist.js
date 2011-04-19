@@ -2,21 +2,25 @@
     gtd.model = {};
     gtd.model.checklist = {};
     
-    var myChecklists = [];
-    
+	Titanium.include('database/checklistDB.js');
+	
     gtd.model.checklist.checklists = function(){
+		var myChecklists=[];
         return myChecklists;
     };
     
     gtd.model.checklist.getChecklist = function(/*id*/id){
-        return myChecklists[id];
+		var myChecklist = gtd.database.checklist.getItemFromDB(id);
+		
+        return myChecklist;
     };
     
-    gtd.model.checklist.addNewChecklist = function(/*checklist array*/checklist){
+    gtd.model.checklist.addNewChecklist = function(/*id*/ id, /*name*/ name){
         Titanium.API.info("In function addNewChecklist");
-        myChecklists.push(checklist);
+//        myChecklists.push(checklist);
         
-        Ti.API.fireEvent('updateChecklistDB', myChecklists[0]);
+		gtd.database.checklist.updateDB(id, name);
+
     };
     
     gtd.model.checklist.delChecklist = function(/*id*/id){
