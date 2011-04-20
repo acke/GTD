@@ -52,7 +52,7 @@
 	w.setRightNavButton(commit);
 	commit.addEventListener('click',function()
 	{
-		gtd.ui.sendNewItem(tfItem.value);
+		gtd.ui.navigator.sendNewItem(tfItem.value);
 		w.close();
 	});
 
