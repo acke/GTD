@@ -33,13 +33,13 @@
 		var rows = db.execute('SELECT * FROM checklists WHERE checklist_id = ?', checklist_id);
 		
 		if (rows !== null){
-			var checklist_id = rows.fieldByName('checklist_id');
+			var cl_id = rows.fieldByName('checklist_id');
 			var name = rows.fieldByName('name');
 			
-			Titanium.API.info("checklist_id: "+checklist_id + " name: " + name);
+			Titanium.API.info("checklist_id: "+cl_id + " name: " + name);
 			
 			checklist.push({
-				checklist_id: checklist_id,
+				checklist_id: cl_id,
 				name: name
 				});
 			rows.close();

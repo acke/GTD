@@ -30,12 +30,14 @@ Titanium.API.addEventListener('databaseUpdated', function(){
 
 var checklist = gtd.model.checklist.getChecklist(1);
 
-//Geolocatin testing
-var location = gtd.location.getLocation();
-
-Ti.API.info('longitude: ' + location.longitude);
-
 Titanium.API.info("get checklist [1] from model: "+gtd.model.checklist.getChecklist(1)[0].name);
+
+//Geolocatin testing
+var myLocation = gtd.location.getLocation();
+
+Ti.API.info('longitude: ' + myLocation.longitude);
+
+//Returning to regular application execution.
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
