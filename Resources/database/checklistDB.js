@@ -8,9 +8,9 @@
 	db.execute('CREATE TABLE IF NOT EXISTS checklist_entries(id INTEGER PRIMARY KEY, checklist_entry_id INTEGER, name TEXT, checklists_id INTEGER);');
     db.close();
     
-    gtd.database.checklist.updateDB = function(_id, _name){
-		var checklist_id = _id;
-		var checklist_name = _name;
+    gtd.database.checklist.updateDB = function(checklist){
+		var checklist_id = checklist.checklist_id;
+		var checklist_name = checklist.name;
 
 		Titanium.API.info("updateChecklistDB called.");
         var db = Titanium.Database.open('checklistsdb');
@@ -32,11 +32,15 @@
         var db = Titanium.Database.open('checklistsdb');
 		var rows = db.execute('SELECT * FROM checklists WHERE checklist_id = ?', checklist_id);
 		
-		Titanium.API.info("resultset: "+rows.fieldByName('checklist_id')+" count: "+rows.fieldCount());
 		if (rows !== null){
+			var checklist_id = rows.fieldByName('checklist_id');
+			var name = rows.fieldByName('name');
+			
+			Titanium.API.info("checklist_id: "+checklist_id + " name: " + name);
+			
 			checklist.push({
-				checklist_id: rows.fieldByName('checklist_id'),
-				name: rows.fieldByName('name')
+				checklist_id: checklist_id,
+				name: name
 				});
 			rows.close();
 		}else{

@@ -9,17 +9,17 @@
         return myChecklists;
     };
     
-    gtd.model.checklist.getChecklist = function(/*id*/id){
+    gtd.model.checklist.getChecklist = function(/*id*/ id){
 		var myChecklist = gtd.database.checklist.getItemFromDB(id);
 		
         return myChecklist;
     };
     
-    gtd.model.checklist.addNewChecklist = function(/*id*/ id, /*name*/ name){
+    gtd.model.checklist.addNewChecklist = function(checklist){
         Titanium.API.info("In function addNewChecklist");
 //        myChecklists.push(checklist);
         
-		gtd.database.checklist.updateDB(id, name);
+		gtd.database.checklist.updateDB(checklist);
 
     };
     
