@@ -3,7 +3,6 @@
     //	gtd.net.httpclient = {};
     // create table view data object
     var data = [];
-    var filename = 'inbox.xml';
     
     createHTTPClient = function(){
         xhr = Ti.Network.createHTTPClient();

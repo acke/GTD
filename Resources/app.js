@@ -3,8 +3,8 @@ Titanium.UI.setBackgroundColor('#000');
 
 var gtd = {};
 
-Ti.include('maps/geolocation.js', 
-	'navigator.js', 
+Ti.include(	'navigator.js',
+	'maps/geolocation.js',  
 	'database/checklistDB.js',
 	'model/project.js',
 	'model/checklist.js',

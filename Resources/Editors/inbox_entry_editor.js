@@ -1,5 +1,5 @@
 (function (){
-	gtd.ui.Buttons.newentry = {};
+	gtd.ui.Editors.newentry = {};
 		
 	var w = Ti.UI.createWindow({title:'Inbox'});
 	
