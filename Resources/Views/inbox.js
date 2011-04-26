@@ -4,7 +4,6 @@
     gtd.ui = {};
     gtd.ui.inbox = {};
     
-    var data = [];
     var inboxData = [];
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
