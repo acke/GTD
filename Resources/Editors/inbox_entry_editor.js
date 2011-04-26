@@ -1,5 +1,4 @@
 (function (){
-	gtd.ui.Editors.newentry = {};
 		
 	var w = Ti.UI.createWindow({title:'Inbox'});
 	
@@ -53,6 +52,8 @@
 	commit.addEventListener('click',function()
 	{
 		gtd.ui.navigator.sendNewItem(tfItem.value);
+		//Dispatch a message to let others know the database has been updated
+		Ti.App.fireEvent("inboxDataUpdated");
 		w.close();
 	});
 

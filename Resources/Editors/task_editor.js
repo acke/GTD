@@ -1,16 +1,16 @@
 (function(){
-
+    var user = Titanium.App.Properties.getString("user");
+    var pass = Titanium.App.Properties.getString("pass");
+    
+    Ti.include('../net/httppost.js');
+    
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
             title: 'Edit task'
         });
         
         var view = Ti.UI.createView({
-            backgroundColor: '#fff',
-            borderRadius: 10,
-            width: 300,
-            height: 400,
-            top: 10
+            backgroundColor: '#fff'
         });
         
         var newItem = Titanium.UI.createLabel({
@@ -25,19 +25,61 @@
             width: 280
         });
         
-        var tfItem = Titanium.UI.createTextField({
-            color: '#336699',
-            height: 35,
-            top: 150,
-            left: 10,
-            width: 280,
-            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
-        });
+ 
         
         view.add(newItem);
-        view.add(tfItem);
         
         w.add(view);
+        
+        // used to evenly distribute items on the toolbar
+        var flexSpace = Titanium.UI.createButton({
+            systemButton: Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+        });
+        
+        var trash = Titanium.UI.createButton({
+            systemButton: Titanium.UI.iPhone.SystemButton.TRASH
+        });
+        trash.addEventListener('click', function(){
+        
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=delete_inbox_entry';
+            var fileName = 'deleteitem.xml';
+            
+            var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
+            
+            //Dispatch a message to let others know the database has been updated
+            Ti.App.fireEvent("inboxDataUpdated");
+            
+            w.close();
+        });
+        
+        //Create system buttons        
+        var action = Titanium.UI.createButton({
+            systemButton: Titanium.UI.iPhone.SystemButton.ACTION
+        });
+        action.addEventListener('click', function(){
+            Titanium.UI.createAlertDialog({
+                title: 'ACTION',
+                message: 'ACTION: not yet implemented'
+            }).show();
+        });
+        
+        var done = Titanium.UI.createButton({
+            systemButton: Titanium.UI.iPhone.SystemButton.DONE
+        });
+        done.addEventListener('click', function(){
+        
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=mark_inbox_entry_as_handled';
+            var fileName = 'handled.xml';
+            
+            var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
+            
+            //Dispatch a message to let others know the database has been updated
+            Ti.App.fireEvent("inboxDataUpdated");
+            
+            w.close();
+        });
+        
+        w.toolbar = [trash, flexSpace, action, flexSpace, done];
         
         var close = Titanium.UI.createButton({
             title: 'Close',
@@ -57,8 +99,8 @@
             gtd.ui.navigator.sendNewItem(tfItem.value);
             w.close();
         });
-		
-		return w;
+        
+        return w;
         
     };
     

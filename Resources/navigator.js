@@ -65,6 +65,8 @@
             myTable.setData(data);
         }
         
+		Ti.App.addEventListener('dataUpdated', populateData);
+		
         populateData();
         
         return myTable;

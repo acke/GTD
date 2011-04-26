@@ -1,5 +1,5 @@
  
- function postHTTPClient (poststring, fileName){
+ function postHTTPClient (poststring, fileName, sendParams){
  	c = Titanium.Network.createHTTPClient();
 	c.setTimeout(10000);
 	c.onload = function(filename)
@@ -46,6 +46,6 @@
 	}
 	
 	// send the data
-	c.send();
+	c.send(sendParams);
 	
  }

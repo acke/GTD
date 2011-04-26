@@ -15,7 +15,7 @@
     var xhr = createHTTPClient();
     
     xhr.onload = function(){
-		var inboxItems = [];
+        var inboxItems = [];
         try {
             var doc = this.responseXML.documentElement;
             var items = doc.getElementsByTagName("inbox_entry");
@@ -25,53 +25,22 @@
             for (var c = 0; c < items.length; c++) {
                 var item = items.item(c);
                 var title = item.getElementsByTagName("content").item(0).text;
-				var id = item.getElementsByTagName("id").item(0).text;
-                var row = Ti.UI.createTableViewRow({
-                    height: 50
-                });
-                var label = Ti.UI.createLabel({
-                    text: title,
-                    left: 72,
-                    top: 5,
-                    bottom: 5,
-                    right: 5
-                });
-                row.add(label);
-               
-			    inboxItems.push({
+                var id = item.getElementsByTagName("id").item(0).text;
+            
+                inboxItems.push({
                     //add these attributes for the benefit of a table view
                     title: title,
-                    id: id, //custom data attribute to pass to detail page
-					hasChild:true,
+                    id: id,
+                    hasChild: true,
+                    //custom data attribute to pass to detail page
                     content: title
                 });
-				
-                //data[x++] = row;
-                //row.url = item.getElementsByTagName("content").item(0).text;
+                
             }
             
             
             var tableView = createNewTableView();
-            
             tableView.setData(inboxItems);
-            //            var win = Titanium.UI.createWindow({
-            //                title: 'Inbox'
-            //                activity: {
-            //                    onCreateOptionsMenu: function(e){
-            //                        var menu = e.menu;
-            //                        var m1 = menu.add({
-            //                            title: L('add')
-            //                        });
-            //                        m1.addEventListener('click', function(e){
-            //                            //open in tab group to get free title bar (android)
-            //                            var tab = (_captured) ? bh.capturedTab : bh.fugitivesTab;
-            //                            tab.open(bh.ui.createAddWindow());
-            //                        });
-            //                    }
-            //                }
-            //            });
-            //            win.add(tableView);
-            
             Titanium.UI.currentWindow.add(tableView);
             
         } 
