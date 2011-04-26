@@ -32,7 +32,8 @@
                     id: id,
                     hasChild: true,
                     //custom data attribute to pass to detail page
-                    content: title
+                    content: title,
+					isTask: false
                 });
                 
             }
@@ -49,14 +50,14 @@
         
         var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
         
-        Ti.API.fireEvent('updateLogLabel', {
-            text: f.read()
-        });
+        Ti.API.fireEvent('updateLogLabel', {text: f.read()});
     };
     
     
+    xhr.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,filename);
+	
     xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=inboxentries');
-    
+	
     xhr.send();
 })();
 

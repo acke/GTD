@@ -4,7 +4,6 @@ var checklists = [];
 var user = Titanium.App.Properties.getString("user");
 var pass = Titanium.App.Properties.getString("pass");
 
-//These rows are for log/debug purpouses 
 //TODO fix so that result is added to log page.
 var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=checklists';
 var fileName = 'checklists.xml';
@@ -13,13 +12,14 @@ Ti.include('../net/httppost.js',
 			 '../utils/createTableView.js'
 			 );
 
+//This rows are for log/debug purpouses 
 var t = postHTTPClient(poststring, fileName);
 
 //This is where the checklist view is populated
 
 var xhr = Ti.Network.createHTTPClient();
 
-xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=checklists');
+xhr.open("POST", poststring);
 xhr.onload = function(){
     try {
         var doc = this.responseXML.documentElement;

@@ -5,13 +5,12 @@
 	var pass = Titanium.App.Properties.getString("pass");
 
 	xhr = Ti.Network.createHTTPClient();
-
-	xhr.open ("GET",'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=list_active_projects');
+	
 	xhr.onload = function()
 	{
 		try
 		{
-			Ti.API.info(this.responseXML.documentElement);
+			//Ti.API.info(this.responseXML.documentElement);
 			var doc = this.responseXML.documentElement;
 			
 			//TODO: Set proper paths in this code to parse the xml.
@@ -48,6 +47,8 @@
 			alert(E);
 		}
 	};
+	
+	xhr.open ("GET",'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=list_active_projects');
 	
 	xhr.send();
 	

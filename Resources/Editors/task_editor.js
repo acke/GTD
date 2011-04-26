@@ -9,25 +9,80 @@
             title: 'Edit task'
         });
         
-        var view = Ti.UI.createView({
+        var view = Titanium.UI.createScrollView({
+            contentWidth: 'auto',
+            contentHeight: 'auto',
+            top: 0,
+            showVerticalScrollIndicator: true,
+            showHorizontalScrollIndicator: true,
             backgroundColor: '#fff'
         });
         
-        var newItem = Titanium.UI.createLabel({
-            color: '#999',
-            text: e.title,
+        var task = Titanium.UI.createTextField({
+            color: '#000',
+            value: e.title,
             font: {
-                fontSize: 20,
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            height: 35,
+            top: 10,
+            width: 280,
+            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
+        });
+        
+        view.add(task);
+        
+        var basicSliderLabel = Titanium.UI.createLabel({
+            text: 'Basic Slider - value = 0',
+            color: '#000',
+            font: {
+                fontFamily: 'Helvetica Neue',
+                fontSize: 15
+            },
+            textAlign: 'center',
+            top: 60,
+            width: 280,
+            height: 'auto'
+        });
+        view.add(basicSliderLabel);
+        
+        var basicSlider = Titanium.UI.createSlider({
+            min: 1,
+            max: 4,
+            value: (e.quadrant) ? e.quadrant : 2,
+            width: 250,
+            height: 'auto',
+            top: 80
+        });
+        basicSlider.addEventListener('change', function(e){
+        
+            basicSliderLabel.text = getQuadrantFromValue(Math.round(e.value));
+            
+        });
+        
+        view.add(basicSlider);
+        
+        var notes = Titanium.UI.createTextArea({
+            color: '#000',
+            value: (e.notes) ? e.notes : 'Add note',
+            font: {
+                fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
             height: 100,
-            top: 10,
-            width: 280
+            top: 110,
+            width: 280,
+            appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
+            keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+            returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+            borderWidth: 2,
+            borderColor: '#aaa',
+            borderRadius: 5,
+            suppressReturn: false
         });
         
- 
-        
-        view.add(newItem);
+        view.add(notes);
         
         w.add(view);
         
@@ -79,7 +134,9 @@
             w.close();
         });
         
-        w.toolbar = [trash, flexSpace, action, flexSpace, done];
+        if (!e.isTask) {
+            w.toolbar = [trash, flexSpace, action, flexSpace, done];
+        };
         
         var close = Titanium.UI.createButton({
             title: 'Close',
@@ -96,12 +153,53 @@
         });
         w.setRightNavButton(commit);
         commit.addEventListener('click', function(){
-            gtd.ui.navigator.sendNewItem(tfItem.value);
+            if (e.isTask) {
+                var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action';
+                var fileName = 'task.xml';
+                
+                var t = postHTTPClient(poststring, fileName, 'NextActionID='+e.id+'&Title=' + task.value + '&Notes=' + notes.value);
+                
+            }
+            else {
+                var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=add_next_action';
+                var fileName = 'task.xml';
+                
+                var t = postHTTPClient(poststring, fileName, 'title=' + task.value + '&quadrant=' + basicSlider.value + '&notes=' + notes.value + '&context=default' + '&part_of_project_id=0');
+
+            }
+           
+		    //Dispatch a message to let others know the database has been updated
+            Ti.App.fireEvent("inboxDataUpdated");
+            
             w.close();
         });
         
         return w;
         
     };
+    
+    getQuadrantFromValue = function(quadrant){
+        var value;
+        
+        switch (quadrant) {
+            case 1:
+                value = "Urgent, Important";
+                break;
+            case 2:
+                value = "Not urgent, Important";
+                break;
+            case 3:
+                value = "Urgent, Not important";
+                break;
+            case 4:
+                value = "Not urgent, Not important";
+                break;
+            default:
+                value = "error";
+        }
+        
+        return value;
+    };
+    
     
 })();

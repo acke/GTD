@@ -16,10 +16,6 @@
 		var retString = f.read();
 		Titanium.App.Properties.setString("retval",retString);
 		
-		//statusLabel.setText(gtd.utils.verify_credentials());
-		
-		Ti.API.info(retString);
-		
 		Ti.API.fireEvent('updateLogLabel', {text:retString});
 		if (filename == 'api.xml'){
 			Ti.API.fireEvent('udateAPILabel', {text:retString});
