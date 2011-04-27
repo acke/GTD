@@ -2,7 +2,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js');
+    Ti.include('../net/httppost.js', '../utils/quadrant.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
@@ -168,29 +168,6 @@
         
         return w;
         
-    };
-    
-    getQuadrantFromValue = function(quadrant){
-        var value;
-        
-        switch (quadrant) {
-            case 1:
-                value = "Urgent, Important";
-                break;
-            case 2:
-                value = "Not urgent, Important";
-                break;
-            case 3:
-                value = "Urgent, Not important";
-                break;
-            case 4:
-                value = "Not urgent, Not important";
-                break;
-            default:
-                value = "error";
-        }
-        
-        return value;
     };
     
     

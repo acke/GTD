@@ -5,7 +5,7 @@
     Ti.include('../net/httppost.js');
     
     createTaskEditor = function(e){
-        var w = Ti.UI.createWindow({
+		var w = Ti.UI.createWindow({
             title: 'Edit task'
         });
         
@@ -25,13 +25,43 @@
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
-            height: 35,
             top: 10,
+            height: 35,
             width: 280,
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
         view.add(task);
+        
+        var quad = Titanium.UI.createLabel({
+            color: '#999',
+            text: 'Task is ' + e.quadrantString,
+            font: {
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            textAlign: 'left',
+            width: 'auto',
+            top: 50,
+            height: 35
+        });
+        
+        view.add(quad);
+        
+        var age = Titanium.UI.createLabel({
+            color: '#999',
+            text: 'Task is ' + e.age + ' days old',
+            font: {
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            textAlign: 'left',
+            width: 'auto',
+            top: 90,
+            height: 35
+        });
+        
+        view.add(age);
         
         var notes = Titanium.UI.createTextArea({
             color: '#000',
@@ -40,8 +70,8 @@
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
+            top: 150,
             height: 100,
-            top: 110,
             width: 280,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
             keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
@@ -53,6 +83,8 @@
         });
         
         view.add(notes);
+        
+        
         
         w.add(view);
         
@@ -119,29 +151,6 @@
         
         return w;
         
-    };
-    
-    getQuadrantFromValue = function(quadrant){
-        var value;
-        
-        switch (quadrant) {
-            case 1:
-                value = "Urgent, Important";
-                break;
-            case 2:
-                value = "Not urgent, Important";
-                break;
-            case 3:
-                value = "Urgent, Not important";
-                break;
-            case 4:
-                value = "Not urgent, Not important";
-                break;
-            default:
-                value = "error";
-        }
-        
-        return value;
     };
     
     

@@ -9,7 +9,7 @@ var pass = Titanium.App.Properties.getString("pass");
 var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=tasks';
 var fileName = 'tasks.xml';
 
-Ti.include('../net/httppost.js', '../Editors/task_editor.js');
+Ti.include('../net/httppost.js', '../Editors/task_editor.js', '../utils/quadrant.js');
 
 var t = postHTTPClient(poststring, fileName);
 
@@ -48,19 +48,22 @@ xhr.onload = function(){
             var context = item.getElementsByTagName("context").item(0).text;
             var notes = item.getElementsByTagName("notes").item(0).text;
             var age = item.getElementsByTagName("age").item(0).text;
-            
+            var quadrantString = getQuadrantFromValue(Math.round(quadrant));
+			
+			Titanium.API.info('quadrantString: '+quadrantString);
+			
             tasks.push({
                 //add these attributes for the benefit of a table view
                 title: title,
                 //custom data attribute to pass to detail page
                 id: id,
                 quadrant: quadrant,
+				quadrantString: quadrantString,
                 context: context,
                 notes: notes,
                 age: age,
                 hasChild: true,
                 isTask: true
-                //content: title
             });
             
         }
