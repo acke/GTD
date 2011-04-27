@@ -30,6 +30,13 @@ createNewTableView = function(tableData, doctitle){
     return tableview;
 };
 
+sortArray = function(data){
+    data.sort(function(a, b){
+        return a.quadrant - b.quadrant;
+    });
+    return data;
+};
+
 xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=tasks');
 
 xhr.onload = function(){
@@ -49,14 +56,14 @@ xhr.onload = function(){
             var notes = item.getElementsByTagName("notes").item(0).text;
             var age = item.getElementsByTagName("age").item(0).text;
             var quadrantString = getQuadrantFromValue(Math.round(quadrant));
-			
+            
             tasks.push({
                 //add these attributes for the benefit of a table view
                 title: title,
                 //custom data attribute to pass to detail page
                 id: id,
                 quadrant: quadrant,
-				quadrantString: quadrantString,
+                quadrantString: quadrantString,
                 context: context,
                 notes: notes,
                 age: age,
@@ -67,6 +74,7 @@ xhr.onload = function(){
         }
         
         
+        tasks = sortArray(tasks);
         var tableView = createNewTableView();
         tableView.setData(tasks);
         Titanium.UI.currentWindow.add(tableView);
