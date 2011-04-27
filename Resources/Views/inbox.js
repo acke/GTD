@@ -9,10 +9,27 @@
     var pass = Titanium.App.Properties.getString("pass");
     var filename = 'inbox.xml';
     
-    Ti.include('../net/httpClient.js', '../utils/createTableView.js');
+    Ti.include('../net/httpClient.js', 
+			'../Editors/new_task_editor.js'
+			);
     
     var xhr = createHTTPClient();
     
+	createNewTableView = function(tableData, doctitle){
+        var tableview = Titanium.UI.createTableView();
+        
+        tableview.addEventListener('click', function(e){
+            Titanium.API.info("tableview event triggered: " + e.rowData.title);
+            var w = createTaskEditor(e.rowData);
+
+            w.open({
+                modal: true
+            });
+        });
+        
+        return tableview;
+    };
+	
     xhr.onload = function(){
         var inboxItems = [];
         try {

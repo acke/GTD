@@ -9,13 +9,26 @@ var pass = Titanium.App.Properties.getString("pass");
 var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=tasks';
 var fileName = 'tasks.xml';
 
-Ti.include('../net/httppost.js',
-			 '../utils/createTableView.js'
-			 );
+Ti.include('../net/httppost.js', '../Editors/task_editor.js');
 
 var t = postHTTPClient(poststring, fileName);
 
 var xhr = Ti.Network.createHTTPClient();
+
+createNewTableView = function(tableData, doctitle){
+    var tableview = Titanium.UI.createTableView();
+    
+    tableview.addEventListener('click', function(e){
+        Titanium.API.info("tableview event triggered: " + e.rowData.title);
+        var w = createTaskEditor(e.rowData);
+        
+        w.open({
+            modal: true
+        });
+    });
+    
+    return tableview;
+};
 
 xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=tasks');
 
@@ -32,21 +45,21 @@ xhr.onload = function(){
             var title = item.getElementsByTagName("name").item(0).text;
             var id = item.getElementsByTagName("id").item(0).text;
             var quadrant = item.getElementsByTagName("quadrant").item(0).text;
-			var context = item.getElementsByTagName("context").item(0).text;
-			var notes = item.getElementsByTagName("notes").item(0).text;
-			var age = item.getElementsByTagName("age").item(0).text;
-			
+            var context = item.getElementsByTagName("context").item(0).text;
+            var notes = item.getElementsByTagName("notes").item(0).text;
+            var age = item.getElementsByTagName("age").item(0).text;
+            
             tasks.push({
                 //add these attributes for the benefit of a table view
                 title: title,
                 //custom data attribute to pass to detail page
                 id: id,
-				quadrant: quadrant,
-				context: context,
-				notes: notes,
-				age: age,
+                quadrant: quadrant,
+                context: context,
+                notes: notes,
+                age: age,
                 hasChild: true,
-				isTask: true
+                isTask: true
                 //content: title
             });
             

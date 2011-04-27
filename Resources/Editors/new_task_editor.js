@@ -6,7 +6,7 @@
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
-            title: 'Edit task'
+            title: 'New task'
         });
         
         var view = Titanium.UI.createScrollView({
@@ -33,9 +33,39 @@
         
         view.add(task);
         
+        var basicSliderLabel = Titanium.UI.createLabel({
+            text: 'Basic Slider - value = 0',
+            color: '#000',
+            font: {
+                fontFamily: 'Helvetica Neue',
+                fontSize: 15
+            },
+            textAlign: 'center',
+            top: 60,
+            width: 280,
+            height: 'auto'
+        });
+        view.add(basicSliderLabel);
+        
+        var basicSlider = Titanium.UI.createSlider({
+            min: 1,
+            max: 4,
+            value: 2,
+            width: 250,
+            height: 'auto',
+            top: 80
+        });
+        basicSlider.addEventListener('change', function(e){
+        
+            basicSliderLabel.text = getQuadrantFromValue(Math.round(e.value));
+            
+        });
+        
+        view.add(basicSlider);
+        
         var notes = Titanium.UI.createTextArea({
             color: '#000',
-            value: (e.notes) ? e.notes : 'Add note',
+            value: 'Add note',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -61,6 +91,21 @@
             systemButton: Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
         });
         
+        var trash = Titanium.UI.createButton({
+            systemButton: Titanium.UI.iPhone.SystemButton.TRASH
+        });
+        trash.addEventListener('click', function(){
+        
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=delete_inbox_entry';
+            var fileName = 'deleteitem.xml';
+            
+            var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
+            
+            //Dispatch a message to let others know the database has been updated
+            Ti.App.fireEvent("inboxDataUpdated");
+            
+            w.close();
+        });
         
         //Create system buttons        
         var action = Titanium.UI.createButton({
@@ -78,18 +123,20 @@
         });
         done.addEventListener('click', function(){
         
-            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=mark_as_completed';
-            var fileName = 'completed.xml';
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=mark_inbox_entry_as_handled';
+            var fileName = 'handled.xml';
             
-            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id);
+            var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
             
             //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("taskDataUpdated");
+            Ti.App.fireEvent("inboxDataUpdated");
             
             w.close();
         });
         
-        w.toolbar = [flexSpace, action, flexSpace, done];
+        if (!e.isTask) {
+            w.toolbar = [trash, flexSpace, action, flexSpace, done];
+        };
         
         var close = Titanium.UI.createButton({
             title: 'Close',
@@ -106,13 +153,15 @@
         });
         w.setRightNavButton(commit);
         commit.addEventListener('click', function(){
-            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action';
+        
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=add_next_action';
+            var sendParams = 'title=' + task.value + '&quadrant=' + basicSlider.value + '&notes=' + notes.value + '&context=default' + '&part_of_project_id=0';
             var fileName = 'task.xml';
             
-            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value);
+            var t = postHTTPClient(poststring, fileName, sendParams);
             
             //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("taskDataUpdated");
+            Ti.App.fireEvent("inboxDataUpdated");
             
             w.close();
         });
