@@ -34,14 +34,14 @@
         view.add(task);
         
         var quad = Titanium.UI.createLabel({
-            color: '#999',
+            color: '#000',
             text: 'Task is ' + e.quadrantString,
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
             textAlign: 'left',
-            width: 'auto',
+            width: 280,
             top: 50,
             height: 35
         });
@@ -49,15 +49,15 @@
         view.add(quad);
         
         var age = Titanium.UI.createLabel({
-            color: '#999',
+            color: '#000',
             text: 'Task is ' + e.age + ' days old',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
             textAlign: 'left',
-            width: 'auto',
-            top: 90,
+            width: 280,
+            top: 85,
             height: 35
         });
         
@@ -70,8 +70,8 @@
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
-            top: 150,
-            height: 100,
+            top: 130,
+            height: 200,
             width: 280,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
             keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
@@ -83,8 +83,6 @@
         });
         
         view.add(notes);
-        
-        
         
         w.add(view);
         

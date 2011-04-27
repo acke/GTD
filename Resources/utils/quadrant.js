@@ -3,8 +3,6 @@
     getQuadrantFromValue = function(quadrant){
         var value;
 		
-		Titanium.API.info('quadrant: '+quadrant);
-        
         switch (quadrant) {
             case 1:
                 value = "Urgent, Important";

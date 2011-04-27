@@ -50,8 +50,6 @@ xhr.onload = function(){
             var age = item.getElementsByTagName("age").item(0).text;
             var quadrantString = getQuadrantFromValue(Math.round(quadrant));
 			
-			Titanium.API.info('quadrantString: '+quadrantString);
-			
             tasks.push({
                 //add these attributes for the benefit of a table view
                 title: title,
