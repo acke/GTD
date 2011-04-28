@@ -26,10 +26,6 @@ xhr.onload = function(){
         
         var items = doc.getElementsByTagName("checklist");
         
-        var x = 0;
-        var doctitle;
-        Ti.API.info("node name: " + doctitle);
-        
         for (var c = 0; c < items.length; c++) {
             var item = items.item(c);
             var title = item.getAttribute("name");

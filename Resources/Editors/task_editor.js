@@ -141,8 +141,8 @@
             
             var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value);
             
-            //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("taskDataUpdated");
+            //Dispatch a message to let others know the data has been updated
+            Ti.App.fireEvent("inboxItemRemoved", e.id);
             
             w.close();
         });

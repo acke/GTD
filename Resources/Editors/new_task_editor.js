@@ -118,15 +118,19 @@
             }).show();
         });
         
-		inboxItemHandled = function (inboxItemid){
-			
-			var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=mark_inbox_entry_as_handled';
+        inboxItemHandled = function(inboxItemid){
+        
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=mark_inbox_entry_as_handled';
             var fileName = 'handled.xml';
             
             var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
-			
-		};
-		
+           
+		    //Dispatch a message to let others know the data has been updated
+            Ti.API.fireEvent('inboxItemRemoved', {
+                id: e.id
+            });
+        };
+        
         var done = Titanium.UI.createButton({
             systemButton: Titanium.UI.iPhone.SystemButton.DONE
         });
@@ -166,8 +170,8 @@
             
             var t = postHTTPClient(poststring, fileName, sendParams);
             
-			inboxItemHandled(e.id);
-			
+            inboxItemHandled(e.id);
+            
             //Dispatch a message to let others know the database has been updated
             Ti.App.fireEvent("inboxDataUpdated");
             

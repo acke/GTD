@@ -19,7 +19,7 @@
 			}
 			Titanium.App.Properties.setString("retval",f.read());
 			
-			label3.setText(f.read());
+			//label3.setText(f.read());
 			Ti.API.fireEvent('updateLogLabel', {text:f.read()});
 		};
 		c.ondatastream = function(e)

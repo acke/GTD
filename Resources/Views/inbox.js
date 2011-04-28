@@ -15,7 +15,7 @@
     
     var xhr = createHTTPClient();
     
-	createNewTableView = function(tableData, doctitle){
+	createNewTableView = function(tableData){
         var tableview = Titanium.UI.createTableView();
         
         tableview.addEventListener('click', function(e){
@@ -26,6 +26,11 @@
                 modal: true
             });
         });
+		
+		Titanium.API.addEventListener('inboxUpdated', function(_e){
+			Ti.API.info("inboxEvent occured");
+			});
+            
         
         return tableview;
     };
@@ -55,11 +60,10 @@
                 
             }
             
-            
             var tableView = createNewTableView();
             tableView.setData(inboxItems);
             Titanium.UI.currentWindow.add(tableView);
-            
+			
         } 
         catch (E) {
             alert(E);

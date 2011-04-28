@@ -1,55 +1,62 @@
-(function (){
+(function(){
 
-	var data = [];
-	var user = Titanium.App.Properties.getString("user");
-	var pass = Titanium.App.Properties.getString("pass");
-
-	xhr = Ti.Network.createHTTPClient();
+    Ti.include('../utils/createTableView.js');
 	
-	xhr.onload = function()
-	{
-		try
-		{
-			//Ti.API.info(this.responseXML.documentElement);
-			var doc = this.responseXML.documentElement;
-			
-			//TODO: Set proper paths in this code to parse the xml.
-			
-			var items = doc.getElementsByTagName("projects");
-			
-			var x = 0;
-			var doctitle = doc.evaluate("//result/projects/content/text()").item(0).nodeValue;
-			for (var c=0;c<items.length;c++)
-			{
-				var item = items.item(c);
-				var content = item.getElementsByTagName("content").item(0).text;				
-				var title = content;
-				var row = Ti.UI.createTableViewRow({height:50});
-				var label = Ti.UI.createLabel({
-					text:title,
-					left:72,
-					top:5,
-					bottom:5,
-					right:5				
-				});
-				row.add(label);
-				var img;
-	
-				data[x++] = row;
-				row.url = item.getElementsByTagName("content").item(0).text;
-			}
-			
-			Ti.include('../utils/createTableView.js');
-			createNewTableView(data);
-		}
-		catch(E)
-		{
-			alert(E);
-		}
-	};
-	
-	xhr.open ("GET",'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/'+user+'&password='+pass+'&action=list_active_projects');
-	
-	xhr.send();
-	
+    var projects = [];
+    var user = Titanium.App.Properties.getString("user");
+    var pass = Titanium.App.Properties.getString("pass");
+    
+    xhr = Ti.Network.createHTTPClient();
+    
+    xhr.onload = function(){
+        try {
+            var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'projects.xml');
+            Ti.API.info('responseData: ' + f.read());
+            var doc = this.responseXML.documentElement;
+            
+            var items = doc.getElementsByTagName("project");
+            
+            for (var c = 0; c < items.length; c++) {
+                var item = items.item(c);
+                var title = item.getAttribute("name");
+                var id = item.getAttribute("id");
+				var state = item.getAttribute("state");
+				var goal = item.getAttribute("goal");
+				var notes = item.getAttribute("notes");
+				var quadrant = item.getAttribute("quadrant");
+                
+                projects.push({
+                    //add these attributes for the benefit of a table view
+                    title: title,
+                    id: id,
+                    hasChild: true,
+                    //custom data attribute to pass to detail page
+                    state: state,
+					goal: goal,
+					notes: notes,
+					quadrant: quadrant,
+                    isTask: false
+                });
+            }
+            
+            var tableView = createNewTableView();
+            tableView.setData(projects);
+            Titanium.UI.currentWindow.add(tableView);
+        } 
+        catch (E) {
+            alert(E);
+        }
+    };
+    
+    xhr.ondatastream = function(e){
+        Ti.API.info('ONDATASTREAM1 - PROGRESS: ' + e.progress);
+    };
+    xhr.onerror = function(e){
+        Ti.API.info('XHR Error ' + e.error);
+    };
+    
+    xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + "&action=list_projects");
+    //xhr.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'projects.xml');
+    
+    xhr.send();
 })();
