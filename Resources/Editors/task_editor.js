@@ -5,7 +5,7 @@
     Ti.include('../net/httppost.js');
     
     createTaskEditor = function(e){
-		var w = Ti.UI.createWindow({
+        var w = Ti.UI.createWindow({
             title: 'Edit task'
         });
         
@@ -32,21 +32,51 @@
         });
         
         view.add(task);
+        //        
+        //        var quad = Titanium.UI.createLabel({
+        //            color: '#000',
+        //            text: 'Task is ' + e.quadrantString,
+        //            font: {
+        //                fontSize: 16,
+        //                fontFamily: 'Helvetica Neue'
+        //            },
+        //            textAlign: 'left',
+        //            width: 280,
+        //            top: 50,
+        //            height: 35
+        //        });
+        //        
+        //        view.add(quad);
         
-        var quad = Titanium.UI.createLabel({
+        var basicSliderLabel = Titanium.UI.createLabel({
+            text: 'Basic Slider - value = 0',
             color: '#000',
-            text: 'Task is ' + e.quadrantString,
             font: {
-                fontSize: 16,
-                fontFamily: 'Helvetica Neue'
+                fontFamily: 'Helvetica Neue',
+                fontSize: 15
             },
-            textAlign: 'left',
+            textAlign: 'center',
+            top: 60,
             width: 280,
-            top: 50,
-            height: 35
+            height: 'auto'
+        });
+        view.add(basicSliderLabel);
+        
+        var basicSlider = Titanium.UI.createSlider({
+            min: 1,
+            max: 4,
+            value: e.quadrant,
+            width: 250,
+            height: 'auto',
+            top: 80
+        });
+        basicSlider.addEventListener('change', function(e){
+        
+            basicSliderLabel.text = getQuadrantFromValue(Math.round(e.value));
+            
         });
         
-        view.add(quad);
+        view.add(basicSlider);
         
         var age = Titanium.UI.createLabel({
             color: '#000',
@@ -57,7 +87,7 @@
             },
             textAlign: 'left',
             width: 280,
-            top: 85,
+            top: 115,
             height: 35
         });
         
@@ -70,7 +100,7 @@
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
-            top: 130,
+            top: 160,
             height: 200,
             width: 280,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
@@ -136,10 +166,10 @@
         });
         w.setRightNavButton(commit);
         commit.addEventListener('click', function(){
-            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action';
+            var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action2';
             var fileName = 'task.xml';
             
-            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value);
+            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn=0' + '&Duration=0' + '&Effort=0' + '&ProjectID=0' + '&Context=default' + '&Quadrant=' + basicSlider.value);
             
             //Dispatch a message to let others know the data has been updated
             Ti.App.fireEvent("inboxItemRemoved", e.id);
