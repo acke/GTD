@@ -76,8 +76,35 @@ xhr.onload = function(){
         
         tasks = sortArray(tasks);
         var tableView = createNewTableView();
-        tableView.setData(tasks);
+        
+        updateTasksView = function(data){
+            tableView.setData(data);
+        };
+        
+        updateTasksView(tasks);
         Titanium.UI.currentWindow.add(tableView);
+        
+        Titanium.API.addEventListener('taskRemoved', function(_e){
+            function removeItem(element, index, array){
+                if (element.id == _e.id) {
+                    tasks.splice(index, index);
+                    Ti.API.info("Element " + index + " contains the value " + element.id + " and will be deleted with match to: " + _e.id);
+                };
+			};
+            
+            Ti.API.info("taskRemoved occured");
+            tasks.forEach(removeItem);
+            
+            updateTasksView(tasks);
+        });
+        
+        Titanium.API.addEventListener('taskItemUpdated', function(_e){
+        
+            Ti.API.info("taskItemUpdated occured");
+            
+            updateTasksView(tasks);
+        });
+        
     } 
     catch (E) {
         alert(E);

@@ -3,16 +3,24 @@ Titanium.UI.setBackgroundColor('#000');
 
 var gtd = {};
 
-Ti.include(	'navigator.js',
+Ti.include(	'model/project.js',
+	'model/project_list.js',
+	'navigator.js',
 //	'maps/geolocation.js',  
 //	'database/checklistDB.js',
-//	'model/project.js',
 //	'model/checklist.js',
-	'Views/login.js', 
 	'utils/log.js', 
-	'net/httpClient.js', 
+	'net/httpClient.js',
+	'net/getProjects.js', 
+	'Views/login.js',
+	'Views/projectsView.js', 
 	'net/sendHTTP.js'
 );
+
+
+var tabs = gtd.ui.navigator.createApplicationTabGroup();
+
+tabs.open();
 
 //Database testning
 
@@ -39,7 +47,4 @@ Ti.include(	'navigator.js',
 
 //Returning to regular application execution.
 
-var tabs = gtd.ui.navigator.createApplicationTabGroup();
-
-tabs.open();
 

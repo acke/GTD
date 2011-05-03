@@ -57,8 +57,6 @@
     w.setRightNavButton(commit);
     commit.addEventListener('click', function(){
         gtd.ui.navigator.sendNewItem(tfItem.value);
-        //Dispatch a message to let others know the database has been updated
-        Ti.App.fireEvent("inboxDataUpdated");
         
         //Dispatch a message to let others know the data has been updated
 		Ti.API.fireEvent('inboxItemAdded', {text: tfItem.value});

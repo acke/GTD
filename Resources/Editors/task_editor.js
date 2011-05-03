@@ -28,25 +28,11 @@
             top: 10,
             height: 35,
             width: 280,
-            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
+            borderWidth: 1,
+            borderRadius: 3
         });
         
         view.add(task);
-        //        
-        //        var quad = Titanium.UI.createLabel({
-        //            color: '#000',
-        //            text: 'Task is ' + e.quadrantString,
-        //            font: {
-        //                fontSize: 16,
-        //                fontFamily: 'Helvetica Neue'
-        //            },
-        //            textAlign: 'left',
-        //            width: 280,
-        //            top: 50,
-        //            height: 35
-        //        });
-        //        
-        //        view.add(quad);
         
         var basicSliderLabel = Titanium.UI.createLabel({
             text: 'Basic Slider - value = 0',
@@ -93,6 +79,38 @@
         
         view.add(age);
         
+        var dialog = Titanium.UI.createOptionDialog({
+            title: 'Select a project',
+            options: ['Cancel', 'Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 2', 'Project 2', 'Project 2', 'Project 2'],
+            cancel: 1
+        });
+        dialog.addEventListener('click', function(e){
+            if (e.index > 0) {
+                projectButton.text = dialog.options[e.index];
+            }
+        });
+        
+        
+        var projectButton = Titanium.UI.createLabel({
+            color: '#000',
+            text: 'Select Project',
+            font: {
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            textAlign: 'left',
+            width: 280,
+            top: 145,
+            height: 35,
+            borderWidth: 1,
+            borderRadius: 5
+        });
+        projectButton.addEventListener('click', function(e){
+            dialog.show();
+        });
+        
+        view.add(projectButton);
+        
         var notes = Titanium.UI.createTextArea({
             color: '#000',
             value: (e.notes) ? e.notes : 'Add note',
@@ -100,14 +118,13 @@
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
-            top: 160,
+            top: 180,
             height: 200,
             width: 280,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
             keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
             returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
-            borderWidth: 2,
-            borderColor: '#aaa',
+            borderWidth: 1,
             borderRadius: 5,
             suppressReturn: false
         });
@@ -144,7 +161,9 @@
             var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id);
             
             //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("taskDataUpdated");
+            Ti.API.fireEvent('taskRemoved', {
+                id: e.id
+            });
             
             w.close();
         });
@@ -171,8 +190,10 @@
             
             var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn=0' + '&Duration=0' + '&Effort=0' + '&ProjectID=0' + '&Context=default' + '&Quadrant=' + basicSlider.value);
             
-            //Dispatch a message to let others know the data has been updated
-            Ti.App.fireEvent("inboxItemRemoved", e.id);
+            //Dispatch a message to let others know the database has been updated
+            Ti.API.fireEvent("taskItemUpdated", {
+                id: e.id
+            });
             
             w.close();
         });

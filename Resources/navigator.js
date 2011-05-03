@@ -7,11 +7,14 @@
     Ti.include('Buttons/new_item_inbox.js', 
 		'net/sendHTTP.js', 
 		'utils/log.js',
-		'Views/login.js'
+		'Views/login.js',
+		'Views/projectsView.js',
+		'model/project_list.js'
 	);
     
     var loglabel = null;
-    
+	
+    var projects = [];
     var logtab = gtd.utils.logview.createTab();
 	var loginTab = gtd.views.login.createTab();
     
@@ -37,9 +40,9 @@
             return myTable;
             
         });
-        
+		
         function populateData(){
-        
+			
             var data = [{
                 title: 'Inbox',
                 hasChild: true,
@@ -51,7 +54,7 @@
             }, {
                 title: 'Projects',
                 hasChild: true,
-                myData: 'Views/projects.js'
+                myData: 'Views/projectsView.js'
             }, {
                 title: 'Checklists',
                 hasChild: true,
@@ -119,29 +122,6 @@
         
         return tabGroup;
     };
-    
-    Titanium.App.addEventListener('event_one', function(e){
-        label.text = 'navigator.js: event one, array length = ' + e.data.length;
-        win.open();
-        setTimeout(function(){
-            win.close({
-                opacity: 0,
-                duration: 500
-            });
-        }, 1000);
-    });
-    
-    Titanium.App.addEventListener('event_two', function(e){
-        label.text = 'navigator.js: event two, name = ' + e.name;
-        win.open();
-        setTimeout(function(){
-            win.close({
-                opacity: 0,
-                duration: 500
-            });
-        }, 1000);
-        
-    });
     
 })();
 

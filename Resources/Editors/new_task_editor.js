@@ -102,7 +102,9 @@
             var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
             
             //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("inboxDataUpdated");
+            Ti.App.fireEvent("inboxItemRemoved", {
+                id: e.id
+            });
             
             w.close();
         });
@@ -124,8 +126,8 @@
             var fileName = 'handled.xml';
             
             var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
-           
-		    //Dispatch a message to let others know the data has been updated
+            
+            //Dispatch a message to let others know the data has been updated
             Ti.API.fireEvent('inboxItemRemoved', {
                 id: e.id
             });
@@ -137,9 +139,6 @@
         done.addEventListener('click', function(){
         
             inboxItemHandled(e.id);
-            
-            //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("inboxDataUpdated");
             
             w.close();
         });
@@ -171,9 +170,6 @@
             var t = postHTTPClient(poststring, fileName, sendParams);
             
             inboxItemHandled(e.id);
-            
-            //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("inboxDataUpdated");
             
             w.close();
         });
