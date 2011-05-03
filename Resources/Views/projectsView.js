@@ -38,6 +38,7 @@
     //    });
     
     
+	var win = Titanium.UI.currentWindow;
     var projects = [];
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
@@ -78,7 +79,7 @@
             
             var tableView = Titanium.UI.createTableView();
             tableView.setData(projects);
-            Titanium.UI.currentWindow.add(tableView);
+            win.add(tableView);
         } 
         catch (E) {
             alert(E);

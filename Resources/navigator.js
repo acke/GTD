@@ -7,9 +7,8 @@
     Ti.include('Buttons/new_item_inbox.js', 
 		'net/sendHTTP.js', 
 		'utils/log.js',
-		'Views/login.js',
-		'Views/projectsView.js',
-		'model/project_list.js'
+		'Views/login.js'
+//		'model/project_list.js'
 	);
     
     var loglabel = null;
