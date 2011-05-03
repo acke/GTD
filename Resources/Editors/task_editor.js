@@ -82,7 +82,7 @@
         var dialog = Titanium.UI.createOptionDialog({
             title: 'Select a project',
             options: ['Cancel', 'Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 2', 'Project 2', 'Project 2', 'Project 2'],
-            cancel: 1
+            cancel: 0
         });
         dialog.addEventListener('click', function(e){
             if (e.index > 0) {
