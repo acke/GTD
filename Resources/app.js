@@ -4,19 +4,25 @@ Titanium.UI.setBackgroundColor('#000');
 var gtd = {};
 
 Ti.include(	
-//'model/project.js',
+//  'model/project.js',
 //	'model/project_list.js',
 	'navigator.js',
 //	'maps/geolocation.js',  
+	'database/projectsDB.js',
 //	'database/checklistDB.js',
 //	'model/checklist.js',
 	'utils/log.js', 
 	'net/httpClient.js',
-//	'net/getProjects.js', 
+	'net/getProjects.js', 
 	'Views/login.js',
 	'net/sendHTTP.js'
 );
 
+initProjectDB();
+
+getProjects(function (project){
+	updateProjectsDB(project);
+});
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 

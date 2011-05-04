@@ -3,14 +3,13 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-	getProjects = function(){
+	getProjects = function(_cb){
 		Ti.API.info('reading projects from service');
 		xhr = Ti.Network.createHTTPClient();
 		
 		xhr.onload = function(){
 			try {
 				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'projects.xml');
-				Ti.API.info('responseData: ' + f.read());
 				var doc = this.responseXML.documentElement;
 				
 				var items = doc.getElementsByTagName("project");
@@ -36,6 +35,7 @@
 						notes: notes,
 						quadrant: quadrant
 					});
+					_cb(projects[c]);
 				}
 				
 				Ti.API.fireEvent('projectsReadFromService', {projectList: projects});

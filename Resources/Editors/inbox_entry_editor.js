@@ -1,7 +1,8 @@
 (function(){
 
     var w = Ti.UI.createWindow({
-        title: 'Inbox'
+        title: 'Inbox',
+		orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
     });
     
     var view = Ti.UI.createView({

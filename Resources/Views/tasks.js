@@ -4,7 +4,7 @@ var data = [];
 var user = Titanium.App.Properties.getString("user");
 var pass = Titanium.App.Properties.getString("pass");
 
-//These rows are for log purpouses
+//These rows are for log purposes
 //TODO fix so that result is added to log page.
 var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=tasks';
 var fileName = 'tasks.xml';
@@ -15,7 +15,7 @@ var t = postHTTPClient(poststring, fileName);
 
 var xhr = Ti.Network.createHTTPClient();
 
-createNewTableView = function(tableData, doctitle){
+createNewTableView = function(tableData){
     var tableview = Titanium.UI.createTableView();
     
     tableview.addEventListener('click', function(e){
@@ -54,6 +54,7 @@ xhr.onload = function(){
             var quadrant = item.getElementsByTagName("quadrant").item(0).text;
             var context = item.getElementsByTagName("context").item(0).text;
             var notes = item.getElementsByTagName("notes").item(0).text;
+			//var project_id = item.getElementsByTagName("project_id").item(0).text;
             var age = item.getElementsByTagName("age").item(0).text;
             var quadrantString = getQuadrantFromValue(Math.round(quadrant));
             
@@ -66,6 +67,7 @@ xhr.onload = function(){
                 quadrantString: quadrantString,
                 context: context,
                 notes: notes,
+				project_id: '', //Not implemented in the API yet.
                 age: age,
                 hasChild: true,
                 isTask: true

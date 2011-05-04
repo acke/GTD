@@ -6,7 +6,8 @@
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
-            title: 'New task'
+            title: 'New task',
+			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         
         var view = Titanium.UI.createScrollView({

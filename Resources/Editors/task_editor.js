@@ -2,11 +2,12 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js');
+    Ti.include('../database/projectsDB.js', '../net/httppost.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
-            title: 'Edit task'
+            title: 'Edit task',
+			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         
         var view = Titanium.UI.createScrollView({
@@ -79,21 +80,36 @@
         
         view.add(age);
         
+        var projects = getTitleAndIDFromProjectsDB();
+        var projectTitleList = ['Cancel'];
+        var projectSelectedValue = 0;
+        
+        function getProjectFromArray(element, index, array){
+            projectTitleList.push(element.title);
+        };
+        
+        projects.forEach(getProjectFromArray);
+        
+        Titanium.API.info(projectTitleList);
+        
         var dialog = Titanium.UI.createOptionDialog({
             title: 'Select a project',
-            options: ['Cancel', 'Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 2', 'Project 2', 'Project 2', 'Project 2'],
+            options: projectTitleList,
             cancel: 0
         });
         dialog.addEventListener('click', function(e){
             if (e.index > 0) {
                 projectButton.text = dialog.options[e.index];
+                Titanium.API.info("Selected project id is: " + projects[e.index - 1].project_id + " title is: " + projects[e.index - 1].title);
+                projectSelectedValue = projects[e.index - 1].project_id;
             }
+            
         });
         
         
         var projectButton = Titanium.UI.createLabel({
             color: '#000',
-            text: 'Select Project',
+            text: (e.project) ? e.project : 'Select Project',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -188,7 +204,7 @@
             var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action2';
             var fileName = 'task.xml';
             
-            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn=0' + '&Duration=0' + '&Effort=0' + '&ProjectID=0' + '&Context=default' + '&Quadrant=' + basicSlider.value);
+            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn=0' + '&Duration=0' + '&Effort=0' + '&ProjectID=' + projectSelectedValue + '&Context=default' + '&Quadrant=' + basicSlider.value);
             
             //Dispatch a message to let others know the database has been updated
             Ti.API.fireEvent("taskItemUpdated", {
