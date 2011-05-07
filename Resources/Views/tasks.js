@@ -54,7 +54,7 @@ xhr.onload = function(){
             var quadrant = item.getElementsByTagName("quadrant").item(0).text;
             var context = item.getElementsByTagName("context").item(0).text;
             var notes = item.getElementsByTagName("notes").item(0).text;
-			//var project_id = item.getElementsByTagName("project_id").item(0).text;
+			var projectID = item.getElementsByTagName("project_id").item(0).text;
             var age = item.getElementsByTagName("age").item(0).text;
             var quadrantString = getQuadrantFromValue(Math.round(quadrant));
             
@@ -67,7 +67,7 @@ xhr.onload = function(){
                 quadrantString: quadrantString,
                 context: context,
                 notes: notes,
-				project_id: '', //Not implemented in the API yet.
+				projectID: projectID, //Not implemented in the API yet.
                 age: age,
                 hasChild: true,
                 isTask: true

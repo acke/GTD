@@ -4,18 +4,14 @@
     gtd.ui = {};
     gtd.ui.navigator = {};
     
-    Ti.include('Buttons/new_item_inbox.js', 
-		'net/sendHTTP.js', 
-		'utils/log.js',
-		'Views/login.js'
-//		'model/project_list.js'
-	);
+    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js' , 'Views/duedateView.js'   //		'model/project_list.js'
+    );
     
     var loglabel = null;
-	
+    
     var projects = [];
     var logtab = gtd.utils.logview.createTab();
-	var loginTab = gtd.views.login.createTab();
+    var loginTab = gtd.views.login.createTab();
     
     gtd.ui.navigator.sendNewItem = function(value){
         var user = Titanium.App.Properties.getString("user");
@@ -39,13 +35,17 @@
             return myTable;
             
         });
-		
+        
         function populateData(){
-			
+        
             var data = [{
                 title: 'Inbox',
                 hasChild: true,
                 myData: 'Views/inbox.js'
+            }, {
+                title: 'Due',
+                hasChild: true,
+                myData: 'Views/duedateView.js'
             }, {
                 title: 'Tasks',
                 hasChild: true,
@@ -67,8 +67,8 @@
             myTable.setData(data);
         }
         
-		Ti.App.addEventListener('dataUpdated', populateData);
-		
+        Ti.App.addEventListener('dataUpdated', populateData);
+        
         populateData();
         
         return myTable;
@@ -106,8 +106,8 @@
             window: navigator
         });
         
-		Titanium.include('utils/verifyCredentials.js');
-		
+        Titanium.include('utils/verifyCredentials.js');
+        
         if (gtd.utils.verify_credentials() !== "Login OK") {
             tabGroup.addTab(loginTab);
             tabGroup.addTab(gtd.ui.navigatorTab);

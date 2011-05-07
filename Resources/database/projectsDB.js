@@ -20,7 +20,7 @@
 	
 	getItemFromProjectsDB = function(_id){
 		var project_id = _id;
-		var projects = [];
+		var project = [];
 
 		Titanium.API.info("getItemFromDB called.");
 		
@@ -42,7 +42,7 @@
 		
 		db.close();
 		
-		return projects;
+		return project;
         
     };
 	

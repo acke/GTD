@@ -2,12 +2,12 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../database/projectsDB.js', '../net/httppost.js');
+    Ti.include('../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
             title: 'Edit task',
-			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         
         var view = Titanium.UI.createScrollView({
@@ -84,17 +84,9 @@
         var projectTitleList = ['Cancel'];
         var projectSelectedValue = 0;
         
-        function getProjectFromArray(element, index, array){
-            projectTitleList.push(element.title);
-        };
-        
-        projects.forEach(getProjectFromArray);
-        
-        Titanium.API.info(projectTitleList);
-        
         var dialog = Titanium.UI.createOptionDialog({
             title: 'Select a project',
-            options: projectTitleList,
+            options: getProjectTitlesFromArray(projects, projectTitleList),
             cancel: 0
         });
         dialog.addEventListener('click', function(e){
@@ -103,13 +95,12 @@
                 Titanium.API.info("Selected project id is: " + projects[e.index - 1].project_id + " title is: " + projects[e.index - 1].title);
                 projectSelectedValue = projects[e.index - 1].project_id;
             }
-            
         });
         
         
         var projectButton = Titanium.UI.createLabel({
             color: '#000',
-            text: (e.project) ? e.project : 'Select Project',
+            text: (e.projectID) ? getProjectString(projects, e.projectID) : 'Select Project',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
