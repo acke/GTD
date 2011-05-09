@@ -92,8 +92,8 @@
         dialog.addEventListener('click', function(e){
             if (e.index > 0) {
                 projectButton.text = dialog.options[e.index];
-                Titanium.API.info("Selected project id is: " + projects[e.index - 1].project_id + " title is: " + projects[e.index - 1].title);
-                projectSelectedValue = projects[e.index - 1].project_id;
+                Titanium.API.info("Selected project id is: " + projects[e.index].project_id + " title is: " + projects[e.index].title);
+                projectSelectedValue = projects[e.index].project_id;
             }
         });
         
