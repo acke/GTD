@@ -5,6 +5,10 @@ Splash screen by Henrik Neckfors.
 MeldonGTD is developed by David Burström.
 http://meldon.org/gtd/
 
+New in version 0.2.3:
+- Implemented support for list and select projects in the task editor. 
+- Added a project detail viewer 
+
 New in version 0.2.0:
 - added support for viewing project
 - Added update inboxview and taskview when items are commited or done. 
