@@ -8,6 +8,7 @@ Ti.include(
 	'database/projectsDB.js',
 	'utils/log.js', 
 	'net/httpClient.js',
+	'utils/projectParsers.js',
 	'net/getProjects.js', 
 	'Views/login.js',
 	'net/sendHTTP.js',

@@ -1,5 +1,7 @@
 (function(){
 	
+	//Titanium.include('../utils/projectParsers.js');
+	
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
@@ -17,24 +19,7 @@
 				
 				for (var c = 0; c < items.length; c++) {
 					var item = items.item(c);
-					var title = item.getAttribute("name");
-					var id = item.getAttribute("id");
-					var state = item.getAttribute("state");
-					var goal = item.getAttribute("goal");
-					var notes = item.getAttribute("notes");
-					var quadrant = item.getAttribute("quadrant");
-					
-					projects.push({
-						//add these attributes for the benefit of a table view
-						title: title,
-						id: id,
-						//hasChild: true,
-						//custom data attribute to pass to detail page
-						state: state,
-						goal: goal,
-						notes: notes,
-						quadrant: quadrant
-					});
+					projects = parseProject(projects, item);
 					_cb(projects[c]);
 				}
 				
