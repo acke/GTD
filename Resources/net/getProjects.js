@@ -1,7 +1,5 @@
 (function(){
 	
-	//Titanium.include('../utils/projectParsers.js');
-	
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     

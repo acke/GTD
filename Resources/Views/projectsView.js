@@ -6,7 +6,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    createNewTableView = function(tableData){
+    createNewTableView = function(projects){
         var tableview = Titanium.UI.createTableView();
         tableview.setData(projects);
 		

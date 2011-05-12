@@ -6,10 +6,14 @@ var gtd = {};
 Ti.include(	
 	'navigator.js',
 	'database/projectsDB.js',
+	'database/tasksDB.js',
 	'utils/log.js', 
 	'net/httpClient.js',
+	'utils/quadrant.js',
 	'utils/projectParsers.js',
-	'net/getProjects.js', 
+	'utils/taskParsers.js',
+	'net/getProjects.js',
+	'net/getTasks.js', 
 	'Views/login.js',
 	'net/sendHTTP.js',
 	'Views/duedateView.js',
@@ -21,6 +25,14 @@ initProjectDB();
 getProjects(function (project){
 	updateProjectsDB(project);
 });
+
+initTasksDB();
+
+getTasks(function (task){
+	updateTasksDB(task);
+});
+
+
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
