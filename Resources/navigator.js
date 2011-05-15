@@ -43,15 +43,19 @@
                 hasChild: true,
                 myData: 'Views/inbox.js'
             }, {
+                title: 'Tasks by prio',
+                hasChild: true,
+                myData: 'Views/tasks.js'
+            }, {
                 title: 'Tasks by context',
                 hasChild: true,
-                myData: 'Views/contextView.js'
+                myData: 'Views/tasks.js'
             }, {
                 title: 'Tasks by due date',
                 hasChild: true,
-                myData: 'Views/duedateView.js'
+                myData: 'Views/tasks.js'
             }, {
-                title: 'Tasks',
+                title: 'Tasks by age',
                 hasChild: true,
                 myData: 'Views/tasks.js'
             }, {

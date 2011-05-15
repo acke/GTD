@@ -33,7 +33,6 @@ getTasks(function (task){
 });
 
 
-
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
 
 tabs.open();

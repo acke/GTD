@@ -2,10 +2,10 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js', '../utils/quadrant.js');
+    Ti.include('../net/httppost.js', '../utils/quadrant.js', '../Views/filteredTasksView.js');
     
     createProjectEditor = function(e){
-        var w = Ti.UI.createWindow({
+        var win = Ti.UI.createWindow({
             title: 'Project',
             orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
@@ -89,29 +89,29 @@
         
         view.add(notes);
         
-        w.add(view);
+        win.add(view);
         
         
         var close = Titanium.UI.createButton({
             title: 'Close',
             style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
         });
-        w.setLeftNavButton(close);
+        win.setLeftNavButton(close);
         close.addEventListener('click', function(){
-            w.close();
+            win.close();
         });
         
         var openTasks = Titanium.UI.createButton({
             title: 'Open tasks',
             style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
         });
-        w.setRightNavButton(openTasks);
+        win.setRightNavButton(openTasks);
         openTasks.addEventListener('click', function(){
-			
-            w.close();
+			showTasks();
+           // win.close();
         });
         
-        return w;
+        return win;
         
     };
     

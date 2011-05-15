@@ -1,6 +1,7 @@
 
 // create table view data object
 var data = [];
+var win = Titanium.UI.currentWindow;
 var user = Titanium.App.Properties.getString("user");
 var pass = Titanium.App.Properties.getString("pass");
 
@@ -9,9 +10,9 @@ Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_edi
 createNewTableView = function(){
     var tableView = Titanium.UI.createTableView();
     var arrow = getArrow();
-	var actInd = getActIndicator();
-	var statusLabel = getStatusLabel();
-	var lastUpdatedLabel = getLastUpdatedLabel();
+    var actInd = getActIndicator();
+    var statusLabel = getStatusLabel();
+    var lastUpdatedLabel = getLastUpdatedLabel();
     var tableHeader = getTablePullHeader();
     tableHeader.add(arrow);
     tableHeader.add(statusLabel);
@@ -34,7 +35,11 @@ createNewTableView = function(){
     
     function endReloading(){
         var tasks = getAllFromTasksDB();
-        tasks = sortTaskArray(tasks);
+        
+        Titanium.API.info(win.title);
+        
+        tasks = sortTaskArray(tasks, win.title);
+        
         tableView.setData(tasks);
         
         // when you're done, just reset
@@ -106,11 +111,11 @@ createNewTableView = function(){
 
 showTasks = function(){
     var tasks = getAllFromTasksDB();
-    tasks = sortTaskArray(tasks);
+	tasks = sortTaskArray(tasks, win.title);
     
     var tableView = createNewTableView();
     
-    Titanium.UI.currentWindow.add(tableView);
+    win.add(tableView);
     
     updateTasksView = function(tasks){
         tableView.setData(tasks);
