@@ -27,6 +27,13 @@ function sortTaskArrayOnDueDate(data){
     return data;
 };
 
+function sortTaskArrayOnProject(data){
+    data.sort(function(a, b){
+        return b.projectID - a.projectID;
+    });
+    return data;
+};
+
 function sortTaskArray(tasks, sorterType){
     switch (sorterType) {
         case 'Tasks by context':
@@ -40,6 +47,9 @@ function sortTaskArray(tasks, sorterType){
             break;
         case 'Tasks':
             tasks = sortTaskArrayOnQuadrant(tasks);
+            break;
+		 case 'Tasks by projects':
+            tasks = sortTaskArrayOnProject(tasks);
             break;
         default:
             tasks = sortTaskArrayOnQuadrant(tasks);

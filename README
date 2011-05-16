@@ -2,8 +2,12 @@ This is a early development project aiming at doing an Iphone MeldonGTD client.
 
 Splash screen by Henrik Neckfors.
 
-MeldonGTD is developed by David Burstr√∂m.
+MeldonGTD is developed by David Burström.
 http://meldon.org/gtd/
+
+New in version 0.2.4:
+- Added possibility to sort on prio, age and context.
+- added scroll down in tasks table views to refresh data.
 
 New in version 0.2.3:
 - Implemented support for list and select projects in the task editor. 

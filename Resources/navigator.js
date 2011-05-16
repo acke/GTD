@@ -4,7 +4,7 @@
     gtd.ui = {};
     gtd.ui.navigator = {};
     
-    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/duedateView.js' //		'model/project_list.js'
+    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js' //		'model/project_list.js'
 );
     
     var loglabel = null;
@@ -52,6 +52,10 @@
                 myData: 'Views/tasks.js'
             }, {
                 title: 'Tasks by due date',
+                hasChild: true,
+                myData: 'Views/tasks.js'
+            }, {
+                title: 'Tasks by projects',
                 hasChild: true,
                 myData: 'Views/tasks.js'
             }, {

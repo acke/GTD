@@ -15,9 +15,7 @@ Ti.include(
 	'net/getProjects.js',
 	'net/getTasks.js', 
 	'Views/login.js',
-	'net/sendHTTP.js',
-	'Views/duedateView.js',
-	'Views/contextView.js'
+	'net/sendHTTP.js'
 );
 
 initProjectDB();

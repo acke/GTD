@@ -14,7 +14,7 @@
     
     updateTasksDB = function(task){
         var db = Titanium.Database.open('Tasksdb');
-        db.execute("INSERT INTO Tasks(task_id, title, notes, quadrant, context, projectID, age, quadrantString) VALUES(?,?,?,?,?,?,?,?)", task.id, task.title, task.notes, task.quadrant, task.context, task.projectID, task.age, task.quadrantString);
+        db.execute("INSERT INTO tasks(task_id, title, notes, quadrant, context, projectID, age, quadrantString) VALUES(?,?,?,?,?,?,?,?)", task.id, task.title, task.notes, task.quadrant, task.context, task.projectID, task.age, task.quadrantString);
         db.close();
     };
 	

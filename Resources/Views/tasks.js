@@ -36,10 +36,8 @@ createNewTableView = function(){
     function endReloading(){
         var tasks = getAllFromTasksDB();
         
-        Titanium.API.info(win.title);
-        
         tasks = sortTaskArray(tasks, win.title);
-        
+		
         tableView.setData(tasks);
         
         // when you're done, just reset

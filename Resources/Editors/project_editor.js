@@ -2,7 +2,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js', '../utils/quadrant.js', '../Views/filteredTasksView.js');
+    Ti.include('../net/httppost.js', '../utils/quadrant.js');
     
     createProjectEditor = function(e){
         var win = Ti.UI.createWindow({
@@ -107,8 +107,8 @@
         });
         win.setRightNavButton(openTasks);
         openTasks.addEventListener('click', function(){
-			showTasks();
-           // win.close();
+        
+            win.close();
         });
         
         return win;
