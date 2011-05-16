@@ -18,7 +18,7 @@ function parseTasks(tasks, item){
         quadrantString: quadrantString,
         context: context,
         notes: notes,
-        projectID: projectID, //Not implemented in the API yet.
+        projectID: projectID,
         age: age,
         hasChild: true,
         isTask: true

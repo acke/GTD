@@ -5,7 +5,7 @@ var win = Titanium.UI.currentWindow;
 var user = Titanium.App.Properties.getString("user");
 var pass = Titanium.App.Properties.getString("pass");
 
-Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js');
+Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js');
 
 createNewTableView = function(){
     var tableView = Titanium.UI.createTableView();
@@ -35,8 +35,8 @@ createNewTableView = function(){
     
     function endReloading(){
         var tasks = getAllFromTasksDB();
-        
         tasks = sortTaskArray(tasks, win.title);
+        tasks = setTableViewHeaders(tasks, win.title);
 		
         tableView.setData(tasks);
         
@@ -109,7 +109,8 @@ createNewTableView = function(){
 
 showTasks = function(){
     var tasks = getAllFromTasksDB();
-	tasks = sortTaskArray(tasks, win.title);
+    tasks = sortTaskArray(tasks, win.title);
+    tasks = setTableViewHeaders(tasks, win.title);
     
     var tableView = createNewTableView();
     
