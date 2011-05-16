@@ -18,3 +18,4 @@ New in version 0.2.0:
 - Added update inboxview and taskview when items are commited or done. 
 - cancel is on the right place in the project selector in tasks
 - Added support for updating quadrant on a task
+
