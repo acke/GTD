@@ -4,7 +4,7 @@
     gtd.ui = {};
     gtd.ui.navigator = {};
     
-    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js' //		'model/project_list.js'
+    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js'
 );
     
     var loglabel = null;
@@ -12,6 +12,7 @@
     var projects = [];
     var logtab = gtd.utils.logview.createTab();
     var loginTab = gtd.views.login.createTab();
+	var aboutTab = createAboutTab();
     
     gtd.ui.navigator.sendNewItem = function(value){
         var user = Titanium.App.Properties.getString("user");
@@ -115,6 +116,7 @@
         
         gtd.ui.navigatorTab = Ti.UI.createTab({
             title: 'MeldonGTD Client',
+			icon: 'KS_nav_ui.png',
             window: navigator
         });
         
@@ -130,6 +132,7 @@
         }
         
         tabGroup.addTab(logtab);
+		tabGroup.addTab(aboutTab);
         
         return tabGroup;
     };

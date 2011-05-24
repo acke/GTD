@@ -82,8 +82,6 @@
 	        Titanium.App.Properties.setString("user", tfuser.value);
 	        Titanium.App.Properties.setString("pass", tfpass.value);
 	        
-	        Ti.include('utils/verifyCredentials.js');
-	        
 	        gtd.utils.verify_credentialsToLabel(tfuser.value, tfpass.value);
 	        
 	    });
@@ -95,7 +93,7 @@
     
     gtd.views.login.createTab = function(){
         var loginTab = Titanium.UI.createTab({
-            icon: 'KS_nav_ui.png',
+            icon: 'KS_nav_mashup.png',
             title: 'Configuration',
             window: gtd.views.login.createWindow()
         });

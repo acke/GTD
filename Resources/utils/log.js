@@ -60,7 +60,6 @@
     gtd.utils.logview.createTab = function(){
         var win3 = gtd.utils.logview.createWindow();
         var tab3 = Titanium.UI.createTab({
-        
             icon: 'KS_nav_views.png',
             title: 'Log',
             window: win3

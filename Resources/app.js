@@ -9,13 +9,15 @@ Ti.include(
 	'database/tasksDB.js',
 	'utils/log.js', 
 	'net/httpClient.js',
+	'net/sendHTTP.js',
+	'net/httppost.js',
 	'utils/quadrant.js',
 	'utils/projectParsers.js',
 	'utils/taskParsers.js',
 	'net/getProjects.js',
 	'net/getTasks.js', 
-	'Views/login.js',
-	'net/sendHTTP.js'
+	'utils/verifyCredentials.js',
+	'Views/login.js'
 );
 
 initProjectDB();
