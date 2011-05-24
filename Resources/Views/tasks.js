@@ -5,7 +5,7 @@ var win = Titanium.UI.currentWindow;
 var user = Titanium.App.Properties.getString("user");
 var pass = Titanium.App.Properties.getString("pass");
 
-Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js');
+Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
 
 createNewTableView = function(){
     var tableView = Titanium.UI.createTableView();
@@ -111,7 +111,10 @@ showTasks = function(){
     var tasks = getAllFromTasksDB();
     tasks = sortTaskArray(tasks, win.title);
     tasks = setTableViewHeaders(tasks, win.title);
-    
+    filterButton = setupTaskFilter();
+	
+	win.setRightNavButton(filterButton);
+	
     var tableView = createNewTableView();
     
     win.add(tableView);

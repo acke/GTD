@@ -43,6 +43,24 @@
         
         return tasks;
     };
+	
+	getAllUniqueContextsFromTasksDB = function(){
+        var contexts = [];
+		Titanium.API.info("getAllUniqueContextsFromTasksDB called.");
+        var db = Ti.Database.open('tasksdb');
+        var result = db.execute('SELECT contexts FROM tasks');
+        while (result.isValidRow()) {
+            
+			contexts.push({
+                context: result.fieldByName("context")
+            });
+            result.next();
+        }
+        result.close(); //make sure to close the result set
+        db.close();
+        
+        return contexts;
+    };
     
 })();
 
