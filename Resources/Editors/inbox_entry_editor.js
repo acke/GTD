@@ -6,11 +6,7 @@
     });
     
     var view = Ti.UI.createView({
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        width: 300,
-        height: 400,
-        top: 10
+        backgroundColor: '#fff'
     });
     
     var newItem = Titanium.UI.createLabel({
@@ -20,17 +16,18 @@
             fontSize: 20,
             fontFamily: 'Helvetica Neue'
         },
+		left: 10,
+		right: 10,
         height: 35,
-        top: 50,
-        width: 280
+        top: 10
     });
     
     var tfItem = Titanium.UI.createTextField({
         color: '#336699',
         height: 35,
-        top: 110,
+        top: 40,
         left: 10,
-        width: 280,
+		right: 10,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
     });
     

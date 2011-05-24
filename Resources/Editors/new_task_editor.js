@@ -7,7 +7,7 @@
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
             title: 'New task',
-			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         
         var view = Titanium.UI.createScrollView({
@@ -28,7 +28,8 @@
             },
             height: 35,
             top: 10,
-            width: 280,
+            left: 10,
+            right: 10,
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
@@ -43,7 +44,8 @@
             },
             textAlign: 'center',
             top: 60,
-            width: 280,
+            left: 10,
+            right: 10,
             height: 'auto'
         });
         view.add(basicSliderLabel);
@@ -52,7 +54,8 @@
             min: 1,
             max: 4,
             value: 2,
-            width: 250,
+            left: 10,
+            right: 10,
             height: 'auto',
             top: 80
         });
@@ -73,7 +76,8 @@
             },
             height: 100,
             top: 110,
-            width: 280,
+            left: 10,
+            right: 10,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
             keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
             returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,

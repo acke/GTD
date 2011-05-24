@@ -28,7 +28,8 @@
             },
             top: 10,
             height: 35,
-            width: 280,
+            left: 10,
+            right: 10,
             borderWidth: 1,
             borderRadius: 3
         });
@@ -53,7 +54,8 @@
             min: 1,
             max: 4,
             value: e.quadrant,
-            width: 250,
+            left: 10,
+            right: 10,
             height: 'auto',
             top: 80
         });
@@ -73,7 +75,8 @@
                 fontFamily: 'Helvetica Neue'
             },
             textAlign: 'left',
-            width: 280,
+            left: 10,
+            right: 10,
             top: 115,
             height: 35
         });
@@ -91,7 +94,7 @@
         });
         dialog.addEventListener('click', function(e){
             if (e.index > 0) {
-                projectButton.text = dialog.options[e.index+1];
+                projectButton.text = dialog.options[e.index + 1];
                 Titanium.API.info("Selected project id is: " + projects[e.index].project_id + " title is: " + projects[e.index].title);
                 projectSelectedValue = projects[e.index].project_id;
             }
@@ -106,7 +109,8 @@
                 fontFamily: 'Helvetica Neue'
             },
             textAlign: 'left',
-            width: 280,
+            left: 10,
+            right: 10,
             top: 145,
             height: 35,
             borderWidth: 1,
@@ -127,7 +131,8 @@
             },
             top: 180,
             height: 200,
-            width: 280,
+            left: 10,
+            right: 10,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
             keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
             returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
