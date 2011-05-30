@@ -99,7 +99,7 @@ function setAgeHeaders(tasks){
         if (element.age !== previousItem) {
             newArray.push({
                 title: element.title,
-                header: element.age,
+                header: element.age + " days old",
                 id: element.id,
                 quadrant: element.quadrant,
                 quadrantString: element.quadrantString,
