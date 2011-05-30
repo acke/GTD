@@ -94,7 +94,7 @@
         return projects;
         
     };
-    
+	
     deleteProjectInDB = function(){
         Titanium.API.addEventListener('updateprojectDB', function(_e){
             Titanium.Database.open('projectsdb');

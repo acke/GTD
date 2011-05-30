@@ -1,3 +1,5 @@
+Ti.include('../database/projectsDB.js');
+
 function setQuadrantHeaders(tasks){
     var headerSet = false;
     var currentQuadrant;
@@ -146,17 +148,18 @@ function setProjectHeaders(tasks){
     var headerSet = false;
     var currentProject;
     var newArray = [];
+	var projects = getTitleAndIDFromProjectsDB();
     
     function setProjHeader(element, index, array){
-        //It should not be === here, since the object is not the same, but the value is.
-        
+    
         Titanium.API.info(headerSet + ' ' + element.projectID + ' ' + currentProject);
         
+        //It should not be === here, since the object is not the same, but the value is.
         if (headerSet == false && element.projectID !== currentProject) {
             headerSet = true;
             newArray.push({
                 title: element.title,
-                header: element.projectID,
+                header: (element.projectID) ? getProjectString(projects, element.projectID) : 'Not in project',
                 id: element.id,
                 quadrant: element.quadrant,
                 quadrantString: element.quadrantString,
@@ -202,7 +205,7 @@ function setTableViewHeaders(tasks, sorterType){
             tasks = setContextHeaders(tasks);
             break;
         case 'Tasks by projects':
-            //      tasks = setProjectHeaders(tasks);
+            tasks = setProjectHeaders(tasks);
             break;
         default:
             tasks = setQuadrantHeaders(tasks);

@@ -37,7 +37,7 @@ createNewTableView = function(){
         var tasks = getAllFromTasksDB();
         tasks = sortTaskArray(tasks, win.title);
         tasks = setTableViewHeaders(tasks, win.title);
-		
+        
         tableView.setData(tasks);
         
         // when you're done, just reset
@@ -109,17 +109,15 @@ createNewTableView = function(){
 
 showTasks = function(){
     var tasks = getAllFromTasksDB();
-    tasks = sortTaskArray(tasks, win.title);
-    tasks = setTableViewHeaders(tasks, win.title);
-    filterButton = setupTaskFilter();
-	
-	win.setRightNavButton(filterButton);
-	
+    
     var tableView = createNewTableView();
     
     win.add(tableView);
     
     updateTasksView = function(tasks){
+        tasks = sortTaskArray(tasks, win.title);
+        tasks = setTableViewHeaders(tasks, win.title);
+        tasks = setupTaskFilter(win, tasks);
         tableView.setData(tasks);
     };
     updateTasksView(tasks);
@@ -142,6 +140,13 @@ showTasks = function(){
     
         Ti.API.info("taskItemUpdated occured");
         
+        updateTasksView(tasks);
+    });
+    
+    Titanium.API.addEventListener('taskFilterApplied', function(_e){
+    
+        Ti.API.info("taskFilterApplied occured");
+        tasks = getAllItemsMatchingProjectFromTasksDB(_e.projectSelectedValue);
         updateTasksView(tasks);
     });
 };

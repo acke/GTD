@@ -44,6 +44,32 @@
         return tasks;
     };
 	
+	getAllItemsMatchingProjectFromTasksDB = function(projectID){
+        var tasks = [];
+		Titanium.API.info("getAllFromTasksDB called.");
+        var db = Ti.Database.open('tasksdb');
+        var result = db.execute('SELECT * FROM tasks WHERE projectID = ?', projectID);
+        while (result.isValidRow()) {
+            tasks.push({
+                //add these attributes for the benefit of a table view
+                title: result.fieldByName('title'),
+                id: result.fieldByName('task_id'),
+                context: result.fieldByName("context"),
+                projectID: result.fieldByName("projectID"),
+                notes: result.fieldByName("notes"),
+                quadrant: result.fieldByName("quadrant"),
+				age: result.fieldByName("age"),
+                quadrantString: result.fieldByName("quadrantString"),
+                hasChild: true
+            });
+            result.next();
+        }
+        result.close(); //make sure to close the result set
+        db.close();
+        
+        return tasks;
+    };
+	
 	getAllUniqueContextsFromTasksDB = function(){
         var contexts = [];
 		Titanium.API.info("getAllUniqueContextsFromTasksDB called.");
