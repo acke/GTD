@@ -15,11 +15,13 @@ function setupTaskFilter(win, tasks){
             Titanium.API.info("Selected project id is: " + projects[e.index].project_id + " title is: " + projects[e.index].title);
             projectSelectedValue = projects[e.index].project_id;
             
+        } else {
+			projectSelectedValue = 0;
+		}
             //Dispatch a message to let others know filter has been applied
             Ti.API.fireEvent("taskFilterApplied", {
                 projectSelectedValue: projectSelectedValue
             });
-        }
     });
     
     //

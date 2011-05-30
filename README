@@ -5,6 +5,12 @@ Splash screen by Henrik Neckfors.
 MeldonGTD is developed by David Burstršm.
 http://meldon.org/gtd/
 
+New in version 0.3.0:
+- Added filter on projects in tasks by project view.
+- Added headers to filter views (prio, age, context, projects)
+- Added About page. 
+- Various GUI improvments. (replaced fixed width with left: 10,	right: 10)
+
 New in version 0.2.6:
 - Added possibility to sort on prio, age and context.
 - added scroll down in tasks table views to refresh data.
