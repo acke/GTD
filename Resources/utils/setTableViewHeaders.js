@@ -91,8 +91,8 @@ function setContextHeaders(tasks){
 };
 
 function setAgeHeaders(tasks){
-    var headerSet = false;
     var newArray = [];
+	var previousItem = "";
     
     function setAgeHeader(element, index, array){
         //It should not be === here, since the object is not the same, but the value is.
