@@ -1,15 +1,15 @@
 Ti.include('../database/projectsDB.js');
 
 function setQuadrantHeaders(tasks){
-    var headerSet = false;
-    var currentQuadrant;
+    var previousQuadrant;
     var newArray = [];
     
     function setQuadHeader(element, index, array){
-        //It should not be === here, since the object is not the same, but the value is.
         
-        if (headerSet == false && element.quadrantString != currentQuadrant) {
-            headerSet = true;
+		//Titanium.API.info(element.quadrantString + ' ' + previousQuadrant);
+		
+        //It should not be === here, since the object is not the same, but the value is.
+        if (element.quadrantString != previousQuadrant) {
             newArray.push({
                 title: element.title,
                 header: element.quadrantString,
@@ -24,7 +24,6 @@ function setQuadrantHeaders(tasks){
             });
         }
         else {
-            headerSet = false;
             newArray.push({
                 title: element.title,
                 id: element.id,
@@ -38,7 +37,7 @@ function setQuadrantHeaders(tasks){
             });
             
         };
-        currentQuadrant = element.quadrantString;
+        previousQuadrant = element.quadrantString;
     };
     
     
@@ -49,16 +48,13 @@ function setQuadrantHeaders(tasks){
 };
 
 function setContextHeaders(tasks){
-    var headerSet = false;
-    var currentItem;
+	var previousItem = "";
     var newArray = [];
     
     function setContextHeader(element, index, array){
+        
         //It should not be === here, since the object is not the same, but the value is.
-        
-        
-        if (headerSet == false && element.context !== currentItem) {
-            headerSet = true;
+        if (element.context !== previousItem) {
             newArray.push({
                 title: element.title,
                 header: element.age,
@@ -73,7 +69,6 @@ function setContextHeaders(tasks){
             });
         }
         else {
-            headerSet = false;
             newArray.push({
                 title: element.title,
                 id: element.id,
@@ -87,7 +82,7 @@ function setContextHeaders(tasks){
             });
             
         };
-        currentItem = element.context;
+        previousItem = element.context;
     };
     
     tasks.forEach(setContextHeader);
@@ -97,15 +92,11 @@ function setContextHeaders(tasks){
 
 function setAgeHeaders(tasks){
     var headerSet = false;
-    var currentItem;
     var newArray = [];
     
     function setAgeHeader(element, index, array){
         //It should not be === here, since the object is not the same, but the value is.
-        
-        
-        if (headerSet == false && element.age !== currentItem) {
-            headerSet = true;
+        if (element.age !== previousItem) {
             newArray.push({
                 title: element.title,
                 header: element.age,
@@ -120,7 +111,6 @@ function setAgeHeaders(tasks){
             });
         }
         else {
-            headerSet = false;
             newArray.push({
                 title: element.title,
                 id: element.id,
@@ -134,7 +124,7 @@ function setAgeHeaders(tasks){
             });
             
         };
-        currentItem = element.age;
+        previousItem = element.age;
     };
     
     tasks.forEach(setAgeHeader);
@@ -145,18 +135,17 @@ function setAgeHeaders(tasks){
 
 
 function setProjectHeaders(tasks){
-    var headerSet = false;
-    var currentProject;
+    var previousProject;
     var newArray = [];
 	var projects = getTitleAndIDFromProjectsDB();
     
     function setProjHeader(element, index, array){
     
-        Titanium.API.info(headerSet + ' ' + element.projectID + ' ' + currentProject);
+        Titanium.API.info(element.projectID + ' ' + previousProject);
         
         //It should not be === here, since the object is not the same, but the value is.
-        if (headerSet == false && element.projectID !== currentProject) {
-            headerSet = true;
+        if (element.projectID !== previousProject && previousProject != 0) {
+            
             newArray.push({
                 title: element.title,
                 header: (element.projectID) ? getProjectString(projects, element.projectID) : 'Not in project',
@@ -171,7 +160,7 @@ function setProjectHeaders(tasks){
             });
         }
         else {
-            headerSet = false;
+            
             newArray.push({
                 title: element.title,
                 id: element.id,
@@ -185,7 +174,7 @@ function setProjectHeaders(tasks){
             });
             
         };
-        currentProject = element.projectID;
+        previousProject = element.projectID;
     };
     
     tasks.forEach(setProjHeader);
