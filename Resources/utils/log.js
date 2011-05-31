@@ -15,7 +15,7 @@
                 fontSize: 10,
                 fontFamily: 'Helvetica Neue'
             },
-            textAlign: 'left',
+			top: 0,
             width: 'auto'
         });
         
@@ -38,13 +38,10 @@
             contentWidth: 'auto',
             contentHeight: 'auto',
             top: 0,
-            showVerticalScrollIndicator: true,
-            showHorizontalScrollIndicator: true
+            showVerticalScrollIndicator: true
         });
         
         var view = Ti.UI.createView({
-            backgroundColor: '#fff',
-            borderRadius: 10,
             width: 'auto',
             height: 600,
             top: 10
