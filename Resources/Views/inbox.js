@@ -9,9 +9,9 @@
     var pass = Titanium.App.Properties.getString("pass");
     var filename = 'inbox.xml';
     
-    Ti.include('../net/httpClient.js', '../Editors/new_task_editor.js');
+    Ti.include('../Editors/new_task_editor.js');
     
-    var xhr = createHTTPClient();
+    var xhr = Ti.Network.createHTTPClient();
     
     gtd.ui.inbox.createNewTableView = function(tableData){
         var tableview = Titanium.UI.createTableView();
