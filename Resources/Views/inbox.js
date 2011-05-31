@@ -33,52 +33,56 @@
         try {
             var doc = this.responseXML.documentElement;
             var items = doc.getElementsByTagName("inbox_entry");
-            
-            var x = 0;
-            var doctitle = doc.evaluate("//result/inbox_entry/content/text()").item(0).nodeValue;
-            for (var c = 0; c < items.length; c++) {
-                var item = items.item(c);
-                var title = item.getElementsByTagName("content").item(0).text;
-                var id = item.getElementsByTagName("id").item(0).text;
+            if (items) {
+                var x = 0;
+                var doctitle = doc.evaluate("//result/inbox_entry/content/text()").item(0).nodeValue;
+                for (var c = 0; c < items.length; c++) {
+                    var item = items.item(c);
+                    var title = item.getElementsByTagName("content").item(0).text;
+                    var id = item.getElementsByTagName("id").item(0).text;
+                    
+                    inboxItems.push({
+                        //add these attributes for the benefit of a table view
+                        title: title,
+                        id: id,
+                        hasChild: true,
+                        //custom data attribute to pass to detail page
+                        content: title,
+                        isTask: false
+                    });
+                    
+                }
                 
-                inboxItems.push({
-                    //add these attributes for the benefit of a table view
-                    title: title,
-                    id: id,
-                    hasChild: true,
-                    //custom data attribute to pass to detail page
-                    content: title,
-                    isTask: false
-                });
+                var tableView = gtd.ui.inbox.createNewTableView();
                 
-            }
-            
-            var tableView = gtd.ui.inbox.createNewTableView();
-            
-            updateInboxView = function(data){
-                tableView.setData(data);
-            };
-            
-            updateInboxView(inboxItems);
-            Titanium.UI.currentWindow.add(tableView);
-            
-            Titanium.API.addEventListener('inboxItemRemoved', function(_e){
-	            function removeItem(element, index, array){
-	                if (element.id == _e.id) {
-	                    inboxItems.splice(index, index);
-	                    Ti.API.info("Element " + index + " contains the value " + element.id + " and will be deleted with match to: "+_e.id);
-	                };
-	            };
-                
-                Ti.API.info("inboxItemRemoved occured");
-                inboxItems.forEach(removeItem);
+                updateInboxView = function(data){
+                    tableView.setData(data);
+                };
                 
                 updateInboxView(inboxItems);
-            });
+                Titanium.UI.currentWindow.add(tableView);
+                
+                Titanium.API.addEventListener('inboxItemRemoved', function(_e){
+                    function removeItem(element, index, array){
+                        if (element.id == _e.id) {
+                            inboxItems.splice(index, index);
+                            Ti.API.info("Element " + index + " contains the value " + element.id + " and will be deleted with match to: " + _e.id);
+                        };
+                                            };
+                    
+                    Ti.API.info("inboxItemRemoved occured");
+                    inboxItems.forEach(removeItem);
+                    
+                    updateInboxView(inboxItems);
+                });
+            }else {
+                alert("Inbox empty");
+            };
             
-        } 
+                    } 
         catch (E) {
             alert(E);
+            
         }
         
         var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);

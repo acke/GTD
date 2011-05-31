@@ -8,7 +8,6 @@ Ti.include(
 	'database/projectsDB.js',
 	'database/tasksDB.js',
 	'utils/log.js', 
-	'net/httpClient.js',
 	'net/sendHTTP.js',
 	'net/httppost.js',
 	'utils/quadrant.js',
