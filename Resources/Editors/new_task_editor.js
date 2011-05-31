@@ -139,7 +139,8 @@
         };
         
         var done = Titanium.UI.createButton({
-            systemButton: Titanium.UI.iPhone.SystemButton.DONE
+            title: 'Completed',
+			style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
         });
         done.addEventListener('click', function(){
         
