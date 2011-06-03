@@ -2,7 +2,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js', '../utils/quadrant.js');
+    Ti.include('../net/httppost.js', '../utils/quadrant.js','../database/projectsDB.js', '../utils/projectParsers.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
@@ -67,6 +67,45 @@
         
         view.add(basicSlider);
         
+        var projects = getTitleAndIDFromProjectsDB();
+        var projectTitleList = ['Cancel'];
+        var projectSelectedValue = 0;
+        
+        var dialog = Titanium.UI.createOptionDialog({
+            title: 'Select a project',
+            options: getProjectTitlesFromArray(projects, projectTitleList),
+            cancel: 0
+        });
+        dialog.addEventListener('click', function(e){
+            if (e.index > 0) {
+                projectButton.text = dialog.options[e.index + 1];
+                Titanium.API.info("Selected project id is: " + projects[e.index].project_id + " title is: " + projects[e.index].title);
+                projectSelectedValue = projects[e.index].project_id;
+            }
+        });
+        
+        
+        var projectButton = Titanium.UI.createLabel({
+            color: '#000',
+            text: (e.projectID) ? getProjectString(projects, e.projectID) : 'Select Project',
+            font: {
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            textAlign: 'left',
+            left: 10,
+            right: 10,
+            top: 120,
+            height: 35,
+            borderWidth: 1,
+            borderRadius: 5
+        });
+        projectButton.addEventListener('click', function(e){
+            dialog.show();
+        });
+        
+        view.add(projectButton);
+        
         var notes = Titanium.UI.createTextArea({
             color: '#000',
             value: 'Add note',
@@ -75,7 +114,7 @@
                 fontFamily: 'Helvetica Neue'
             },
             height: 100,
-            top: 110,
+            top: 155,
             left: 10,
             right: 10,
             appearance: Titanium.UI.KEYBOARD_APPEARANCE_ALERT,
@@ -140,7 +179,7 @@
         
         var done = Titanium.UI.createButton({
             title: 'Completed',
-			style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
+            style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
         });
         done.addEventListener('click', function(){
         
@@ -170,7 +209,7 @@
         commit.addEventListener('click', function(){
         
             var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=add_next_action';
-            var sendParams = 'title=' + task.value + '&quadrant=' + basicSlider.value + '&notes=' + notes.value + '&context=default' + '&part_of_project_id=0';
+            var sendParams = 'title=' + task.value + '&quadrant=' + basicSlider.value + '&notes=' + notes.value + '&context=default' + '&part_of_project_id=' + projectSelectedValue;
             var fileName = 'task.xml';
             
             var t = postHTTPClient(poststring, fileName, sendParams);
