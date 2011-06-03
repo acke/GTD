@@ -91,7 +91,8 @@
         var win = Ti.UI.createWindow({
             height: 30,
             width: 250,
-            bottom: 110
+            bottom: 110,
+			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         win.add(gtd.ui.navigator.createTableView());
         win.rightNavButton = gtd.ui.Buttons.createButton();
@@ -103,7 +104,8 @@
             url: _myData.myData,
             title: _myData.title,
             backgroundColor: '#fff',
-            barColor: '#111'
+            barColor: '#111',
+			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         win.rightNavButton = gtd.ui.Buttons.createButton();
         
