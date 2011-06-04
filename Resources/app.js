@@ -14,7 +14,7 @@ Ti.include(
 	'utils/projectParsers.js',
 	'utils/taskParsers.js',
 	'net/getProjects.js',
-	'net/getTasks.js', 
+	'net/getTasks.js',
 	'utils/verifyCredentials.js',
 	'Views/login.js'
 );
