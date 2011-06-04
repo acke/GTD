@@ -2,7 +2,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js', '../utils/quadrant.js','../database/projectsDB.js', '../utils/projectParsers.js');
+    Ti.include('../net/httppost.js', '../utils/quadrant.js', '../database/projectsDB.js', '../utils/projectParsers.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
@@ -124,6 +124,12 @@
             borderColor: '#aaa',
             borderRadius: 5,
             suppressReturn: false
+        });
+        
+        notes.addEventListener('focus', function(){
+            if (notes.value == "Add note") {
+                notes.value = '';
+            }
         });
         
         view.add(notes);

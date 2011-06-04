@@ -124,7 +124,7 @@
         
         var notes = Titanium.UI.createTextArea({
             color: '#000',
-            value: (e.notes) ? e.notes : 'Add note',
+			value: (e.notes) ? e.notes : 'Add note',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -139,6 +139,12 @@
             borderWidth: 1,
             borderRadius: 5,
             suppressReturn: false
+        });
+		
+		notes.addEventListener('focus', function(){
+            if (notes.value == "Add note"){
+				notes.value = '';
+			}
         });
         
         view.add(notes);
