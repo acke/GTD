@@ -1,6 +1,6 @@
 (function(){
 
-    Titanium.API.info("Creating DB.");
+    Titanium.API.info("Creating tasksdb.");
     var db = Titanium.Database.open('tasksdb');
     db.execute('CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY, task_id INTEGER, title TEXT, notes TEXT, quadrant INTEGER, context TEXT, projectID INTEGER, age TEXT, quadrantString TEXT);');
     db.close();

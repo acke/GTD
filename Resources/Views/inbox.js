@@ -9,7 +9,7 @@
     var pass = Titanium.App.Properties.getString("pass");
     var filename = 'inbox.xml';
     
-    Ti.include('../Editors/new_task_editor.js');
+    Ti.include('../Editors/new_task_editor.js', '../utils/inboxParsers.js');
     
     var xhr = Ti.Network.createHTTPClient();
     
@@ -37,19 +37,8 @@
                 var x = 0;
                 var doctitle = doc.evaluate("//result/inbox_entry/content/text()").item(0).nodeValue;
                 for (var c = 0; c < items.length; c++) {
-                    var item = items.item(c);
-                    var title = item.getElementsByTagName("content").item(0).text;
-                    var id = item.getElementsByTagName("id").item(0).text;
-                    
-                    inboxItems.push({
-                        //add these attributes for the benefit of a table view
-                        title: title,
-                        id: id,
-                        hasChild: true,
-                        //custom data attribute to pass to detail page
-                        content: title,
-                        isTask: false
-                    });
+                   var item = items.item(c);
+                   inboxItems = parseInboxEntries(inboxItems, item);
                     
                 }
                 

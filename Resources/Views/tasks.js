@@ -1,11 +1,9 @@
+Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
 
 // create table view data object
 var data = [];
 var win = Titanium.UI.currentWindow;
-var user = Titanium.App.Properties.getString("user");
-var pass = Titanium.App.Properties.getString("pass");
 
-Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
 
 createNewTableView = function(){
     var tableView = Titanium.UI.createTableView();
