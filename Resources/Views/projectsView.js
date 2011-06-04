@@ -3,19 +3,16 @@
     Ti.include('../utils/projectParsers.js', '../Editors/project_editor.js', '../database/projectsDB.js', '../net/getProjects.js');
     
     var projects = [];
-    var user = Titanium.App.Properties.getString("user");
-    var pass = Titanium.App.Properties.getString("pass");
-	
-	var projWin = Titanium.UI.currentWindow;
-	
+    var projWin = Titanium.UI.currentWindow;
+    
     var actInd = Titanium.UI.createActivityIndicator({
         bottom: 10,
         height: 50,
         width: 10,
-		top: 20,
+        top: 20,
         style: Titanium.UI.iPhone.ActivityIndicatorStyle.BIG
     });
-	
+    
     createNewTableView = function(projects){
         var tableview = Titanium.UI.createTableView();
         tableview.setData(projects);
@@ -34,17 +31,25 @@
     
     
     showProjects = function(){
-		projWin.add(actInd);
+        var projects = getTitleAndIDFromProjectsDB();
+        projWin.add(actInd);
         actInd.show();
-        setTimeout(endReloading, 2000);
         
-        initProjectDB();
-        
-        getProjects(function(project){
-            updateProjectsDB(project);
+        //If projects was not loaded when application was loaded, then try to get the projects from the server now.
+        if (projects.size) {
+            endReloading();
+        }
+        else {
+            setTimeout(endReloading, 2000);
+            initProjectDB();
             
-        });
-
+            getProjects(function(project){
+                updateProjectsDB(project);
+                
+            });
+        }
+        
+        
     };
     
     function endReloading(){
@@ -58,10 +63,10 @@
             tableView.setData(projects);
         };
         updateProjectView(projects);
-		actInd.hide();
+        actInd.hide();
         
     }
-	
+    
     
     showProjects();
     
