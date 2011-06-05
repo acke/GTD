@@ -1,18 +1,23 @@
 (function(){
 
     var inboxData = [];
-    var user = Titanium.App.Properties.getString("user");
-    var pass = Titanium.App.Properties.getString("pass");
-    var filename = 'inbox.xml';
+    var inboxWin = Titanium.UI.currentWindow;
+	var tableView;
     
     Ti.include('../Editors/new_task_editor.js', '../utils/inboxParsers.js', '../net/getInboxEntries.js');
     
-    var xhr = Ti.Network.createHTTPClient();
+    var actInd = Titanium.UI.createActivityIndicator({
+        bottom: 10,
+        height: 50,
+        width: 10,
+        top: 20,
+        style: Titanium.UI.iPhone.ActivityIndicatorStyle.BIG
+    });
     
-    createNewTableView = function(tableData){
-        var tableview = Titanium.UI.createTableView();
+    createNewTableView = function(){
+        var tableView = Titanium.UI.createTableView();
         
-        tableview.addEventListener('click', function(e){
+        tableView.addEventListener('click', function(e){
             Titanium.API.info("tableview event triggered: " + e.rowData.title);
             var w = createTaskEditor(e.rowData);
             
@@ -21,36 +26,42 @@
             });
         });
         
-        return tableview;
+        return tableView;
     };
     
-    showInbox = function(){
-        var tableView = createNewTableView();
-		
-		 getInboxEntries(function(data){
-		 	tableView.setData(data);
-		 });
-		
-        Titanium.UI.currentWindow.add(tableView);
-        
-        updateInboxView = function(data){
-            tableView.setData(data);
-        };
-        
-        Titanium.API.addEventListener('inboxItemRemoved', function(_e){
-            function removeItem(element, index, array){
-                if (element.id == _e.id) {
-                    inboxItems.splice(index, index);
-                    Ti.API.info("Element " + index + " contains the value " + element.id + " and will be deleted with match to: " + _e.id);
-                };
-                            };
-            
-            Ti.API.info("inboxItemRemoved occured");
-            inboxItems.forEach(removeItem);
-            
-            updateInboxView(inboxItems);
-        });
+    updateInboxView = function(inboxData){
+        tableView.setData(inboxData);
     };
+    
+    function endReloading(){
+        tableView = createNewTableView();
+        
+        inboxWin.add(tableView);
+        
+        updateInboxView(inboxEntries);
+        actInd.hide();
+        
+    }
+    
+    showInbox = function(){
+        inboxWin.add(actInd);
+        actInd.show();
+        
+        getInboxEntries(function(data){
+            inboxEntries = data;
+        });
+
+        setTimeout(endReloading, 1000);
+        
+    };
+    
+    Titanium.API.addEventListener('inboxItemRemoved', function(_e){
+        showInbox();
+    });
+    
+    Titanium.API.addEventListener('inboxUpdated', function(_e){
+        showInbox();
+    });
     
     showInbox();
     

@@ -151,10 +151,7 @@
             
             var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
             
-            //Dispatch a message to let others know the database has been updated
-            Ti.App.fireEvent("inboxItemRemoved", {
-                id: e.id
-            });
+			Ti.API.fireEvent('inboxItemRemoved', {text: e.id});
             
             w.close();
         });
@@ -178,9 +175,7 @@
             var t = postHTTPClient(poststring, fileName, 'InboxEntryID=' + e.id);
             
             //Dispatch a message to let others know the data has been updated
-            Ti.API.fireEvent('inboxItemRemoved', {
-                id: e.id
-            });
+            Ti.API.fireEvent('inboxItemRemoved', {text: inboxItemid});
         };
         
         var done = Titanium.UI.createButton({

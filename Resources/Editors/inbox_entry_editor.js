@@ -57,7 +57,7 @@
         gtd.ui.navigator.sendNewItem(tfItem.value);
         
         //Dispatch a message to let others know the data has been updated
-		Ti.API.fireEvent('inboxItemAdded', {text: tfItem.value});
+		Ti.API.fireEvent('inboxUpdated', {text: tfItem.value});
         w.close();
     });
     

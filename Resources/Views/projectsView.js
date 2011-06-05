@@ -29,6 +29,20 @@
         return tableview;
     };
     
+    function endReloading(){
+        var projects = getAllFromProjectsDB();
+        
+        var tableView = createNewTableView(projects);
+        
+        projWin.add(tableView);
+        
+        updateProjectView = function(projects){
+            tableView.setData(projects);
+        };
+        updateProjectView(projects);
+        actInd.hide();
+        
+    }
     
     showProjects = function(){
         var projects = getTitleAndIDFromProjectsDB();
@@ -52,20 +66,6 @@
         
     };
     
-    function endReloading(){
-        var projects = getAllFromProjectsDB();
-        
-        var tableView = createNewTableView(projects);
-        
-        projWin.add(tableView);
-        
-        updateProjectView = function(projects){
-            tableView.setData(projects);
-        };
-        updateProjectView(projects);
-        actInd.hide();
-        
-    }
     
     
     showProjects();

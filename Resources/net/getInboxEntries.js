@@ -10,7 +10,7 @@
         
         xhr.onload = function(){
             try {
-                var inboxItems = [];
+			    var inboxItems = [];
                 var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'inbox.xml');
                 var doc = this.responseXML.documentElement;
                 
@@ -24,7 +24,7 @@
                     _cb(inboxItems);
                 }
                 else {
-                    alert("Inbox empty");
+                    _cb(null);
                 };
                             } 
             catch (E) {
