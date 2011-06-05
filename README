@@ -5,6 +5,12 @@ Splash screen by Henrik Neckfors.
 MeldonGTD is developed by David Burstršm.
 http://meldon.org/gtd/
 
+New in version 0.3.4:
+- Inbox now updates when item is added or removed.
+- Added refresh on project table view when it is opened (with activity indicator)
+- Now possible to attach a new task to an existing project.
+- added support for landscape orientation in all table views
+
 New in version 0.3.3:
 - changed text on Done button to Completed
 - Updated about page with release info
