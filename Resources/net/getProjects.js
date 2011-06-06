@@ -10,17 +10,18 @@
         
         xhr.onload = function(){
             try {
+                var projects = [];
                 var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'projects.xml');
                 var doc = this.responseXML.documentElement;
                 
                 var items = doc.getElementsByTagName("project");
-                var projects = [];
-                
-                for (var c = 0; c < items.length; c++) {
-                    var item = items.item(c);
-                    projects = parseProject(projects, item);
-                    _cb(projects[c]);
-                }
+                if (items) {
+					for (var c = 0; c < items.length; c++) {
+						var item = items.item(c);
+						projects = parseProject(projects, item);
+						_cb(projects[c]);
+					}
+				}
                 
                 Ti.API.fireEvent('projectsReadFromService', {
                     projectList: projects
