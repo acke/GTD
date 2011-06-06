@@ -2,29 +2,30 @@
 
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
-    var filename = "projects.xml";
+    var filename = "checklists.xml";
     
-    getProjects = function(_cb){
-        Ti.API.info('reading projects from service');
+    getChecklists = function(_cb){
+        Ti.API.info('reading checklists from service');
         xhr = Ti.Network.createHTTPClient();
         
         xhr.onload = function(){
             try {
-                var projects = [];
+                var checklists = [];
                 var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
                 var doc = this.responseXML.documentElement;
                 
-                var items = doc.getElementsByTagName("project");
-                if (items) {
-					for (var c = 0; c < items.length; c++) {
-						var item = items.item(c);
-						projects = parseProject(projects, item);
-						_cb(projects[c]);
-					}
-				}
+                var items = doc.getElementsByTagName("checklist");
                 
-                Ti.API.fireEvent('projectsReadFromService', {
-                    projectList: projects
+                if (items) {
+                    for (var c = 0; c < items.length; c++) {
+                        var item = items.item(c);
+                        checklists = parseChecklists(checklists, item);
+                    }
+                    _cb(checklists);
+                }
+                
+                Ti.API.fireEvent('checklistsReadFromService', {
+                    checklistsList: checklists
                 });
             } 
             catch (E) {
@@ -45,7 +46,7 @@
         };
         
         xhr.file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
-        xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + "&action=list_projects");
+        xhr.open("POST", 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + "&action=checklists");
         
         xhr.send();
         
