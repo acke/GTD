@@ -28,6 +28,7 @@
         
         var tfuser = Titanium.UI.createTextField({
             value: Titanium.App.Properties.getString("user"),
+			hintText: 'Username',
             color: '#336699',
             height: 35,
             top: 80,
@@ -41,6 +42,7 @@
         
         var tfpass = Titanium.UI.createTextField({
             value: Titanium.App.Properties.getString("pass"),
+			hintText :'Password',
             color: '#336699',
             height: 35,
             top: 120,
