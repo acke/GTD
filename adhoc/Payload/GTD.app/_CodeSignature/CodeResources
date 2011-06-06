@@ -28,6 +28,14 @@
 		<data>
 		pogWnZuNtEHMbTg3LZkGE4FoWXs=
 		</data>
+		<key>KS_nav_mashup.png</key>
+		<data>
+		Eof7iFjv96HSB4cgVrwOW8vOGE0=
+		</data>
+		<key>KS_nav_phone.png</key>
+		<data>
+		6MkuV05ujShW11d1X/9Wk0ATFJU=
+		</data>
 		<key>KS_nav_ui.png</key>
 		<data>
 		n4pSaUdFbqlYsLmnWEMtcWxXdUs=
@@ -40,6 +48,10 @@
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
+		<key>about.html</key>
+		<data>
+		S8+nVrmJ+k7oGa73hNdOmxbEa5Q=
+		</data>
 		<key>appicon.png</key>
 		<data>
 		rr5qox5I8eZhuRgnTcSobJZVBWc=
@@ -51,10 +63,6 @@
 		<key>embedded.mobileprovision</key>
 		<data>
 		e3GVC3g8HwWGGIiEAw/OKEDm1fo=
-		</data>
-		<key>module.xcconfig</key>
-		<data>
-		pgruEOturRTYuY7nVSCTs+x0t6c=
 		</data>
 		<key>modules/ui/images/badge.png</key>
 		<data>
