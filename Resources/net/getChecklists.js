@@ -6,12 +6,12 @@
     
     getChecklists = function(_cb){
         Ti.API.info('reading checklists from service');
+        var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
         xhr = Ti.Network.createHTTPClient();
         
         xhr.onload = function(){
             try {
                 var checklists = [];
-                var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
                 var doc = this.responseXML.documentElement;
                 
                 var items = doc.getElementsByTagName("checklist");
@@ -19,19 +19,27 @@
                 if (items) {
                     for (var c = 0; c < items.length; c++) {
                         var item = items.item(c);
-                        checklists = parseChecklists(checklists, item);
+                        
+                        var children = item.childNodes;
+						var childData;
+                        for (var d = 0; d < children.length; d++) {
+                            var child = children.item(d);
+							childData += parseChecklistEntry(child);
+                        }
+						
+						Titanium.API.info(childData);
+                        checklists = parseChecklists(checklists, item, childData);
+						childData = '';
                     }
                     _cb(checklists);
                 }
                 
-                Ti.API.fireEvent('checklistsReadFromService', {
-                    checklistsList: checklists
-                });
             } 
             catch (E) {
                 alert(E);
             }
-            var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
+            f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
+            Titanium.API.info(f.read());
             
             Ti.API.fireEvent('updateLogLabel', {
                 text: f.read()

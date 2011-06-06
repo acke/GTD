@@ -1,7 +1,5 @@
 (function(){
 
-    //Titanium.include('../Editors/task_editor.js');
-    
     createNewTableView = function(tableData, doctitle){
         var tableview = Titanium.UI.createTableView();
         

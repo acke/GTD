@@ -53,8 +53,9 @@ createNewTableView = function(){
     
     tableView.addEventListener('scroll', function(e){
         var offset = e.contentOffset.y;
+        var t = Ti.UI.create2DMatrix();
+			
         if (offset <= -65.0 && !pulling) {
-            var t = Ti.UI.create2DMatrix();
             t = t.rotate(-180);
             pulling = true;
             arrow.animate({
@@ -66,7 +67,6 @@ createNewTableView = function(){
         else 
             if (pulling && offset > -65.0 && offset < 0) {
                 pulling = false;
-                var t = Ti.UI.create2DMatrix();
                 arrow.animate({
                     transform: t,
                     duration: 180

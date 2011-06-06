@@ -6,12 +6,12 @@
     
     getInboxEntries = function(_cb){
         Ti.API.info('reading inbox from service');
+        var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'inbox.xml');
         xhr = Ti.Network.createHTTPClient();
         
         xhr.onload = function(){
             try {
 			    var inboxItems = [];
-                var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'inbox.xml');
                 var doc = this.responseXML.documentElement;
                 
                 var items = doc.getElementsByTagName("inbox_entry");
@@ -30,7 +30,7 @@
             catch (E) {
                 alert(E);
             }
-            var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
+            f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
             
             Ti.API.fireEvent('updateLogLabel', {
                 text: f.read()

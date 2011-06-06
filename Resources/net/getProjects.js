@@ -30,7 +30,7 @@
             catch (E) {
                 alert(E);
             }
-            var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
+            f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, filename);
             
             Ti.API.fireEvent('updateLogLabel', {
                 text: f.read()
