@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
 <id>se.psab.gtd</id>
 <name>GTD</name>
-<version>0.3.4</version>
+<version>0.4.0</version>
 <publisher>Knut Funkel</publisher>
 <url>www.purplescout.se</url>
 <description>No description provided</description>

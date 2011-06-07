@@ -5,6 +5,11 @@ Splash screen by Henrik Neckfors.
 MeldonGTD is developed by David Burstršm.
 http://meldon.org/gtd/
 
+New in version 0.4.0:
+- Added support for viewing checklists
+- Hinttext added to login textfields.
+- A warning will not be shown when application is launched when user has no projects.
+    
 New in version 0.3.4:
 - Inbox now updates when item is added or removed.
 - Added refresh on project table view when it is opened (with activity indicator)
