@@ -12,6 +12,7 @@
         xhr.onload = function(){
             try {
                 var checklists = [];
+				var childData = "";
                 var doc = this.responseXML.documentElement;
                 
                 var items = doc.getElementsByTagName("checklist");
@@ -21,10 +22,9 @@
                         var item = items.item(c);
                         
                         var children = item.childNodes;
-						var childData;
                         for (var d = 0; d < children.length; d++) {
                             var child = children.item(d);
-							childData += parseChecklistEntry(child);
+							childData += '- ' +parseChecklistEntry(child)+"\n";
                         }
 						
 						Titanium.API.info(childData);
