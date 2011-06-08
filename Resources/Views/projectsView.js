@@ -21,9 +21,10 @@
             Titanium.API.info("tableview event triggered: " + e.rowData.title);
             var w = createProjectEditor(e.rowData);
             
-            w.open({
-                modal: true
+            Titanium.UI.currentTab.open(w, {
+                animated: true
             });
+            
         });
         
         return tableview;

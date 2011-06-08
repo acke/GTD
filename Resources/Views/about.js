@@ -1,7 +1,6 @@
 function createAboutTab(){
     var aboutWin = Titanium.UI.createWindow({
-        title: 'About',
-        backgroundColor: '#fff'
+        title: 'About'
     });
     
     var webView = Ti.UI.createWebView({

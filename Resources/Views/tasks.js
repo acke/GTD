@@ -54,7 +54,7 @@ createNewTableView = function(){
     tableView.addEventListener('scroll', function(e){
         var offset = e.contentOffset.y;
         var t = Ti.UI.create2DMatrix();
-			
+        
         if (offset <= -65.0 && !pulling) {
             t = t.rotate(-180);
             pulling = true;
@@ -97,9 +97,13 @@ createNewTableView = function(){
         Titanium.API.info("tableView event triggered: " + e.rowData.title);
         var w = createTaskEditor(e.rowData);
         
-        w.open({
-            modal: true
+        Titanium.UI.currentTab.open(w, {
+            animated: true
         });
+        
+        //        w.open({
+        //            modal: true
+        //        });
     });
     
     return tableView;

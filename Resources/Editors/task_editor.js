@@ -191,7 +191,7 @@
         w.toolbar = [flexSpace, action, flexSpace, done];
         
         var close = Titanium.UI.createButton({
-            title: 'Close',
+            title: 'Back',
             style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
         });
         w.setLeftNavButton(close);

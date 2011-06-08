@@ -40,7 +40,7 @@ function createChecklistViewer(data){
     w.add(scrollView);
     
     var close = Titanium.UI.createButton({
-        title: 'Close',
+        title: 'Back',
         style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
     });
     w.setLeftNavButton(close);

@@ -14,8 +14,6 @@
             contentWidth: 'auto',
             contentHeight: 'auto',
             top: 0,
-            left: 5,
-            right: 5,
             showVerticalScrollIndicator: true,
             showHorizontalScrollIndicator: true,
             backgroundColor: '#fff'
@@ -93,7 +91,7 @@
         
         
         var close = Titanium.UI.createButton({
-            title: 'Close',
+            title: 'Back',
             style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
         });
         win.setLeftNavButton(close);
