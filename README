@@ -5,6 +5,10 @@ Splash screen by Henrik Neckfors.
 MeldonGTD is developed by David Burstršm.
 http://meldon.org/gtd/
 
+New in version 0.4.1:
+- Changed text on "Close" button to "Back".
+- Changed animation from buttom up to left to right on editors.
+
 New in version 0.4.0:
 - Added support for viewing checklists
 - Hinttext added to login textfields.
