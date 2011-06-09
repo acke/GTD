@@ -13,14 +13,13 @@
             try {
                 var doc = this.responseXML.documentElement;
                 var items = doc.getElementsByTagName("task");
-                
-                var x = 0;
-                var doctitle = doc.evaluate("//result/tasks/task/name/text()").item(0).nodeValue;
-                for (var c = 0; c < items.length; c++) {
-                    var item = items.item(c);
-                    parseTasks(tasks, item);
-                    _cb(tasks[c]);
-                }
+                if (items) {
+					for (var c = 0; c < items.length; c++) {
+						var item = items.item(c);
+						parseTasks(tasks, item);
+						_cb(tasks[c]);
+					}
+				}
                 
             } 
             catch (E) {
