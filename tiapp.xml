@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-<id>se.psab.gtd</id>
+<id>se.purplescout.knut.gtd</id>
 <name>GTD</name>
 <version>0.4.1</version>
 <publisher>Knut Funkel</publisher>
