@@ -181,7 +181,7 @@
             var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id);
             
             //Dispatch a message to let others know the database has been updated
-            Ti.API.fireEvent('taskRemoved', {
+            Ti.API.fireEvent("taskItemUpdated", {
                 id: e.id
             });
             

@@ -1,26 +1,39 @@
-Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
+(function(){
 
-// create table view data object
-var data = [];
-var win = Titanium.UI.currentWindow;
-
-
-createNewTableView = function(){
-    var tableView = Titanium.UI.createTableView();
+    Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
+    
+    // create table view data object
+    var data = [];
+    var win = Titanium.UI.currentWindow;
+    var tableView;
+    var pulling = false;
+    var reloading = false;
     var arrow = getArrow();
     var actInd = getActIndicator();
     var statusLabel = getStatusLabel();
     var lastUpdatedLabel = getLastUpdatedLabel();
     var tableHeader = getTablePullHeader();
-    tableHeader.add(arrow);
-    tableHeader.add(statusLabel);
-    tableHeader.add(lastUpdatedLabel);
-    tableHeader.add(actInd);
-    tableView.headerPullView = tableHeader;
+    var actIndStart = Titanium.UI.createActivityIndicator({
+        bottom: 10,
+        height: 50,
+        width: 10,
+        top: 20,
+        style: Titanium.UI.iPhone.ActivityIndicatorStyle.BIG
+    });
     
+    updateTasksTablevView = function(tasks){
+        tableView.setData(tasks);
+    };
     
-    var pulling = false;
-    var reloading = false;
+    function prepTasks(){
+        tasks = getAllFromTasksDB();
+        tasks = sortTaskArray(tasks, win.title);
+        tasks = setTableViewHeaders(tasks, win.title);
+        tasks = setupTaskFilter(win, tasks);
+        
+        return tasks;
+    };
+    
     
     function beginReloading(){
         // just mock out the reload
@@ -29,15 +42,11 @@ createNewTableView = function(){
         getTasks(function(task){
             updateTasksDB(task);
         });
-    }
+    };
     
     function endReloading(){
-        var tasks = getAllFromTasksDB();
-        tasks = sortTaskArray(tasks, win.title);
-        tasks = setTableViewHeaders(tasks, win.title);
-        
-        tableView.setData(tasks);
-        
+        var tasks = prepTasks();
+        updateTasksTablevView(tasks);
         // when you're done, just reset
         tableView.setContentInsets({
             top: 0
@@ -49,111 +58,112 @@ createNewTableView = function(){
         statusLabel.text = "Pull down to refresh...";
         actInd.hide();
         arrow.show();
-    }
+    };
     
-    tableView.addEventListener('scroll', function(e){
-        var offset = e.contentOffset.y;
-        var t = Ti.UI.create2DMatrix();
+    createNewTableView = function(){
+        tableView = Titanium.UI.createTableView();
         
-        if (offset <= -65.0 && !pulling) {
-            t = t.rotate(-180);
-            pulling = true;
-            arrow.animate({
-                transform: t,
-                duration: 180
-            });
-            statusLabel.text = "Release to refresh...";
-        }
-        else 
-            if (pulling && offset > -65.0 && offset < 0) {
-                pulling = false;
+        tableHeader.add(arrow);
+        tableHeader.add(statusLabel);
+        tableHeader.add(lastUpdatedLabel);
+        tableHeader.add(actInd);
+        tableView.headerPullView = tableHeader;
+        
+        tableView.addEventListener('scroll', function(e){
+            var offset = e.contentOffset.y;
+            var t = Ti.UI.create2DMatrix();
+            
+            if (offset <= -65.0 && !pulling) {
+                t = t.rotate(-180);
+                pulling = true;
                 arrow.animate({
                     transform: t,
                     duration: 180
                 });
-                statusLabel.text = "Pull down to refresh...";
+                statusLabel.text = "Release to refresh...";
             }
-    });
-    
-    tableView.addEventListener('scrollEnd', function(e){
-        if (pulling && !reloading && e.contentOffset.y <= -65.0) {
-            reloading = true;
-            pulling = false;
-            arrow.hide();
-            actInd.show();
-            statusLabel.text = "Reloading...";
-            tableView.setContentInsets({
-                top: 60
-            }, {
-                animated: true
-            });
-            arrow.transform = Ti.UI.create2DMatrix();
-            beginReloading();
-        }
-    });
-    
-    
-    tableView.addEventListener('click', function(e){
-        Titanium.API.info("tableView event triggered: " + e.rowData.title);
-        var w = createTaskEditor(e.rowData);
-        
-        Titanium.UI.currentTab.open(w, {
-            animated: true
+            else 
+                if (pulling && offset > -65.0 && offset < 0) {
+                    pulling = false;
+                    arrow.animate({
+                        transform: t,
+                        duration: 180
+                    });
+                    statusLabel.text = "Pull down to refresh...";
+                }
         });
         
-        //        w.open({
-        //            modal: true
-        //        });
-    });
-    
-    return tableView;
-};
-
-showTasks = function(){
-    var tasks = getAllFromTasksDB();
-    
-    var tableView = createNewTableView();
-    
-    win.add(tableView);
-    
-    updateTasksView = function(tasks){
-        tasks = sortTaskArray(tasks, win.title);
-        tasks = setTableViewHeaders(tasks, win.title);
-        tasks = setupTaskFilter(win, tasks);
-        tableView.setData(tasks);
+        tableView.addEventListener('scrollEnd', function(e){
+            if (pulling && !reloading && e.contentOffset.y <= -65.0) {
+                reloading = true;
+                pulling = false;
+                arrow.hide();
+                actInd.show();
+                statusLabel.text = "Reloading...";
+                tableView.setContentInsets({
+                    top: 60
+                }, {
+                    animated: true
+                });
+                arrow.transform = Ti.UI.create2DMatrix();
+                beginReloading();
+            }
+        });
+        
+        
+        tableView.addEventListener('click', function(e){
+            Titanium.API.info("tableView event triggered: " + e.rowData.title);
+            var w = createTaskEditor(e.rowData);
+            
+            Titanium.UI.currentTab.open(w, {
+                animated: true
+            });
+            
+        });
+        
+        return tableView;
     };
-    updateTasksView(tasks);
     
-    Titanium.API.addEventListener('taskRemoved', function(_e){
-        function removeItem(element, index, array){
-            if (element.id == _e.id) {
-                tasks.splice(index, index);
-                Ti.API.info("Element " + index + " contains the value " + element.id + " and will be deleted with match to: " + _e.id);
-            };
-                    };
+    
+    
+    
+    showTasks = function(){
+        var tableView = createNewTableView();
+        actIndStart.hide();
+        win.add(tableView);
+        var tasks = prepTasks();
+        updateTasksTablevView(tasks);
         
-        Ti.API.info("taskRemoved occured");
-        tasks.forEach(removeItem);
+        Titanium.API.addEventListener('taskItemUpdated', function(_e){
         
-        updateTasksView(tasks);
-    });
-    
-    Titanium.API.addEventListener('taskItemUpdated', function(_e){
-    
-        Ti.API.info("taskItemUpdated occured");
+            Ti.API.info("taskItemUpdated occured");
+            
+            setTimeOut();
+        });
         
-        updateTasksView(tasks);
-    });
+        Titanium.API.addEventListener('taskFilterApplied', function(_e){
+        
+            Ti.API.info("taskFilterApplied occured");
+            tasks = getAllItemsMatchingProjectFromTasksDB(_e.projectSelectedValue);
+            updateTasksView(tasks);
+        });
+    };
     
-    Titanium.API.addEventListener('taskFilterApplied', function(_e){
+    setTimeOut = function(){
+        win.add(actIndStart);
+        actIndStart.show();
+        
+        initTasksDB();
+        getTasks(function(task){
+            updateTasksDB(task);
+        });
+        
+        setTimeout(showTasks, 1000);
+    };
     
-        Ti.API.info("taskFilterApplied occured");
-        tasks = getAllItemsMatchingProjectFromTasksDB(_e.projectSelectedValue);
-        updateTasksView(tasks);
-    });
-};
-
-showTasks();
+    setTimeOut();
+    
+})();
 
 
 

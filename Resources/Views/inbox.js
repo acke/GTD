@@ -51,7 +51,7 @@
             inboxEntries = data;
         });
 
-        setTimeout(endReloading, 1000);
+        setTimeout(endReloading, 500);
         
     };
     
