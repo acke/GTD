@@ -5,6 +5,12 @@ Splash screen by Henrik Neckfors.
 MeldonGTD is developed by David Burstršm.
 http://meldon.org/gtd/
 
+New in version 0.4.2:
+- Added support for emailing tasks
+- Tasksview is now updated when an item is commited/closed.
+- Bug fix when no credentials is entered, it should not complain about
+    finding no tasks.
+
 New in version 0.4.1:
 - Changed text on "Close" button to "Back".
 - Changed animation from buttom up to left to right on editors.
