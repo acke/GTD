@@ -2,7 +2,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js');
+    Ti.include('../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js', '../Editors/email_dialog.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
@@ -69,7 +69,7 @@
         
         var age = Titanium.UI.createLabel({
             color: '#000',
-            text: 'Task is ' + e.age + ' days old',
+            text: e.age,
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -124,7 +124,7 @@
         
         var notes = Titanium.UI.createTextArea({
             color: '#000',
-			value: (e.notes) ? e.notes : 'Add note',
+            value: (e.notes) ? e.notes : 'Add note',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -140,11 +140,11 @@
             borderRadius: 5,
             suppressReturn: false
         });
-		
-		notes.addEventListener('focus', function(){
-            if (notes.value == "Add note"){
-				notes.value = '';
-			}
+        
+        notes.addEventListener('focus', function(){
+            if (notes.value == "Add note") {
+                notes.value = '';
+            }
         });
         
         view.add(notes);
@@ -162,15 +162,21 @@
             systemButton: Titanium.UI.iPhone.SystemButton.ACTION
         });
         action.addEventListener('click', function(){
-            Titanium.UI.createAlertDialog({
-                title: 'ACTION',
-                message: 'ACTION: not yet implemented'
-            }).show();
+            //            Titanium.UI.createAlertDialog({
+            //                title: 'ACTION',
+            //                message: 'ACTION: not yet implemented'
+            //            }).show();
+            
+            var content = "Task: " + e.title + "\n" + age.text + "\n" + basicSliderLabel.text + "\n" + projectButton.text + "\n" + notes.value;
+            
+			Titanium.API.info(content);
+            var emailDialog = createEmail(e.title, content);
+            emailDialog.open();
         });
         
         var done = Titanium.UI.createButton({
-			title: 'Completed',
-			style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
+            title: 'Completed',
+            style: Titanium.UI.iPhone.SystemButtonStyle.BORDERED
             //systemButton: Titanium.UI.iPhone.SystemButton.DONE
         });
         done.addEventListener('click', function(){
