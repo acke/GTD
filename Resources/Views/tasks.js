@@ -129,9 +129,9 @@
     
     showTasks = function(){
         var tableView = createNewTableView();
+        var tasks = prepTasks();
         actIndStart.hide();
         win.add(tableView);
-        var tasks = prepTasks();
         updateTasksTablevView(tasks);
         
         Titanium.API.addEventListener('taskItemUpdated', function(_e){
@@ -145,7 +145,7 @@
         
             Ti.API.info("taskFilterApplied occured");
             tasks = getAllItemsMatchingProjectFromTasksDB(_e.projectSelectedValue);
-            updateTasksView(tasks);
+            updateTasksTablevView(tasks);
         });
     };
     
