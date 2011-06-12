@@ -162,8 +162,13 @@
             systemButton: Titanium.UI.iPhone.SystemButton.ACTION
         });
         action.addEventListener('click', function(){
-            var content = "Task: " + e.title + "\n" + age.text + ".\n Task is " + basicSliderLabel.text + ".\n Task belongs in " + projectButton.text + ".\n Task has these notes:\n " + notes.value;
-            
+            var content = "Task title" + e.title + "<br>";
+            content+= age.text + "<br>";
+			content+= "Task is " + basicSliderLabel.text + "<br>";
+			content+= "Task belongs in " + projectButton.text + "<br>"; 
+			content+= "Task notes: <br> " + notes.value + "<br>";
+			content+= "<br>Task sent from Meldon GTD Client"; 
+			 
 			Titanium.API.info(content);
             var emailDialog = createEmail(e.title, content);
             emailDialog.open();
