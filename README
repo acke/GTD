@@ -1,5 +1,7 @@
 This is a early development project aiming at doing an Iphone MeldonGTD client.
 
+Features:
+
 - The client has support for quickly adding new items to the inbox.
 - Next actions/tasks can be created from the items in the inbox.
 - Next actions/tasks can be associated with projects.
@@ -9,12 +11,14 @@ This is a early development project aiming at doing an Iphone MeldonGTD client.
 - The client has support for different sorting and filtering on the next actions/tasks.
 - Checklists created in the web service can be viewed in the client.
 
+Contributions:
+
 Splash screen by Henrik Neckfors.
 
 MeldonGTD is developed by David Burstršm.
 http://meldon.org/gtd/
 
-
+Versions:
 
 New in version 0.4.2:
 - Added support for emailing tasks
