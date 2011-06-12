@@ -25,11 +25,11 @@ getProjects(function (project){
 	updateProjectsDB(project);
 });
 
-initTasksDB();
-
-getTasks(function (task){
-	updateTasksDB(task);
-});
+//initTasksDB();
+//
+//getTasks(function (task){
+//	updateTasksDB(task);
+//});
 
 
 var tabs = gtd.ui.navigator.createApplicationTabGroup();
