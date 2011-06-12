@@ -69,7 +69,7 @@
         
         var age = Titanium.UI.createLabel({
             color: '#000',
-            text: e.age,
+            text: "Task is " +e.age+ " days old",
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -162,12 +162,7 @@
             systemButton: Titanium.UI.iPhone.SystemButton.ACTION
         });
         action.addEventListener('click', function(){
-            //            Titanium.UI.createAlertDialog({
-            //                title: 'ACTION',
-            //                message: 'ACTION: not yet implemented'
-            //            }).show();
-            
-            var content = "Task: " + e.title + "\n" + age.text + "\n" + basicSliderLabel.text + "\n" + projectButton.text + "\n" + notes.value;
+            var content = "Task: " + e.title + "\n" + age.text + ".\n Task is " + basicSliderLabel.text + ".\n Task belongs in " + projectButton.text + ".\n Task has these notes:\n " + notes.value;
             
 			Titanium.API.info(content);
             var emailDialog = createEmail(e.title, content);
