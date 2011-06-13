@@ -17,7 +17,6 @@ Ti.include('uicomponents/backgroundGradient.js');
             fontFamily: 'Helvetica Neue'
         },
         borderRadius: 5,
-        backgroundColor: 'white',
         left: 10,
         right: 10,
         height: 35,
