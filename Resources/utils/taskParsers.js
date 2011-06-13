@@ -7,6 +7,7 @@ function parseTasks(tasks, item){
     var notes = item.getElementsByTagName("notes").item(0).text;
     var projectID = item.getElementsByTagName("project_id").item(0).text;
     var age = item.getElementsByTagName("age").item(0).text;
+	var due_on = item.getElementsByTagName("due_on").item(0).text;
     var quadrantString = getQuadrantFromValue(Math.round(quadrant));
 	    
     tasks.push({
@@ -20,6 +21,7 @@ function parseTasks(tasks, item){
         notes: notes,
         projectID: projectID,
         age: age,
+		dueon: due_on,
         hasChild: true,
         isTask: true
     });

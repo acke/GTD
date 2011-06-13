@@ -2,19 +2,19 @@
 
     Titanium.API.info("Creating tasksdb.");
     var db = Titanium.Database.open('tasksdb');
-    db.execute('CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY, task_id INTEGER, title TEXT, notes TEXT, quadrant INTEGER, context TEXT, projectID INTEGER, age TEXT, quadrantString TEXT);');
+    db.execute('CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY, task_id INTEGER, title TEXT, notes TEXT, quadrant INTEGER, context TEXT, projectID INTEGER, age TEXT, dueon DATE, quadrantString TEXT);');
     db.close();
     
     initTasksDB = function(){
         var db = Titanium.Database.open('tasksdb');
         db.execute('DROP TABLE tasks');
-        db.execute('CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY, task_id INTEGER, title TEXT, notes TEXT, quadrant INTEGER, context TEXT, projectID INTEGER, age TEXT, quadrantString TEXT);');
+        db.execute('CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY, task_id INTEGER, title TEXT, notes TEXT, quadrant INTEGER, context TEXT, projectID INTEGER, age TEXT, dueon DATE, quadrantString TEXT);');
         db.close();
     };
     
     updateTasksDB = function(task){
         var db = Titanium.Database.open('tasksdb');
-        db.execute("INSERT INTO tasks(task_id, title, notes, quadrant, context, projectID, age, quadrantString) VALUES(?,?,?,?,?,?,?,?)", task.id, task.title, task.notes, task.quadrant, task.context, task.projectID, task.age, task.quadrantString);
+        db.execute("INSERT INTO tasks(task_id, title, notes, quadrant, context, projectID, age, dueon, quadrantString) VALUES(?,?,?,?,?,?,?,?,?)", task.id, task.title, task.notes, task.quadrant, task.context, task.projectID, task.age, task.dueon, task.quadrantString);
         db.close();
     };
 	
@@ -33,6 +33,7 @@
                 notes: result.fieldByName("notes"),
                 quadrant: result.fieldByName("quadrant"),
 				age: result.fieldByName("age"),
+				dueon: result.fieldByName("dueon"),
                 quadrantString: result.fieldByName("quadrantString"),
                 hasChild: true
             });
@@ -59,6 +60,7 @@
                 notes: result.fieldByName("notes"),
                 quadrant: result.fieldByName("quadrant"),
 				age: result.fieldByName("age"),
+				dueon: result.fieldByName("dueon"),
                 quadrantString: result.fieldByName("quadrantString"),
                 hasChild: true
             });

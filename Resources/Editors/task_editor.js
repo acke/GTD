@@ -69,7 +69,7 @@
         
         var age = Titanium.UI.createLabel({
             color: '#000',
-            text: "Task is " +e.age+ " days old",
+            text: "Task is " + e.age + " days old",
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
@@ -82,6 +82,44 @@
         });
         
         view.add(age);
+        
+        var dueonlabel = Titanium.UI.createLabel({
+            color: '#000',
+            text: "Select due date",
+            font: {
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            textAlign: 'left',
+            left: 10,
+            right: 150,
+            top: 145,
+            height: 35
+        });
+        
+        view.add(dueonlabel);
+		var date = new Date(e.dueon);
+        Titanium.API.info(date.toDateString());
+        var dueonButton = Titanium.UI.createLabel({
+            color: '#000',
+            text: (e.dueon) ? e.dueon : '0',
+            font: {
+                fontSize: 16,
+                fontFamily: 'Helvetica Neue'
+            },
+            textAlign: 'center',
+            left: 150,
+            right: 10,
+            top: 145,
+            height: 35,
+            borderWidth: 1,
+            borderRadius: 5
+        });
+        dueonButton.addEventListener('click', function(e){
+            alert("dueon selector not implemented yet");
+        });
+        
+        view.add(dueonButton);
         
         var projects = getTitleAndIDFromProjectsDB();
         var projectTitleList = ['Cancel'];
@@ -100,7 +138,6 @@
             }
         });
         
-        
         var projectButton = Titanium.UI.createLabel({
             color: '#000',
             text: (e.projectID) ? getProjectString(projects, e.projectID) : 'Select Project',
@@ -111,7 +148,7 @@
             textAlign: 'left',
             left: 10,
             right: 10,
-            top: 145,
+            top: 180,
             height: 35,
             borderWidth: 1,
             borderRadius: 5
@@ -129,7 +166,7 @@
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
-            top: 180,
+            top: 215,
             height: 200,
             left: 10,
             right: 10,
@@ -162,15 +199,15 @@
             systemButton: Titanium.UI.iPhone.SystemButton.ACTION
         });
         action.addEventListener('click', function(){
-            var content = "Task title" + e.title + "<br>";
-            content+= age.text + "<br>";
-			content+= "Task is " + basicSliderLabel.text + "<br>";
-			content+= "Task belongs in " + projectButton.text + "<br>"; 
-			content+= "Task notes: <br> " + notes.value + "<br>";
-			content+= "<br>Task sent from Meldon GTD Client"; 
-			 
-			Titanium.API.info(content);
-            var emailDialog = createEmail(e.title, content);
+            var content = task.value + "<br>";
+            content += age.text + "<br>";
+            content += "Task is " + basicSliderLabel.text + "<br>";
+            content += "Task belongs in project \"" + projectButton.text + "\"<br>";
+            content += "Task notes: <br> " + notes.value + "<br>";
+            content += "<br>Task sent from Meldon GTD Client";
+            
+            Titanium.API.info(content);
+            var emailDialog = createEmail(task.text, content);
             emailDialog.open();
         });
         

@@ -10,8 +10,11 @@
         height: 50,
         width: 10,
         top: 20,
-        style: Titanium.UI.iPhone.ActivityIndicatorStyle.BIG
+        style: Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN
     });
+	actInd.font = {fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'};
+	actInd.color = 'black';
+	actInd.message = 'Loading...';
     
     createNewTableView = function(projects){
         var tableview = Titanium.UI.createTableView();

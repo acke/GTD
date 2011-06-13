@@ -18,8 +18,15 @@
         height: 50,
         width: 10,
         top: 20,
-        style: Titanium.UI.iPhone.ActivityIndicatorStyle.BIG
+        style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
     });
+    actInd.font = {
+        fontFamily: 'Helvetica Neue',
+        fontSize: 15,
+        fontWeight: 'bold'
+    };
+    actInd.color = 'black';
+    actInd.message = 'Loading...';
     
     updateTasksTablevView = function(tasks){
         tableView.setData(tasks);
@@ -123,9 +130,6 @@
         
         return tableView;
     };
-    
-    
-    
     
     showTasks = function(){
         var tableView = createNewTableView();
