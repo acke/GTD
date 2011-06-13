@@ -4,15 +4,23 @@
     gtd.ui = {};
     gtd.ui.navigator = {};
     
-    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js'
-);
+    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js');
     
     var loglabel = null;
     
     var projects = [];
     var logtab = gtd.utils.logview.createTab();
     var loginTab = gtd.views.login.createTab();
-	var aboutTab = createAboutTab();
+    var aboutTab = createAboutTab();
+    // create table view
+    
+    var tableViewOptions = {
+        style: 1/*Bug in Titanium, this should be the style: Titanium.UI.iPhone.TableViewStyle.GROUPED*/,
+        headerTitle: 'GTD Folders',
+        footerTitle: "Purple Scout AB 2011",
+        backgroundColor: 'transparent',
+        rowBackgroundColor: 'white'
+    };
     
     gtd.ui.navigator.sendNewItem = function(value){
         var user = Titanium.App.Properties.getString("user");
@@ -28,7 +36,7 @@
     };
     
     gtd.ui.navigator.createTableView = function(){
-        var myTable = Ti.UI.createTableView();
+        var myTable = Ti.UI.createTableView(tableViewOptions);
         
         myTable.addEventListener('click', function(_e){
             var tab = gtd.ui.navigatorTab; // Open window on this tab , found defined below
@@ -42,11 +50,13 @@
             var data = [{
                 title: 'Inbox',
                 hasChild: true,
-                myData: 'Views/inbox.js'
+                myData: 'Views/inbox.js',
+                header: ''
             }, {
                 title: 'Tasks by prio',
                 hasChild: true,
-                myData: 'Views/tasks.js'
+                myData: 'Views/tasks.js',
+                header: ''
             }, {
                 title: 'Tasks by context',
                 hasChild: true,
@@ -66,15 +76,18 @@
             }, {
                 title: 'Projects',
                 hasChild: true,
-                myData: 'Views/projectsView.js'
+                myData: 'Views/projectsView.js',
+                header: ''
             }, {
                 title: 'Checklists',
                 hasChild: true,
-                myData: 'Views/checklists.js'
+                myData: 'Views/checklists.js',
+                header: ''
             }, {
                 title: 'API',
                 hasChild: true,
-                myData: 'Views/api.js'
+                myData: 'Views/api.js',
+                header: ''
             }];
             
             myTable.setData(data);
@@ -92,8 +105,16 @@
             height: 30,
             width: 250,
             bottom: 110,
-			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
+        if (Ti.Platform.name == 'android') {
+            win.backgroundColor = '#4e5c4d';
+			
+        }
+        else {
+            win.backgroundColor = '#533A73';
+			
+        }
         win.add(gtd.ui.navigator.createTableView());
         win.rightNavButton = gtd.ui.Buttons.createButton();
         
@@ -105,7 +126,7 @@
             title: _myData.title,
             backgroundColor: '#fff',
             barColor: '#111',
-			orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
         });
         win.rightNavButton = gtd.ui.Buttons.createButton();
         
@@ -118,7 +139,7 @@
         
         gtd.ui.navigatorTab = Ti.UI.createTab({
             title: 'MeldonGTD Client',
-			icon: 'KS_nav_ui.png',
+            icon: 'KS_nav_ui.png',
             window: navigator
         });
         
@@ -134,7 +155,7 @@
         }
         
         tabGroup.addTab(logtab);
-		tabGroup.addTab(aboutTab);
+        tabGroup.addTab(aboutTab);
         
         return tabGroup;
     };
