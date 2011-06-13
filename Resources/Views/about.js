@@ -1,18 +1,10 @@
+Ti.include('uicomponents/backgroundGradient.js');
+
 function createAboutTab(){
-	var backgroundGradient = {
-				type: 'linear',
-				colors: [{
-					color: '#533A73',
-					position: 0.0
-				}, {
-					color: '#FFFFFF',
-					position: 1.0
-				}]
-			};
 			
     var aboutWin = Titanium.UI.createWindow({
         title: 'About',
-		backgroundGradient: backgroundGradient
+		backgroundGradient: getBackgroundGradient()
     });
     
     var webView = Ti.UI.createWebView({

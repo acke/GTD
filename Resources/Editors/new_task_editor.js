@@ -2,12 +2,13 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js', '../utils/quadrant.js', '../database/projectsDB.js', '../utils/projectParsers.js');
-    
+    Ti.include('../uicomponents/backgroundGradient.js', '../net/httppost.js', '../utils/quadrant.js', '../database/projectsDB.js', '../utils/projectParsers.js');
+ 
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
             title: 'New task',
-            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+			backgroundGradient: getBackgroundGradient()
         });
         
         var view = Titanium.UI.createScrollView({
@@ -15,12 +16,10 @@
             contentHeight: 'auto',
             top: 0,
             showVerticalScrollIndicator: true,
-            showHorizontalScrollIndicator: true,
-            backgroundColor: '#fff'
+            showHorizontalScrollIndicator: true
         });
         
         var task = Titanium.UI.createTextField({
-            color: '#000',
             value: e.title,
             font: {
                 fontSize: 16,
@@ -30,6 +29,8 @@
             top: 10,
             left: 10,
             right: 10,
+			borderRadius: 5,
+			backgroundColor: 'white',
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
@@ -37,7 +38,6 @@
         
         var basicSliderLabel = Titanium.UI.createLabel({
             text: 'Basic Slider - value = 0',
-            color: '#000',
             font: {
                 fontFamily: 'Helvetica Neue',
                 fontSize: 15
@@ -86,7 +86,6 @@
         
         
         var projectButton = Titanium.UI.createLabel({
-            color: '#000',
             text: (e.projectID) ? getProjectString(projects, e.projectID) : 'Select Project',
             font: {
                 fontSize: 16,
@@ -98,7 +97,8 @@
             top: 120,
             height: 35,
             borderWidth: 1,
-            borderRadius: 5
+            borderRadius: 5,
+			backgroundColor: 'white',
         });
         projectButton.addEventListener('click', function(e){
             dialog.show();

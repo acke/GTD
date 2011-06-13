@@ -2,12 +2,13 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js', '../Editors/email_dialog.js');
+    Ti.include('../uicomponents/backgroundGradient.js', '../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js', '../Editors/email_dialog.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
             title: 'Edit task',
-            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+            backgroundGradient: getBackgroundGradient()
         });
         
         var view = Titanium.UI.createScrollView({
@@ -15,8 +16,7 @@
             contentHeight: 'auto',
             top: 0,
             showVerticalScrollIndicator: true,
-            showHorizontalScrollIndicator: true,
-            backgroundColor: '#fff'
+            showHorizontalScrollIndicator: true
         });
         
         var task = Titanium.UI.createTextField({
@@ -31,14 +31,15 @@
             left: 10,
             right: 10,
             borderWidth: 1,
-            borderRadius: 3
+            borderRadius: 5,
+            backgroundColor: 'white'
         });
         
         view.add(task);
         
         var basicSliderLabel = Titanium.UI.createLabel({
             text: 'Basic Slider - value = 0',
-            color: '#000',
+            borderRadius: 5,
             font: {
                 fontFamily: 'Helvetica Neue',
                 fontSize: 15
@@ -68,7 +69,7 @@
         view.add(basicSlider);
         
         var age = Titanium.UI.createLabel({
-            color: '#000',
+            borderRadius: 5,
             text: "Task is " + e.age + " days old",
             font: {
                 fontSize: 16,
@@ -84,7 +85,7 @@
         view.add(age);
         
         var dueonlabel = Titanium.UI.createLabel({
-            color: '#000',
+            borderRadius: 5,
             text: "Select due date",
             font: {
                 fontSize: 16,
@@ -98,7 +99,7 @@
         });
         
         view.add(dueonlabel);
-		var date = new Date(e.dueon);
+        var date = new Date(e.dueon);
         Titanium.API.info(date.toDateString());
         var dueonButton = Titanium.UI.createLabel({
             color: '#000',
@@ -139,7 +140,6 @@
         });
         
         var projectButton = Titanium.UI.createLabel({
-            color: '#000',
             text: (e.projectID) ? getProjectString(projects, e.projectID) : 'Select Project',
             font: {
                 fontSize: 16,
@@ -151,7 +151,8 @@
             top: 180,
             height: 35,
             borderWidth: 1,
-            borderRadius: 5
+            borderRadius: 5,
+            backgroundColor: 'white'
         });
         projectButton.addEventListener('click', function(e){
             dialog.show();

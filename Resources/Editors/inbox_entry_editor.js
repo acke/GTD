@@ -1,33 +1,36 @@
+Ti.include('uicomponents/backgroundGradient.js');
+
 (function(){
 
     var w = Ti.UI.createWindow({
         title: 'Inbox',
-		orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+        orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+        backgroundGradient: getBackgroundGradient()
     });
     
-    var view = Ti.UI.createView({
-        backgroundColor: '#fff'
-    });
+    var view = Ti.UI.createView();
     
     var newItem = Titanium.UI.createLabel({
-        color: '#999',
         text: 'Add a new item: ',
         font: {
             fontSize: 20,
             fontFamily: 'Helvetica Neue'
         },
-		left: 10,
-		right: 10,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        left: 10,
+        right: 10,
         height: 35,
         top: 10
     });
     
     var tfItem = Titanium.UI.createTextField({
-        color: '#336699',
+        borderRadius: 5,
+        backgroundColor: 'white',
         height: 35,
         top: 40,
         left: 10,
-		right: 10,
+        right: 10,
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
     });
     
@@ -57,7 +60,9 @@
         gtd.ui.navigator.sendNewItem(tfItem.value);
         
         //Dispatch a message to let others know the data has been updated
-		Ti.API.fireEvent('inboxUpdated', {text: tfItem.value});
+        Ti.API.fireEvent('inboxUpdated', {
+            text: tfItem.value
+        });
         w.close();
     });
     

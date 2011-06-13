@@ -2,12 +2,13 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../net/httppost.js', '../utils/quadrant.js');
+    Ti.include('../uicomponents/backgroundGradient.js', '../net/httppost.js', '../utils/quadrant.js');
     
     createProjectEditor = function(e){
         var win = Ti.UI.createWindow({
             title: 'Project',
-            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+            backgroundGradient: getBackgroundGradient()
         });
         
         var view = Titanium.UI.createScrollView({
@@ -15,8 +16,7 @@
             contentHeight: 'auto',
             top: 0,
             showVerticalScrollIndicator: true,
-            showHorizontalScrollIndicator: true,
-            backgroundColor: '#fff'
+            showHorizontalScrollIndicator: true
         });
         
         var title = Titanium.UI.createLabel({

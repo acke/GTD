@@ -1,9 +1,11 @@
+Ti.include('../uicomponents/backgroundGradient.js');
 
 function createChecklistViewer(data){
     var w = Ti.UI.createWindow({
         title: data.title,
 		backgroundColor:'#fff',
-        orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+        orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+		backgroundGradient: getBackgroundGradient()
     });
     
     var scrollView = Titanium.UI.createScrollView({

@@ -4,7 +4,7 @@
     gtd.ui = {};
     gtd.ui.navigator = {};
     
-    Ti.include('uicomponents/tableViewOptions.js', 'Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js');
+    Ti.include('uicomponents/backgroundGradient.js', 'uicomponents/tableViewOptions.js', 'Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js');
     
     var loglabel = null;
     
@@ -12,16 +12,6 @@
     var logtab = gtd.utils.logview.createTab();
     var loginTab = gtd.views.login.createTab();
     var aboutTab = createAboutTab();
-	var backgroundGradient = {
-				type: 'linear',
-				colors: [{
-					color: '#533A73',
-					position: 0.0
-				}, {
-					color: '#FFFFFF',
-					position: 1.0
-				}]
-			};
     
     gtd.ui.navigator.sendNewItem = function(value){
         var user = Titanium.App.Properties.getString("user");
@@ -107,7 +97,7 @@
             width: 250,
             bottom: 110,
             orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
-			backgroundGradient: backgroundGradient
+			backgroundGradient: getBackgroundGradient()
         });
        
         win.add(gtd.ui.navigator.createTableView());
@@ -122,7 +112,7 @@
             backgroundColor: '#fff',
             barColor: '#111',
             orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
-			backgroundGradient: backgroundGradient
+			backgroundGradient: getBackgroundGradient()
         });
         win.rightNavButton = gtd.ui.Buttons.createButton();
         

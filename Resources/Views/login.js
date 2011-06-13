@@ -1,17 +1,8 @@
 (function(){
     gtd.views = {};
     gtd.views.login = {};
-    
-    var backgroundGradient = {
-        type: 'linear',
-        colors: [{
-            color: '#533A73',
-            position: 0.0
-        }, {
-            color: '#FFFFFF',
-            position: 1.0
-        }]
-    };
+	
+	Ti.include('uicomponents/backgroundGradient.js');
     
     //
     // create controls tab and root window
@@ -21,7 +12,7 @@
             title: 'Configuration',
             backgroundColor: '#fff',
             orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
-            backgroundGradient: backgroundGradient
+			backgroundGradient: getBackgroundGradient()
         });
         
         win2.add(Titanium.UI.createLabel({
