@@ -1,6 +1,6 @@
 (function(){
 
-    Ti.include('../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
+    Ti.include('../uicomponents/tableViewOptions.js', '../net/getTasks.js', '../utils/taskParsers.js', '../Editors/task_editor.js', '../utils/quadrant.js', '../utils/taskSorter.js', '../utils/setTableViewHeaders.js', '../database/tasksDB.js', '../uicomponents/createTablePullHeader.js', '../Buttons/task_filter_action.js');
     
     // create table view data object
     var data = [];
@@ -68,7 +68,7 @@
     };
     
     createNewTableView = function(){
-        tableView = Titanium.UI.createTableView();
+        tableView = Titanium.UI.createTableView(getTableViewOptions());
         
         tableHeader.add(arrow);
         tableHeader.add(statusLabel);

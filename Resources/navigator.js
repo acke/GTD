@@ -4,7 +4,7 @@
     gtd.ui = {};
     gtd.ui.navigator = {};
     
-    Ti.include('Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js');
+    Ti.include('uicomponents/tableViewOptions.js', 'Buttons/new_item_inbox.js', 'net/sendHTTP.js', 'utils/log.js', 'Views/login.js', 'Views/about.js');
     
     var loglabel = null;
     
@@ -12,15 +12,16 @@
     var logtab = gtd.utils.logview.createTab();
     var loginTab = gtd.views.login.createTab();
     var aboutTab = createAboutTab();
-    // create table view
-    
-    var tableViewOptions = {
-        style: 1/*Bug in Titanium, this should be the style: Titanium.UI.iPhone.TableViewStyle.GROUPED*/,
-        headerTitle: 'GTD Folders',
-        footerTitle: "Purple Scout AB 2011",
-        backgroundColor: 'transparent',
-        rowBackgroundColor: 'white'
-    };
+	var backgroundGradient = {
+				type: 'linear',
+				colors: [{
+					color: '#533A73',
+					position: 0.0
+				}, {
+					color: '#FFFFFF',
+					position: 1.0
+				}]
+			};
     
     gtd.ui.navigator.sendNewItem = function(value){
         var user = Titanium.App.Properties.getString("user");
@@ -36,7 +37,7 @@
     };
     
     gtd.ui.navigator.createTableView = function(){
-        var myTable = Ti.UI.createTableView(tableViewOptions);
+        var myTable = Ti.UI.createTableView(getTableViewOptions());
         
         myTable.addEventListener('click', function(_e){
             var tab = gtd.ui.navigatorTab; // Open window on this tab , found defined below
@@ -105,16 +106,10 @@
             height: 30,
             width: 250,
             bottom: 110,
-            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+			backgroundGradient: backgroundGradient
         });
-        if (Ti.Platform.name == 'android') {
-            win.backgroundColor = '#4e5c4d';
-			
-        }
-        else {
-            win.backgroundColor = '#533A73';
-			
-        }
+       
         win.add(gtd.ui.navigator.createTableView());
         win.rightNavButton = gtd.ui.Buttons.createButton();
         
@@ -126,7 +121,8 @@
             title: _myData.title,
             backgroundColor: '#fff',
             barColor: '#111',
-            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+			backgroundGradient: backgroundGradient
         });
         win.rightNavButton = gtd.ui.Buttons.createButton();
         

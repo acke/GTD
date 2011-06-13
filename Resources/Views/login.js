@@ -2,6 +2,17 @@
     gtd.views = {};
     gtd.views.login = {};
     
+    var backgroundGradient = {
+        type: 'linear',
+        colors: [{
+            color: '#533A73',
+            position: 0.0
+        }, {
+            color: '#FFFFFF',
+            position: 1.0
+        }]
+    };
+    
     //
     // create controls tab and root window
     //
@@ -9,7 +20,8 @@
         var win2 = Titanium.UI.createWindow({
             title: 'Configuration',
             backgroundColor: '#fff',
-            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT]
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+            backgroundGradient: backgroundGradient
         });
         
         win2.add(Titanium.UI.createLabel({
@@ -28,7 +40,7 @@
         
         var tfuser = Titanium.UI.createTextField({
             value: Titanium.App.Properties.getString("user"),
-			hintText: 'Username',
+            hintText: 'Username',
             color: '#336699',
             height: 35,
             top: 80,
@@ -42,12 +54,12 @@
         
         var tfpass = Titanium.UI.createTextField({
             value: Titanium.App.Properties.getString("pass"),
-			hintText :'Password',
+            hintText: 'Password',
             color: '#336699',
             height: 35,
             top: 120,
             left: 10,
-			right: 10,
+            right: 10,
             width: 300,
             passwordMask: true,
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
@@ -64,8 +76,8 @@
             },
             height: 100,
             top: 220,
-			left: 10,
-			right: 10,
+            left: 10,
+            right: 10,
             textAlign: 'left',
             width: 'auto'
         });

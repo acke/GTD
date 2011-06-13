@@ -1,6 +1,6 @@
 (function(){
 
-    Ti.include('../utils/projectParsers.js', '../Editors/project_editor.js', '../database/projectsDB.js', '../net/getProjects.js');
+    Ti.include('../uicomponents/tableViewOptions.js', '../utils/projectParsers.js', '../Editors/project_editor.js', '../database/projectsDB.js', '../net/getProjects.js');
     
     var projects = [];
     var projWin = Titanium.UI.currentWindow;
@@ -10,14 +10,14 @@
         height: 50,
         width: 10,
         top: 20,
-        style: Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN
+        style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
     });
 	actInd.font = {fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'};
 	actInd.color = 'black';
 	actInd.message = 'Loading...';
     
     createNewTableView = function(projects){
-        var tableview = Titanium.UI.createTableView();
+        var tableview = Titanium.UI.createTableView(getTableViewOptions());
         tableview.setData(projects);
         
         tableview.addEventListener('click', function(e){

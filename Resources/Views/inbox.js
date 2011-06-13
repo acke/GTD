@@ -4,21 +4,21 @@
     var inboxWin = Titanium.UI.currentWindow;
 	var tableView;
     
-    Ti.include('../Editors/new_task_editor.js', '../utils/inboxParsers.js', '../net/getInboxEntries.js');
+    Ti.include('../uicomponents/tableViewOptions.js', '../Editors/new_task_editor.js', '../utils/inboxParsers.js', '../net/getInboxEntries.js');
     
     var actInd = Titanium.UI.createActivityIndicator({
         bottom: 10,
         height: 50,
         width: 10,
         top: 20,
-        style: Titanium.UI.iPhone.ActivityIndicatorStyle.BIG
+        style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
     });
 	actInd.font = {fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'};
 	actInd.color = 'black';
 	actInd.message = 'Loading...';
     
     createNewTableView = function(){
-        var tableView = Titanium.UI.createTableView();
+        var tableView = Titanium.UI.createTableView(getTableViewOptions());
         
         tableView.addEventListener('click', function(e){
             Titanium.API.info("tableview event triggered: " + e.rowData.title);

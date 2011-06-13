@@ -19,6 +19,14 @@ http://meldon.org/gtd/
 
 VERSIONS:
 
+New in version 0.4.5:
+- New table view design in all tableviews.
+- Black act ind is selected for all views.
+
+New in version 0.4.4:
+- New table view design on overview window.
+- Different activity indicators for test purposes.
+
 New in version 0.4.3:
 - Updated email formating.
 
