@@ -20,13 +20,10 @@
         top: 20,
         style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
     });
-    actInd.font = {
-        fontFamily: 'Helvetica Neue',
-        fontSize: 15,
-        fontWeight: 'bold'
-    };
-    actInd.color = 'black';
-    actInd.message = 'Loading...';
+	
+	actIndStart.font = {fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'};
+	actIndStart.color = 'black';
+	actIndStart.message = 'Loading...';
     
     updateTasksTablevView = function(tasks){
         tableView.setData(tasks);
@@ -141,12 +138,11 @@
         Titanium.API.addEventListener('taskItemUpdated', function(_e){
         
             Ti.API.info("taskItemUpdated occured");
-            
             setTimeOut();
         });
         
         Titanium.API.addEventListener('taskFilterApplied', function(_e){
-        
+        	
             Ti.API.info("taskFilterApplied occured");
             tasks = getAllItemsMatchingProjectFromTasksDB(_e.projectSelectedValue);
             updateTasksTablevView(tasks);

@@ -30,7 +30,7 @@
             left: 10,
             right: 10,
 			borderRadius: 5,
-			//backgroundColor: 'white',
+			backgroundColor: 'white',
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
@@ -98,7 +98,7 @@
             height: 35,
             borderWidth: 1,
             borderRadius: 5,
-			backgroundColor: 'white',
+			backgroundColor: 'white'
         });
         projectButton.addEventListener('click', function(e){
             dialog.show();

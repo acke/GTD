@@ -98,12 +98,10 @@
             top: 145,
             height: 35
         });
-        
         view.add(dueonlabel);
-        var date = new Date(e.dueon);
-        Titanium.API.info(date.toDateString());
+
+		Titanium.API.info(e.dueon);
         var dueonButton = Titanium.UI.createLabel({
-            color: '#000',
             text: (e.dueon) ? e.dueon : '0',
             font: {
                 fontSize: 16,
@@ -115,7 +113,8 @@
             top: 145,
             height: 35,
             borderWidth: 1,
-            borderRadius: 5
+            borderRadius: 5,
+            backgroundColor: 'white'
         });
         dueonButton.addEventListener('click', function(e){
             alert("dueon selector not implemented yet");
@@ -253,7 +252,7 @@
             var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action2';
             var fileName = 'task.xml';
             
-            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn=0' + '&Duration=0' + '&Effort=0' + '&ProjectID=' + projectSelectedValue + '&Context=default' + '&Quadrant=' + basicSlider.value);
+            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn='+dueonButton.text + '&Duration=0' + '&Effort=0' + '&ProjectID=' + projectSelectedValue + '&Context=default' + '&Quadrant=' + basicSlider.value);
             
             //Dispatch a message to let others know the database has been updated
             Ti.API.fireEvent("taskItemUpdated", {

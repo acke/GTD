@@ -20,6 +20,7 @@ function setQuadrantHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID, //Not implemented in the API yet.
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
         }
@@ -33,6 +34,7 @@ function setQuadrantHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID, //Not implemented in the API yet.
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
             
@@ -65,6 +67,7 @@ function setContextHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID,
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
         }
@@ -78,6 +81,7 @@ function setContextHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID,
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
             
@@ -107,6 +111,7 @@ function setAgeHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID,
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
         }
@@ -120,6 +125,7 @@ function setAgeHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID,
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
             
@@ -132,6 +138,49 @@ function setAgeHeaders(tasks){
     return newArray;
 };
 
+function setDueonHeaders(tasks){
+    var newArray = [];
+	var previousItem = "";
+    
+    function setDueonHeader(element, index, array){
+        //It should not be === here, since the object is not the same, but the value is.
+        if (element.dueon !== previousItem) {
+            newArray.push({
+                title: element.title,
+                header: "Due on " + element.dueon,
+                id: element.id,
+                quadrant: element.quadrant,
+                quadrantString: element.quadrantString,
+                context: element.context,
+                notes: element.notes,
+                projectID: element.projectID,
+                age: element.age,
+				dueon: element.dueon,
+                hasChild: true
+            });
+        }
+        else {
+            newArray.push({
+                title: element.title,
+                id: element.id,
+                quadrant: element.quadrant,
+                quadrantString: element.quadrantString,
+                context: element.context,
+                notes: element.notes,
+                projectID: element.projectID,
+                age: element.age,
+				dueon: element.dueon,
+                hasChild: true
+            });
+            
+        };
+        previousItem = element.dueon;
+    };
+    
+    tasks.forEach(setDueonHeader);
+    
+    return newArray;
+};
 
 
 function setProjectHeaders(tasks){
@@ -156,6 +205,7 @@ function setProjectHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID,
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
         }
@@ -170,6 +220,7 @@ function setProjectHeaders(tasks){
                 notes: element.notes,
                 projectID: element.projectID,
                 age: element.age,
+				dueon: element.dueon,
                 hasChild: true
             });
             
@@ -189,6 +240,9 @@ function setTableViewHeaders(tasks, sorterType){
             break;
         case 'Tasks by age':
             tasks = setAgeHeaders(tasks);
+            break;
+		case 'Tasks by due date':
+            tasks = setDueonHeaders(tasks);
             break;
         case 'Tasks by context':
             tasks = setContextHeaders(tasks);
