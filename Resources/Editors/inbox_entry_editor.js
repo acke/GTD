@@ -24,13 +24,12 @@ Ti.include('uicomponents/backgroundGradient.js');
     });
     
     var tfItem = Titanium.UI.createTextField({
-        borderRadius: 5,
         backgroundColor: 'white',
         height: 35,
         top: 40,
         left: 10,
         right: 10,
-        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
     });
     
     view.add(newItem);

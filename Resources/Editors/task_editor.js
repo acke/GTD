@@ -32,7 +32,8 @@
             right: 10,
             borderWidth: 1,
             borderRadius: 5,
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
         view.add(task);

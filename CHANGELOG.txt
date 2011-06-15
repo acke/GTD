@@ -1,1 +1,88 @@
-Place your change log text here.  This file will be incorporated with your app at package time.
+This is a early development project aiming at doing an Iphone MeldonGTD client.
+
+FEATURES:
+- The client has support for quickly adding new items to the inbox.
+- Next actions/tasks can be created from the items in the inbox.
+- Next actions/tasks can be associated with projects.
+- Next actions/tasks can have importance and urgency attached.
+- Next actions/tasks can have notes.
+- Next actions/tasks can be sent as email.
+- The client has support for different sorting and filtering on the next actions/tasks.
+- Checklists created in the web service can be viewed in the client.
+
+CONTRIBUTIONS:
+
+Splash screen by Henrik Neckfors.
+
+MeldonGTD is developed by David Burstršm.
+http://meldon.org/gtd/
+
+VERSIONS:
+
+New in version 0.5.1:
+- updated editor looks
+
+New in version 0.5.0:
+- New table view design in all tableviews.
+- Black act ind is selected for all views.
+
+New in version 0.4.4:
+- New table view design on overview window.
+- Different activity indicators for test purposes.
+
+New in version 0.4.3:
+- Updated email formating.
+
+New in version 0.4.2:
+- Added support for emailing tasks
+- Tasksview is now updated when an item is commited/closed.
+- Bug fix when no credentials is entered, it should not complain about
+    finding no tasks.
+
+New in version 0.4.1:
+- Changed text on "Close" button to "Back".
+- Changed animation from buttom up to left to right on editors.
+
+New in version 0.4.0:
+- Added support for viewing checklists
+- Hinttext added to login textfields.
+- A warning will not be shown when application is launched when user has no projects.
+    
+New in version 0.3.4:
+- Inbox now updates when item is added or removed.
+- Added refresh on project table view when it is opened (with activity indicator)
+- Now possible to attach a new task to an existing project.
+- added support for landscape orientation in all table views
+
+New in version 0.3.3:
+- changed text on Done button to Completed
+- Updated about page with release info
+- Now handling empty inbox
+- smaller gui modifications  
+
+New in version 0.3.2:
+- Fixed broken age table view
+
+New in version 0.3.1:
+- Fixed broken table viewer headers
+
+New in version 0.3.0:
+- Added filter on projects in tasks by project view.
+- Added headers to filter views (prio, age, context, projects)
+- Added About page. 
+- Various GUI improvments. (replaced fixed width with left: 10,	right: 10)
+
+New in version 0.2.6:
+- Added possibility to sort on prio, age and context.
+- added scroll down in tasks table views to refresh data.
+
+New in version 0.2.3:
+- Implemented support for list and select projects in the task editor. 
+- Added a project detail viewer 
+
+New in version 0.2.0:
+- added support for viewing project
+- Added update inboxview and taskview when items are commited or done. 
+- cancel is on the right place in the project selector in tasks
+- Added support for updating quadrant on a task
+

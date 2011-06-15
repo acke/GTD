@@ -38,7 +38,7 @@
             left: 10,
             right: 10,
             width: 300,
-            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
         win2.add(tfuser);
@@ -53,7 +53,7 @@
             right: 10,
             width: 300,
             passwordMask: true,
-            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+            borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
         win2.add(tfpass);
