@@ -1,45 +1,45 @@
 (function(){
     Ti.include('../uicomponents/backgroundGradient.js');
     
-    selectDate = function(){
+    selectDate = function(_cb){
         var win = Ti.UI.createWindow({
             title: 'Pick a date',
-            //orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
-            backgroundGradient: getBackgroundGradient()
+            orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
+            //backgroundGradient: getBackgroundGradient()
+            backgroundColor: 'black'
         });
         
         var minDate = new Date();
-        minDate.setFullYear(2009);
+        minDate.setFullYear(2010);
         minDate.setMonth(0);
         minDate.setDate(1);
         
         var maxDate = new Date();
-        maxDate.setFullYear(2009);
+        maxDate.setFullYear(2020);
         maxDate.setMonth(11);
         maxDate.setDate(31);
         
         var value = new Date();
-        value.setFullYear(2009);
-        value.setMonth(0);
-        value.setDate(1);
+        value.setFullYear(value.getFullYear());
+        value.setMonth(value.getMonth());
+        value.setDate(value.getDate());
         
-        var returnDate;
+        var picker = Ti.UI.createPicker({
+            type: Ti.UI.PICKER_TYPE_DATE_AND_TIME,
+            minDate: minDate,
+            maxDate: maxDate,
+            value: value
+        });
         
-//        var picker = Ti.UI.createPicker({
-//            type: Ti.UI.PICKER_TYPE_DATE_AND_TIME,
-//            minDate: minDate,
-//            maxDate: maxDate,
-//            value: value
-//        });
-//        
-//        // turn on the selection indicator (off by default)
-//        picker.selectionIndicator = true;
-//        
-//        win.add(picker);
+        // turn on the selection indicator (off by default)
+        picker.selectionIndicator = true;
+        picker.setLocale(Titanium.Platform.locale);
+        
+        win.add(picker);
         
         var label = Ti.UI.createLabel({
             text: 'Choose a date/time',
-            top: 6,
+            top: 10,
             width: 'auto',
             height: 'auto',
             textAlign: 'center',
@@ -47,9 +47,20 @@
         });
         win.add(label);
         
-//        picker.addEventListener('change', function(e){
-//            label.text = e.value;
-//        });
+        picker.addEventListener('change', function(e){
+            label.text = e.value;
+            
+            _cb(e.value);
+        });
+        
+        var back = Titanium.UI.createButton({
+            title: 'Back',
+            style: Titanium.UI.iPhone.SystemButtonStyle.PLAIN
+        });
+        win.setLeftNavButton(back);
+        back.addEventListener('click', function(){
+            win.close();
+        });
         
         return win;
         

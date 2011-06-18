@@ -85,30 +85,30 @@
         
         view.add(age);
         
-        var dueonlabel = Titanium.UI.createLabel({
-            borderRadius: 5,
-            text: "Select due date",
-            font: {
-                fontSize: 16,
-                fontFamily: 'Helvetica Neue'
-            },
-            textAlign: 'left',
-            left: 10,
-            right: 150,
-            top: 145,
-            height: 35
-        });
-        view.add(dueonlabel);
-
-		Titanium.API.info(e.dueon);
+//        var dueonlabel = Titanium.UI.createLabel({
+//            borderRadius: 5,
+//            text: "Select due date",
+//            font: {
+//                fontSize: 16,
+//                fontFamily: 'Helvetica Neue'
+//            },
+//            textAlign: 'left',
+//            left: 10,
+//            right: 100,
+//            top: 145,
+//            height: 35
+//        });
+//        view.add(dueonlabel);
+        
+        Titanium.API.info(e.dueon);
         var dueonButton = Titanium.UI.createLabel({
             text: (e.dueon) ? e.dueon : '0',
             font: {
                 fontSize: 16,
                 fontFamily: 'Helvetica Neue'
             },
-            textAlign: 'center',
-            left: 150,
+            textAlign: 'left',
+            left: 10,
             right: 10,
             top: 145,
             height: 35,
@@ -117,9 +117,13 @@
             backgroundColor: 'white'
         });
         dueonButton.addEventListener('click', function(e){
-			var dateWin = selectDate();
-			
-			dateWin.open();
+        
+            var win = selectDate(function(selectedDate){
+            	dueonButton.text = selectedDate;
+            });
+            Titanium.UI.currentTab.open(win, {
+                animated: true
+            });
             //alert("dueon selector not implemented yet");
         });
         
@@ -255,7 +259,8 @@
             var poststring = 'https://meldon.org/gtd/mobile.php?openid_user_id=http://openid-provider.appspot.com/' + user + '&password=' + pass + '&action=update_next_action2';
             var fileName = 'task.xml';
             
-            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn='+dueonButton.text + '&Duration=0' + '&Effort=0' + '&ProjectID=' + projectSelectedValue + '&Context=default' + '&Quadrant=' + basicSlider.value);
+			Titanium.API.info(dueonButton.text);
+            var t = postHTTPClient(poststring, fileName, 'NextActionID=' + e.id + '&Title=' + task.value + '&Notes=' + notes.value + '&DueOn=' + dueonButton.text + '&Duration=0' + '&Effort=0' + '&ProjectID=' + projectSelectedValue + '&Context=default' + '&Quadrant=' + basicSlider.value);
             
             //Dispatch a message to let others know the database has been updated
             Ti.API.fireEvent("taskItemUpdated", {
