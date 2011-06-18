@@ -48,9 +48,14 @@
         win.add(label);
         
         picker.addEventListener('change', function(e){
-            label.text = e.value;
+            var date = new Date(e.value);
+            var parsedDate = date.getUTCFullYear() + "-" + date.getUTCMonth() + "-" + date.getDate();
+            parsedDate += " ";
+            parsedDate += date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
+
+            label.text = parsedDate;
             
-            _cb(e.value);
+            _cb(parsedDate);
         });
         
         var back = Titanium.UI.createButton({
