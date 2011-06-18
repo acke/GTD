@@ -28,6 +28,13 @@
     updateTasksTablevView = function(tasks){
         tableView.setData(tasks);
     };
+	
+	function fetchDataFromServer(){
+        initTasksDB();
+        getTasks(function(task){
+            updateTasksDB(task);
+        });
+	};
     
     function prepTasks(){
         tasks = getAllFromTasksDB();
@@ -42,10 +49,7 @@
     function beginReloading(){
         // just mock out the reload
         setTimeout(endReloading, 2000);
-        initTasksDB();
-        getTasks(function(task){
-            updateTasksDB(task);
-        });
+		fetchDataFromServer();
     };
     
     function endReloading(){
@@ -138,7 +142,7 @@
         Titanium.API.addEventListener('taskItemUpdated', function(_e){
         
             Ti.API.info("taskItemUpdated occured");
-            setTimeOut();
+			beginReloading();
         });
         
         Titanium.API.addEventListener('taskFilterApplied', function(_e){
@@ -153,12 +157,8 @@
         win.add(actIndStart);
         actIndStart.show();
         
-        initTasksDB();
-        getTasks(function(task){
-            updateTasksDB(task);
-        });
-        
-        setTimeout(showTasks, 1000);
+       fetchDataFromServer();
+       setTimeout(showTasks, 1000);
     };
     
     setTimeOut();
