@@ -2,7 +2,7 @@
     var user = Titanium.App.Properties.getString("user");
     var pass = Titanium.App.Properties.getString("pass");
     
-    Ti.include('../uicomponents/backgroundGradient.js', '../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js', '../Editors/email_dialog.js');
+    Ti.include('../uicomponents/picker_date.js', '../uicomponents/backgroundGradient.js', '../database/projectsDB.js', '../net/httppost.js', '../utils/projectParsers.js', '../Editors/email_dialog.js');
     
     createTaskEditor = function(e){
         var w = Ti.UI.createWindow({
@@ -117,7 +117,10 @@
             backgroundColor: 'white'
         });
         dueonButton.addEventListener('click', function(e){
-            alert("dueon selector not implemented yet");
+			var dateWin = selectDate();
+			
+			dateWin.open();
+            //alert("dueon selector not implemented yet");
         });
         
         view.add(dueonButton);
