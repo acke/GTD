@@ -1,8 +1,8 @@
 (function(){
     gtd.views = {};
     gtd.views.login = {};
-	
-	Ti.include('uicomponents/backgroundGradient.js');
+    
+    Ti.include('uicomponents/backgroundGradient.js');
     
     //
     // create controls tab and root window
@@ -12,7 +12,7 @@
             title: 'Configuration',
             backgroundColor: '#fff',
             orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.LANDSCAPE_LEFT, Titanium.UI.LANDSCAPE_RIGHT],
-			backgroundGradient: getBackgroundGradient()
+            backgroundGradient: getBackgroundGradient()
         });
         
         win2.add(Titanium.UI.createLabel({
@@ -38,6 +38,7 @@
             left: 10,
             right: 10,
             width: 300,
+            backgroundColor: 'white',
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
@@ -53,6 +54,7 @@
             right: 10,
             width: 300,
             passwordMask: true,
+            backgroundColor: 'white',
             borderStyle: Titanium.UI.INPUT_BORDERSTYLE_BEZEL
         });
         
