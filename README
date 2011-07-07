@@ -20,8 +20,9 @@ http://meldon.org/gtd/
 VERSIONS:
 
 New in version 0.5.2:
-- updated editor looks
-- added support for viewing and sorting on due on.
+- updated textfield looks.
+- added support for viewing, editing and sorting on due on.
+- task table view update issue solved.
 
 New in version 0.5.1:
 - updated editor looks

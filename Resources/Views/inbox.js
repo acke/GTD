@@ -2,7 +2,7 @@
 
     var inboxData = [];
     var inboxWin = Titanium.UI.currentWindow;
-	var tableView;
+    var tableView;
     
     Ti.include('../uicomponents/tableViewOptions.js', '../Editors/new_task_editor.js', '../utils/inboxParsers.js', '../net/getInboxEntries.js');
     
@@ -13,9 +13,13 @@
         top: 20,
         style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
     });
-	actInd.font = {fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'};
-	actInd.color = 'black';
-	actInd.message = 'Loading...';
+    actInd.font = {
+        fontFamily: 'Helvetica Neue',
+        fontSize: 15,
+        fontWeight: 'bold'
+    };
+    actInd.color = 'black';
+    actInd.message = 'Loading...';
     
     createNewTableView = function(){
         var tableView = Titanium.UI.createTableView(getTableViewOptions());
@@ -38,9 +42,7 @@
     
     function endReloading(){
         tableView = createNewTableView();
-        
         inboxWin.add(tableView);
-        
         updateInboxView(inboxEntries);
         actInd.hide();
         
@@ -53,7 +55,7 @@
         getInboxEntries(function(data){
             inboxEntries = data;
         });
-
+        
         setTimeout(endReloading, 500);
         
     };
