@@ -5,7 +5,7 @@ function parseTasks(tasks, item){
     var quadrant = item.getElementsByTagName("quadrant").item(0).text;
     var context = item.getElementsByTagName("context").item(0).text;
     var notes = item.getElementsByTagName("notes").item(0).text;
-    var projectID = item.getElementsByTagName("project_id").item(0).text;
+    var projectID = item.getElementsByTagName("part_of_project_id").item(0).text;
     var age = item.getElementsByTagName("age").item(0).text;
 	var due_on = item.getElementsByTagName("due_on").item(0).text;
     var quadrantString = getQuadrantFromValue(Math.round(quadrant));

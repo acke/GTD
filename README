@@ -19,6 +19,12 @@ http://meldon.org/gtd/
 
 VERSIONS:
 
+New in version 0.5.4:
+- Some sort of date picker
+- White background in user and pass fields.
+- updates for building with with xcode 5.0
+- Update to API change (project_id => part_of_project_id)
+
 New in version 0.5.2:
 - updated textfield looks.
 - added support for viewing, editing and sorting on due on.
