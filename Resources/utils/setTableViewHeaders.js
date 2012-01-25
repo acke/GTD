@@ -54,12 +54,12 @@ function setContextHeaders(tasks){
     var newArray = [];
     
     function setContextHeader(element, index, array){
-        
+
         //It should not be === here, since the object is not the same, but the value is.
         if (element.context !== previousItem) {
             newArray.push({
                 title: element.title,
-                header: element.age,
+                header: element.context,
                 id: element.id,
                 quadrant: element.quadrant,
                 quadrantString: element.quadrantString,
@@ -241,7 +241,7 @@ function setTableViewHeaders(tasks, sorterType){
         case 'Tasks by age':
             tasks = setAgeHeaders(tasks);
             break;
-		case 'Tasks by due date':
+	case 'Tasks by due date':
             tasks = setDueonHeaders(tasks);
             break;
         case 'Tasks by context':

@@ -8,7 +8,15 @@ function sortTaskArrayOnQuadrant(data){
 
 function sortTaskArrayOnContext(data){
     data.sort(function(a, b){
-        return a.context - b.context;
+	Ti.API.info(a.context);
+ 	var nameA=a.context.toLowerCase(), nameB=b.context.toLowerCase()
+ 	if (nameA < nameB) //sort string ascending
+  		return -1 
+ 	if (nameA > nameB)
+  		return 1
+ 	return 0 //default return value (no sorting)        
+
+	//return a.context - b.context;
     });
     return data;
 };
