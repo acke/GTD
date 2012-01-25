@@ -19,6 +19,9 @@ http://meldon.org/gtd/
 
 VERSIONS:
 
+New in version 0.5.5:
+- updated sort by context
+
 New in version 0.5.4:
 - Some sort of date picker
 - White background in user and pass fields.
